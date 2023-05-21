@@ -1,0 +1,15 @@
+~~~~~~~~~Python~~~~~~~~~
+#instalar virtualenv
+pip install virtualenv
+
+#crear librerías
+C:\Users\USUARIO\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\Scripts\virtualenv vend
+
+# activar virtualenv
+ .\venv\Scripts\activate 
+ 
+# exportar variable que define el entorno que se ejecuta flask
+set FLASK_ENV=development
+
+#ejecutar flask
+flask run
