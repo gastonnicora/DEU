@@ -29,4 +29,4 @@ def get_alumnos(id):
 
 def login(): 
     user= Serializacion.dump(Usuario.login(request.get_json()))
-    return jsonify(user)
+    return jsonify(user) 
