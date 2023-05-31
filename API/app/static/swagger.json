@@ -1,0 +1,760 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Sin nombre por el momento",
+    "description": "The API de sin nommbre",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/GASTONMATIAS21/Deu/1.0.0",
+      "description": "Servidor API_REST"
+    }
+  ],
+  "paths": {
+    "/usurio": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "description": "Retorna todos los usuarios",
+        "operationId": "getDevices",
+        "parameters": [
+          {
+            "name": "skip",
+            "in": "query",
+            "description": "number of records to skip",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "max number of records to return",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All the devices",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "format": "uri",
+                    "example": "http://10.0.0.225:8080"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Device"
+        ],
+        "operationId": "register",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceRegistrationInfo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successfully registered device"
+          }
+        }
+      }
+    },
+    "/lighting/dimmers/{deviceId}/{value}": {
+      "post": {
+        "tags": [
+          "Z-Wave"
+        ],
+        "operationId": "setDimmer",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "value",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "maximum": 100,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-swagger-router-controller": "ZWave"
+      }
+    },
+    "/lighting/dimmers/{deviceId}/{value}/timer/{timeunit}": {
+      "post": {
+        "tags": [
+          "Z-Wave"
+        ],
+        "description": "sets a dimmer to a specific value on a timer",
+        "operationId": "setDimmerTimer",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "value",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "timeunit",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "units",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "default": "milliseconds",
+              "enum": [
+                "seconds",
+                "minutes",
+                "milliseconds"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-swagger-router-controller": "ZWave"
+      }
+    },
+    "/lighting/switches/{deviceId}": {
+      "get": {
+        "tags": [
+          "Z-Wave"
+        ],
+        "operationId": "getSwitchState",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceState"
+                }
+              }
+            }
+          }
+        },
+        "x-swagger-router-controller": "ZWave"
+      }
+    },
+    "/lighting/switches/{deviceId}/{value}": {
+      "post": {
+        "tags": [
+          "Z-Wave"
+        ],
+        "operationId": "setSwitch",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "value",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "true",
+                "false"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-swagger-router-controller": "ZWave"
+      }
+    },
+    "/lighting/switches/{deviceId}/{value}/timer/{minutes}": {
+      "post": {
+        "tags": [
+          "Z-Wave"
+        ],
+        "description": "sets a switch to a specific value on a timer",
+        "operationId": "setSwitchTimer",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "value",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "true",
+                "false"
+              ]
+            }
+          },
+          {
+            "name": "minutes",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-swagger-router-controller": "ZWave"
+      }
+    },
+    "/lightingSummary": {
+      "get": {
+        "tags": [
+          "Z-Wave"
+        ],
+        "operationId": "getLightingSummary",
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LightingSummary"
+                }
+              }
+            }
+          }
+        },
+        "x-swagger-router-controller": "ZWave"
+      }
+    },
+    "/temperature": {
+      "get": {
+        "tags": [
+          "Environment"
+        ],
+        "operationId": "temperatureSummary",
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TemperatureSummary"
+                }
+              }
+            }
+          }
+        },
+        "x-swagger-router-controller": "Environment"
+      }
+    },
+    "/temperature/forecast/{days}": {
+      "get": {
+        "tags": [
+          "Environment"
+        ],
+        "operationId": "getForecast",
+        "parameters": [
+          {
+            "name": "days",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "the forecast",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForecastResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-swagger-router-controller": "Environment"
+      }
+    },
+    "/temperature/{zoneId}": {
+      "get": {
+        "tags": [
+          "Environment"
+        ],
+        "operationId": "getZoneTemperature",
+        "parameters": [
+          {
+            "name": "zoneId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Zone temperature",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TemperatueZoneStatus"
+                }
+              }
+            }
+          }
+        },
+        "x-swagger-router-controller": "Environment"
+      }
+    },
+    "/temperature/{zoneId}/heater": {
+      "get": {
+        "tags": [
+          "Environment"
+        ],
+        "description": "gets the state of the heater",
+        "operationId": "getHeaterState",
+        "parameters": [
+          {
+            "name": "zoneId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "heater state",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HeaterState"
+                }
+              }
+            }
+          }
+        },
+        "x-swagger-router-controller": "Environment"
+      }
+    },
+    "/temperature/{zoneId}/heater/{state}": {
+      "post": {
+        "tags": [
+          "Environment"
+        ],
+        "description": "turns the heater on or off",
+        "operationId": "setHeaterState",
+        "parameters": [
+          {
+            "name": "zoneId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "state",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "false",
+                "true"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status of the operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-swagger-router-controller": "Environment"
+      }
+    },
+    "/zones": {
+      "get": {
+        "tags": [
+          "Zones"
+        ],
+        "operationId": "getZones",
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-swagger-router-controller": "Zones"
+      }
+    },
+    "/zones/{zoneId}/quiet": {
+      "get": {
+        "tags": [
+          "Zones"
+        ],
+        "operationId": "quietZone",
+        "parameters": [
+          {
+            "name": "zoneId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "basement",
+                "first-floor",
+                "second-floor"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        },
+        "x-swagger-router-controller": "Zones"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Usuario": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "apellido": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "contra": {
+            "type": "string"
+          },
+          "tipo": {
+            "type": "integer",
+            "description": "Hace referencia a si es entrenador o jugador, donde 0 es entrenador y 1 jugador"
+          },
+          "posicion": {
+            "type": "integer",
+            "description": "Hace referencia a donde juega en caso de ser un alumno, 0 defensa, 1 centro y 2 ataque"
+          },
+          "borrado": {
+            "type": "integer",
+            "description": "Borrado lógico, si esta el bit en 1 es que esta borrado"
+          }
+
+        }
+      },
+      "Ejercicio": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "tiempo": {
+            "type": "integer",
+            "description": "Es la cantidad de tiempo que se tiene que realizar este ejercicio"
+          },
+          "tipo_tiempo": {
+            "type": "string",
+            "description": "Unidad de tiempo que se va a realizar el ejercicio(seg,min,hs)"
+          },
+          "repeticiones": {
+            "type": "string"
+           },
+          "tipo": {
+            "type": "integer",
+            "description": "tipo de ejercicio, ejemplo:0=fuerza,1= velocidad,2=resistencia,3= estrategia "
+          },
+          "categoria": {
+            "type": "integer",
+            "description": "categoría de ejercicio: 0=calentamiento, 1 entrenamiento, 2 regenerativo "
+          
+          },
+          "video": {
+            "type": "string"
+          },
+          "borrado": {
+            "type": "integer"
+          }
+        }
+      },
+      "Entrenamiento": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "entrenador": {
+            "type": "integer"
+          },
+          "borrado": {
+            "type": "bit"
+          }
+        }
+      },
+      "Ent_eje": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "ent": {
+            "type": "integer",
+            "description": "Id de entrenamiento"   
+          },
+          "eje": {
+            "type": "integer",
+            "description": "id de ejercicio" 
+          }
+        }
+      },
+      "Ent_alu": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "ent": {
+            "type": "integer",
+            "description":"id de entrenamiento"
+          },
+          "alu": {
+            "type": "integer",
+            "descripcion":"id de alumno/usuario"
+          },
+          "coment_jug": {
+            "type": "string",
+            "description":"comentario de alumno sobre el entrenamiento"
+          },
+          "asistencia": {
+            "type": "integer",
+            "description":"0= ausente(default) y 1 es presente"
+          },
+          "nota":{
+            "type":"integer",
+            "description":" nota del profesor hacia el alumno en el entrenamiento"
+          },
+          "coment_ent":{
+            "type":"string",
+            "description":"comentario del profezor sobre como le fue en el entrenamiento a dicho alumno"
+          }
+        }
+      },
+       "config": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "us": {
+            "type": "integer",
+            "description":"id de usuario"
+          },
+          "tema": {
+            "type": "integer",
+            "descripcion":"0=tema claro, 1 = tema oscuro"
+          },
+          "fuente": {
+            "type": "float",
+            "description":"multiplicado de tamaño de fuente"
+          }
+        }
+      }
+    }
+  }
+}

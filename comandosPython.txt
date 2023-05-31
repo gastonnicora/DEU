@@ -12,4 +12,9 @@ C:\Users\USUARIO\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz
 set FLASK_ENV=development
 
 #ejecutar flask
-flask run
+python run.py
+
+cd .\API\  
+
+requerimientos 
+ pip freeze > requirements.txt

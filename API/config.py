@@ -19,7 +19,7 @@ class Config(object):
 class ProductionConfig(Config):
     """Production configuration."""
 
-    DB_HOST = environ.get("DB_HOST", "db")
+    DB_HOST = environ.get("DB_HOST", "db:3306")
     DB_USER = environ.get("DB_USER", "tpdeu")
     DB_PASS = environ.get("DB_PASS", "tpdeu")
     DB_NAME = environ.get("DB_NAME", "tpdeu")
@@ -31,8 +31,8 @@ class DevelopmentConfig(Config):
     """Development configuration."""
 
     DB_HOST = environ.get("DB_HOST", "localhost:3306")
-    DB_USER = environ.get("DB_USER", "root")
-    DB_PASS = environ.get("DB_PASS", "a1234567")
+    DB_USER = environ.get("DB_USER", "tpdeu")
+    DB_PASS = environ.get("DB_PASS", "tpdeu")
     DB_NAME = environ.get("DB_NAME", "tpdeu")
 
     
@@ -54,3 +54,4 @@ config = dict(
 
 ## More information
 # https://flask.palletsprojects.com/en/2.0.x/config/
+ 

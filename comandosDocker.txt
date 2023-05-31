@@ -1,10 +1,11 @@
 ~~~~~~~~~~~~~Docker~~~~~~~~~~~
 #En la ubicación del archivo Dockerfile
 #Construir imagen
-    docker build -t nombre .
+    docker build -t nombre:version -t nombre:latest .
 
 #Cambiar de nombre 
     Docker tag nombre anterior nombreNuevo:version
 
 #Subir a docker Hub
-     docker push nombreEnDockerHub:version      
+     docker push nombreEnDockerHub:version    
+     docker push nombreEnDockerHub:latest    
