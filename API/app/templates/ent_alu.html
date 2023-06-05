@@ -1,0 +1,278 @@
+<div class="item" type="button" data-toggle="collapse" data-target="#collapseEnt_alu" aria-expanded="false"
+    aria-controls="collapseEnt_alu">
+    <div>Ent_alus <small>Relación de entrenamiento y alumno</small></div>
+    <i class="fa fa-chevron-down"></i>
+</div>
+<div class="collapse espaciado" id="collapseEnt_alu">
+    <div class="card espaciado">
+        <div class="card-header">
+            Campos de la clase ent_alu:
+        </div>
+        <div class="card-body">
+            id <strong> integer not null</strong> <small> //Generado automáticamente </small>
+            <br>
+            ent <strong> integer not null </strong> <small>//id del entrenamiento</small>
+            <br>
+            alu <strong> integer not null </strong> <small>//id del alumno</small>
+            <br>
+            coment_jug <strong> string</strong> <small>//comentario del alumno hacia el entrenamiento</small>
+            <br>
+            coment_ent <strong> string</strong> <small>//comentario del entrenador de como se desempeño el
+                alumno</small>
+            <br>
+            nota <strong> string</strong> <small>//nota del alumno </small>
+            <br>
+            asistencia <strong> string</strong>
+            <br>
+        </div>
+    </div>
+
+
+    <br>
+    <div class="item " type="button" data-toggle="collapse" data-target="#ent_alusGet" aria-expanded="false"
+        aria-controls="ent_alusGet">
+        <div>/ent_alus</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="get">GET</div><i class="fa fa-chevron-down align-middle"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="ent_alusGet">
+        <p>Ejemplo de solicitar todos los ent_alus
+        </p>
+        <small>Es una petición GET que devuelve todos los ent_alus</small>
+        <button class="btn btn-primary float-right "
+            onclick="get('{{ url_for('ent_alus') }}','campo_ent_alus_get_cod','campo_ent_alus_get')"
+            id="ent_alus_get">Ejecutar</button>
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_ent_alus_get_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_ent_alus_get"></pre>
+        </div>
+    </div>
+
+
+    <br>
+    <div class="item" type="button" data-toggle="collapse" data-target="#ent_aluGet" aria-expanded="false"
+        aria-controls="ent_aluGet">
+        <div>/ent_alu/id</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="get">GET</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="ent_aluGet">
+        <p>Ejemplo de pedir un ent_alu
+        </p>
+        <small>Es una petición GET que devuelve un ent_alu</small>
+
+        <div class="row">
+            id:
+            <input type="number" min="0" value="0" id="id_ent_alu_get">
+            <button class="btn btn-primary float-right " id="ent_alu_get"
+                onclick="get('{{ url_for('ent_alu_get', id= 0) }}','campo_ent_alu_get_cod','campo_ent_alu_get','id_ent_alu_get')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_ent_alu_get_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_ent_alu_get"></pre>
+        </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#ent_aluPost" aria-expanded="false"
+        aria-controls="ent_aluPost">
+        <div>/ent_alu</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="post">POST</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="ent_aluPost">
+        <p>Guardar ent_alu
+        </p>
+        <small>Es una petición POST que devuelve un ent_alu</small>
+        <div>
+            <textarea id="post_ent_alu" style="width: 100%;resize: none;" rows="5">
+
+  </textarea>
+
+            <button class="btn btn-primary float-right " id="ent_alu_post"
+                onclick="post('{{url_for('ent_alu_post')}}','post_ent_alu','campo_ent_alu_post_cod','campo_ent_alu_post')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_ent_alu_post_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_ent_alu_post"></pre>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#ent_aluPut" aria-expanded="false"
+        aria-controls="ent_aluPut">
+        <div>/ent_alu_editar</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="put">PUT</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="ent_aluPut">
+        <p>Editar ent_alu edita la realcion
+        </p>
+        <small>Es una petición POST que devuelve un ent_alu</small>
+        <div>
+            <textarea id="put_ent_alu" style="width: 100%;resize: none;" rows="5">
+
+  </textarea>
+
+            <button class="btn btn-primary float-right " id="ent_alu_put"
+                onclick="post('{{url_for('ent_alu_put')}}','put_ent_alu','campo_ent_alu_put_cod','campo_ent_alu_put')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_ent_alu_put_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_ent_alu_put"></pre>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#ent_aluPut_alu" aria-expanded="false"
+        aria-controls="ent_aluPut_alu">
+        <div>/ent_alu_editar_alu</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="put">PUT</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="ent_aluPut_alu">
+        <p>Editar ent_alu petición realizada por un alumno que deja un comentario
+        </p>
+        <small>Es una petición POST que devuelve un ent_alu</small>
+        <div>
+            <textarea id="put_ent_alu_alu" style="width: 100%;resize: none;" rows="5">
+
+</textarea>
+
+            <button class="btn btn-primary float-right " id="ent_alu_put"
+                onclick="post('{{url_for('ent_alu_put_alu')}}','put_ent_alu_alu','campo_ent_alu_alu_put_cod','campo_ent_alu_alu_put')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_ent_alu_alu_put_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_ent_alu_alu_put"></pre>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#ent_aluPut_ent" aria-expanded="false"
+        aria-controls="ent_aluPut_ent">
+        <div>/ent_alu_editar_entrenador</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="put">PUT</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="ent_aluPut_ent">
+        <p>Editar ent_alu realizado por el entrenador
+        </p>
+        <small>Es una petición POST que devuelve un ent_alu</small>
+        <div>
+            <textarea id="put_ent_alu_ent" style="width: 100%;resize: none;" rows="5">
+
+</textarea>
+
+            <button class="btn btn-primary float-right " id="ent_alu_put"
+                onclick="post('{{url_for('ent_alu_put_entrenador')}}','put_ent_alu_ent','campo_ent_alu_ent_put_cod','campo_ent_alu_ent_put')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_ent_alu_ent_put_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_ent_alu_ent_put"></pre>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#ent_aluDel" aria-expanded="false"
+        aria-controls="ent_aluDel">
+        <div>/ent_alu_borrar/id</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="del">DELETE</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="ent_aluDel">
+        <p>Elimina un ent_alu 
+        </p>
+        <small>Es una petición GET </small>
+
+        <div class="row">
+            id:
+            <input type="number" min="0" value="0" id="id_ent_alu_del">
+            <button class="btn btn-primary float-right " id="ent_alu_del"
+                onclick="get('{{ url_for('ent_alu_delete', id= 0) }}','campo_ent_alu_del_cod','campo_ent_alu_del','id_ent_alu_del')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_ent_alu_del_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_ent_alu_del"></pre>
+        </div>
+    </div>
+    <br>
+
+</div>
+<br>
+<script>
+    var ent_alu = '{"id":1,"ent":1,"alu":1}'
+    var ent_alu_alu = '{"id":1, "coment_jug":"Estuvo bueno, pero seria mejor si es menos tiempo"}'
+    var ent_alu_ent = '{"id":1, "coment_ent":"Le falta velocidad", "nota": 7}'
+    document.getElementById("post_ent_alu").value = JSON.stringify(JSON.parse(ent_alu), undefined, 2)
+    document.getElementById("put_ent_alu").value = JSON.stringify(JSON.parse(ent_alu), undefined, 2)
+    document.getElementById("put_ent_alu_alu").value = JSON.stringify(JSON.parse(ent_alu_alu), undefined, 2)
+    
+    document.getElementById("put_ent_alu_ent").value = JSON.stringify(JSON.parse(ent_alu_ent), undefined, 2)
+
+</script>

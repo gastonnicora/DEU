@@ -1,4 +1,5 @@
 from app.models.modelos import db, Video as v
+from app.models.modelos_planos import Video as V
 
 class Video(object):
     
@@ -10,7 +11,9 @@ class Video(object):
         )
         db.session.add(video)
         db.session.commit()
+        vi=V(video)
         db.session.close()
+        return vi
     
     @classmethod
     def all(cls):
@@ -27,13 +30,21 @@ class Video(object):
     @classmethod
     def update(cls,data):
         video= cls.get(data.get("id"))
-        video.nombre= data.get("nombre"), 
+        if video is None:
+            return None
+        video.nombre= data.get("nombre")
+        db.session.merge(video)
         db.session.commit()
+        vi=V(video)
         db.session.close()
+        return vi
         
     @classmethod
     def delete(cls,id):
         video = cls.get(id)
+        if video is None:
+            return 400
         db.session.delete(video)
         db.session.commit()
         db.session.close()
+        return 200

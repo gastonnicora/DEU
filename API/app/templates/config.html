@@ -1,0 +1,195 @@
+<div class="item" type="button" data-toggle="collapse" data-target="#collapseConfig" aria-expanded="false"
+    aria-controls="collapseConfig">
+    <div>Configs <small>Configuración de usuario</small></div>
+    <i class="fa fa-chevron-down"></i>
+</div>
+<div class="collapse espaciado" id="collapseConfig">
+    <div class="card espaciado">
+        <div class="card-header">
+            Campos de la clase config:
+        </div>
+        <div class="card-body">
+            id <strong> integer not null</strong> <small> //Generado automáticamente </small>
+            <br>
+            us <strong> integer not null </strong> <small>//id del usaurio</small>
+            <br>
+            tema <strong> integer not null </strong> <small>//tema: oscuro=0, claro= 1</small>
+            <br>
+            <small>el tamaño de la fuente no se guarda por que es local al dispositivo </small>
+        </div>
+    </div>
+
+
+    <br>
+    <div class="item " type="button" data-toggle="collapse" data-target="#configsGet" aria-expanded="false"
+        aria-controls="configsGet">
+        <div>/configs</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="get">GET</div><i class="fa fa-chevron-down align-middle"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="configsGet">
+        <p>Ejemplo de solicitar todos los configs
+        </p>
+        <small>Es una petición GET que devuelve todos los configs</small>
+        <button class="btn btn-primary float-right "
+            onclick="get('{{ url_for('configs') }}','campo_configs_get_cod','campo_configs_get')"
+            id="configs_get">Ejecutar</button>
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_configs_get_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_configs_get"></pre>
+        </div>
+    </div>
+
+
+    <br>
+    <div class="item" type="button" data-toggle="collapse" data-target="#configGet" aria-expanded="false"
+        aria-controls="configGet">
+        <div>/config/id</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="get">GET</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="configGet">
+        <p>Ejemplo de pedir un config
+        </p>
+        <small>Es una petición GET que devuelve un config</small>
+
+        <div class="row">
+            id:
+            <input type="number" min="0" value="0" id="id_config_get">
+            <button class="btn btn-primary float-right " id="config_get"
+                onclick="get('{{ url_for('config_get', id= 0) }}','campo_config_get_cod','campo_config_get','id_config_get')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_config_get_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_config_get"></pre>
+        </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#configPost" aria-expanded="false"
+        aria-controls="configPost">
+        <div>/config</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="post">POST</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="configPost">
+        <p>Guardar config
+        </p>
+        <small>Es una petición POST que devuelve un config</small>
+        <div>
+            <textarea id="post_config" style="width: 100%;resize: none;" rows="5">
+
+  </textarea>
+
+            <button class="btn btn-primary float-right " id="config_post"
+                onclick="post('{{url_for('config_post')}}','post_config','campo_config_post_cod','campo_config_post')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_config_post_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_config_post"></pre>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#configPut" aria-expanded="false"
+        aria-controls="configPut">
+        <div>/config_editar</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="put">PUT</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="configPut">
+        <p>Editar config
+        </p>
+        <small>Es una petición POST que devuelve un config</small>
+        <div>
+            <textarea id="put_config" style="width: 100%;resize: none;" rows="5">
+
+  </textarea>
+
+            <button class="btn btn-primary float-right " id="config_put"
+                onclick="post('{{url_for('config_put')}}','put_config','campo_config_put_cod','campo_config_put')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_config_put_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_config_put"></pre>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#configDel" aria-expanded="false"
+        aria-controls="configDel">
+        <div>/config_borrar/id</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="del">DELETE</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="configDel">
+        <p>Elimina un config 
+        </p>
+        <small>Es una petición GET </small>
+
+        <div class="row">
+            id:
+            <input type="number" min="0" value="0" id="id_config_del">
+            <button class="btn btn-primary float-right " id="config_del"
+                onclick="get('{{ url_for('config_delete', id= 0) }}','campo_config_del_cod','campo_config_del','id_config_del')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_config_del_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_config_del"></pre>
+        </div>
+    </div>
+    <br>
+
+</div>
+<br>
+<script>
+        var ent = '{"id":1,"us":1,"tema":1}'
+        document.getElementById("post_config").value = JSON.stringify(JSON.parse(ent), undefined, 2)
+        document.getElementById("put_config").value = JSON.stringify(JSON.parse(ent), undefined, 2)
+    
+</script>

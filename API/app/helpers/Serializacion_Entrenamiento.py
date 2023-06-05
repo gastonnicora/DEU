@@ -8,7 +8,8 @@ class Serializacion_Entrenamiento():
     @classmethod
     def dump(cls, entrenamiento):
        entrenamiento= Serializacion._serialize(entrenamiento)
-       entrenamiento["Ejercicios"]= [Serializacion_Ejercicio.dump(elem) for elem in Ent_eje.get_ejercicios(entrenamiento.get("id"))]
+       eje= Ent_eje.get_ejercicios(entrenamiento.get("id"))
+       entrenamiento["Ejercicios"]= [Serializacion_Ejercicio.dump(elem) for elem in eje ]
        entrenamiento["Alumnos"]= [Serializacion.dump(elem) for elem in Ent_alu.get_alumnos(entrenamiento.get("id"))]
        return entrenamiento
         

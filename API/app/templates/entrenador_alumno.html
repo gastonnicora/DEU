@@ -1,0 +1,195 @@
+<div class="item" type="button" data-toggle="collapse" data-target="#collapseEntrenador_alumno" aria-expanded="false"
+    aria-controls="collapseEntrenador_alumno">
+    <div>Entrenador_alumnos <small>Relación entrenador alumno</small></div>
+    <i class="fa fa-chevron-down"></i>
+</div>
+<div class="collapse espaciado" id="collapseEntrenador_alumno">
+    <div class="card espaciado">
+        <div class="card-header">
+            Campos de la clase entrenador_alumno:
+        </div>
+        <div class="card-body">
+            id <strong> integer not null</strong> <small> //Generado automáticamente </small>
+            <br>
+            us <strong> integer not null </strong> <small>//id del usaurio</small>
+            <br>
+            tema <strong> integer not null </strong> <small>//tema: oscuro=0, claro= 1</small>
+            <br>
+            <small>el tamaño de la fuente no se guarda por que es local al dispositivo </small>
+        </div>
+    </div>
+
+
+    <br>
+    <div class="item " type="button" data-toggle="collapse" data-target="#entrenador_alumnosGet" aria-expanded="false"
+        aria-controls="entrenador_alumnosGet">
+        <div>/entrenador_alumnos</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="get">GET</div><i class="fa fa-chevron-down align-middle"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="entrenador_alumnosGet">
+        <p>Ejemplo de solicitar todos los entrenador_alumnos
+        </p>
+        <small>Es una petición GET que devuelve todos los entrenador_alumnos</small>
+        <button class="btn btn-primary float-right "
+            onclick="get('{{ url_for('entrenador_alumnos') }}','campo_entrenador_alumnos_get_cod','campo_entrenador_alumnos_get')"
+            id="entrenador_alumnos_get">Ejecutar</button>
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_entrenador_alumnos_get_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_entrenador_alumnos_get"></pre>
+        </div>
+    </div>
+
+
+    <br>
+    <div class="item" type="button" data-toggle="collapse" data-target="#entrenador_alumnoGet" aria-expanded="false"
+        aria-controls="entrenador_alumnoGet">
+        <div>/entrenador_alumno/id</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="get">GET</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="entrenador_alumnoGet">
+        <p>Ejemplo de pedir un entrenador_alumno
+        </p>
+        <small>Es una petición GET que devuelve un entrenador_alumno</small>
+
+        <div class="row">
+            id:
+            <input type="number" min="0" value="0" id="id_entrenador_alumno_get">
+            <button class="btn btn-primary float-right " id="entrenador_alumno_get"
+                onclick="get('{{ url_for('entrenador_alumno_get', id= 0) }}','campo_entrenador_alumno_get_cod','campo_entrenador_alumno_get','id_entrenador_alumno_get')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_entrenador_alumno_get_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_entrenador_alumno_get"></pre>
+        </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#entrenador_alumnoPost" aria-expanded="false"
+        aria-controls="entrenador_alumnoPost">
+        <div>/entrenador_alumno</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="post">POST</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="entrenador_alumnoPost">
+        <p>Guardar entrenador_alumno
+        </p>
+        <small>Es una petición POST que devuelve un entrenador_alumno</small>
+        <div>
+            <textarea id="post_entrenador_alumno" style="width: 100%;resize: none;" rows="5">
+
+  </textarea>
+
+            <button class="btn btn-primary float-right " id="entrenador_alumno_post"
+                onclick="post('{{url_for('entrenador_alumno_post')}}','post_entrenador_alumno','campo_entrenador_alumno_post_cod','campo_entrenador_alumno_post')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_entrenador_alumno_post_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_entrenador_alumno_post"></pre>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#entrenador_alumnoPut" aria-expanded="false"
+        aria-controls="entrenador_alumnoPut">
+        <div>/entrenador_alumno_editar</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="put">PUT</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="entrenador_alumnoPut">
+        <p>Editar entrenador_alumno
+        </p>
+        <small>Es una petición POST que devuelve un entrenador_alumno</small>
+        <div>
+            <textarea id="put_entrenador_alumno" style="width: 100%;resize: none;" rows="5">
+
+  </textarea>
+
+            <button class="btn btn-primary float-right " id="entrenador_alumno_put"
+                onclick="post('{{url_for('entrenador_alumno_put')}}','put_entrenador_alumno','campo_entrenador_alumno_put_cod','campo_entrenador_alumno_put')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_entrenador_alumno_put_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_entrenador_alumno_put"></pre>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#entrenador_alumnoDel" aria-expanded="false"
+        aria-controls="entrenador_alumnoDel">
+        <div>/entrenador_alumno_borrar/id</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="del">DELETE</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="entrenador_alumnoDel">
+        <p>Elimina un entrenador_alumno 
+        </p>
+        <small>Es una petición GET </small>
+
+        <div class="row">
+            id:
+            <input type="number" min="0" value="0" id="id_entrenador_alumno_del">
+            <button class="btn btn-primary float-right " id="entrenador_alumno_del"
+                onclick="get('{{ url_for('entrenador_alumno_delete', id= 0) }}','campo_entrenador_alumno_del_cod','campo_entrenador_alumno_del','id_entrenador_alumno_del')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_entrenador_alumno_del_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_entrenador_alumno_del"></pre>
+        </div>
+    </div>
+    <br>
+
+</div>
+<br>
+<script>
+        var ent = '{"id":1,"alumno":1,"entrenador":1}'
+        document.getElementById("post_entrenador_alumno").value = JSON.stringify(JSON.parse(ent), undefined, 2)
+        document.getElementById("put_entrenador_alumno").value = JSON.stringify(JSON.parse(ent), undefined, 2)
+    
+</script>

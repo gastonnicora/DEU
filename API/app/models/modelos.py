@@ -42,6 +42,19 @@ class Usuario(db.Model):
         default=0
     )
     
+class Video(db.Model):
+    id= db.Column(
+        db.Integer,
+        primary_key=True,
+        unique=True,
+        autoincrement=True,
+        nullable= True
+    ) 
+    nombre=db.Column(
+        db.String(255),
+        nullable=True
+    )
+    
 class Ejercicio(db.Model):
     id= db.Column(
         db.Integer,
@@ -60,6 +73,9 @@ class Ejercicio(db.Model):
     tiempo= db.Column(
         db.Integer
     )
+    repeticiones= db.Column(
+        db.Integer
+    )
     tipo_tiempo= db.Column(
         db.String(255)
     )
@@ -73,8 +89,18 @@ class Ejercicio(db.Model):
     )
     video = db.Column(
         db.Integer,
+        ForeignKey(Video.id),
+        nullable= True
+    ) 
+    entrenador = db.Column(
+        db.Integer,
         ForeignKey(Usuario.id),
         nullable= True
+    )
+    publico =db.Column(
+        db.Integer,
+        nullable=True,
+        default=0
     )
     borrado =db.Column(
         db.Integer,
@@ -103,7 +129,7 @@ class Entrenamiento(db.Model):
         default=0
     )
     fecha= db.Column(
-        db.Date,
+        db.String(255),
         nullable=True
     )
     entrenador= db.Column(
@@ -186,11 +212,6 @@ class Config(db.Model):
         nullable=True,
         default=0
     )
-    fuente=db.Column(
-        db.Float,
-        nullable=True,
-        default=1
-    )
     
 class Entrenador_alumno(db.Model):
     id= db.Column(
@@ -211,15 +232,3 @@ class Entrenador_alumno(db.Model):
         nullable=True
     )
     
-class Video(db.Model):
-    id= db.Column(
-        db.Integer,
-        primary_key=True,
-        unique=True,
-        autoincrement=True,
-        nullable= True
-    ) 
-    nombre=db.Column(
-        db.String(255),
-        nullable=True
-    )

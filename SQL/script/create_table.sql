@@ -28,9 +28,15 @@ CREATE TABLE IF NOT EXISTS `ejercicio` (
     `categoria` int not null,
     `video`  int unsigned not null ,
     `borrado` int not null default 0,
+    `publico` int not null default 0,
+    `entrenador`  int unsigned not null ,
   PRIMARY KEY (id),
   FOREIGN key(video)
     REFERENCES video(id)
+    on UPDATE CASCADE
+    on DELETE RESTRICT,
+  FOREIGN key(entrenador)
+    REFERENCES usuario(id)
     on UPDATE CASCADE
     on DELETE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
@@ -39,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `entrenamiento` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT unique,
   `nombre` VARCHAR(255) not null,
   `descripcion` VARCHAR(255),   
-  `fecha` timestamp not null,
+  `fecha` VARCHAR(255) not null,
   `borrado` int not null default 0,
   `entrenador` int unsigned not null,
   PRIMARY KEY (id),
@@ -87,7 +93,6 @@ CREATE TABLE IF NOT EXISTS `config`(
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT unique,
     `us` INT UNSIGNED NOT NULL,
     `tema`int not null default 0,
-    `fuente` float not null DEFAULT 1, 
     PRIMARY KEY(id), 
     FOREIGN KEY(us) 
     	REFERENCES usuario(id) 

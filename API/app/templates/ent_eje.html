@@ -1,0 +1,194 @@
+<div class="item" type="button" data-toggle="collapse" data-target="#collapseEnt_eje" aria-expanded="false"
+    aria-controls="collapseEnt_eje">
+    <div>Ent_ejes <small>Relación de entrenamiento y ejercicio</small></div>
+    <i class="fa fa-chevron-down"></i>
+</div>
+<div class="collapse espaciado" id="collapseEnt_eje">
+    <div class="card espaciado">
+        <div class="card-header">
+            Campos de la clase ent_eje:
+        </div>
+        <div class="card-body">
+            id <strong> integer not null</strong> <small> //Generado automáticamente </small>
+            <br>
+            ent <strong> integer not null </strong> <small>//id del entrenamiento</small>
+            <br>
+            eje <strong> integer not null </strong> <small>//id del ejercicio</small>
+            <br>
+        </div>
+    </div>
+
+
+    <br>
+    <div class="item " type="button" data-toggle="collapse" data-target="#ent_ejesGet" aria-expanded="false"
+        aria-controls="ent_ejesGet">
+        <div>/ent_ejes</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="get">GET</div><i class="fa fa-chevron-down align-middle"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="ent_ejesGet">
+        <p>Ejemplo de solicitar todos los ent_ejes
+        </p>
+        <small>Es una petición GET que devuelve todos los ent_ejes</small>
+        <button class="btn btn-primary float-right "
+            onclick="get('{{ url_for('ent_ejes') }}','campo_ent_ejes_get_cod','campo_ent_ejes_get')"
+            id="ent_ejes_get">Ejecutar</button>
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_ent_ejes_get_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_ent_ejes_get"></pre>
+        </div>
+    </div>
+
+
+    <br>
+    <div class="item" type="button" data-toggle="collapse" data-target="#ent_ejeGet" aria-expanded="false"
+        aria-controls="ent_ejeGet">
+        <div>/ent_eje/id</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="get">GET</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="ent_ejeGet">
+        <p>Ejemplo de pedir un ent_eje
+        </p>
+        <small>Es una petición GET que devuelve un ent_eje</small>
+
+        <div class="row">
+            id:
+            <input type="number" min="0" value="0" id="id_ent_eje_get">
+            <button class="btn btn-primary float-right " id="ent_eje_get"
+                onclick="get('{{ url_for('ent_eje_get', id= 0) }}','campo_ent_eje_get_cod','campo_ent_eje_get','id_ent_eje_get')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_ent_eje_get_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_ent_eje_get"></pre>
+        </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#ent_ejePost" aria-expanded="false"
+        aria-controls="ent_ejePost">
+        <div>/ent_eje</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="post">POST</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="ent_ejePost">
+        <p>Guardar ent_eje
+        </p>
+        <small>Es una petición POST que devuelve un ent_eje</small>
+        <div>
+            <textarea id="post_ent_eje" style="width: 100%;resize: none;" rows="5">
+
+  </textarea>
+
+            <button class="btn btn-primary float-right " id="ent_eje_post"
+                onclick="post('{{url_for('ent_eje_post')}}','post_ent_eje','campo_ent_eje_post_cod','campo_ent_eje_post')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_ent_eje_post_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_ent_eje_post"></pre>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#ent_ejePut" aria-expanded="false"
+        aria-controls="ent_ejePut">
+        <div>/ent_eje_editar</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="put">PUT</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="ent_ejePut">
+        <p>Editar ent_eje
+        </p>
+        <small>Es una petición POST que devuelve un ent_eje</small>
+        <div>
+            <textarea id="put_ent_eje" style="width: 100%;resize: none;" rows="5">
+
+  </textarea>
+
+            <button class="btn btn-primary float-right " id="ent_eje_put"
+                onclick="post('{{url_for('ent_eje_put')}}','put_ent_eje','campo_ent_eje_put_cod','campo_ent_eje_put')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_ent_eje_put_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_ent_eje_put"></pre>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#ent_ejeDel" aria-expanded="false"
+        aria-controls="ent_ejeDel">
+        <div>/ent_eje_borrar/id</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="del">DELETE</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="ent_ejeDel">
+        <p>Elimina un ent_eje 
+        </p>
+        <small>Es una petición GET </small>
+
+        <div class="row">
+            id:
+            <input type="number" min="0" value="0" id="id_ent_eje_del">
+            <button class="btn btn-primary float-right " id="ent_eje_del"
+                onclick="get('{{ url_for('ent_eje_delete', id= 0) }}','campo_ent_eje_del_cod','campo_ent_eje_del','id_ent_eje_del')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_ent_eje_del_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_ent_eje_del"></pre>
+        </div>
+    </div>
+    <br>
+
+</div>
+<br>
+<script>
+        var ent = '{"id":1,"ent":1,"eje":1}'
+        document.getElementById("post_ent_eje").value = JSON.stringify(JSON.parse(ent), undefined, 2)
+        document.getElementById("put_ent_eje").value = JSON.stringify(JSON.parse(ent), undefined, 2)
+    
+</script>

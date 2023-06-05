@@ -1,0 +1,191 @@
+<div class="item" type="button" data-toggle="collapse" data-target="#collapsevideo" aria-expanded="false"
+    aria-controls="collapsevideo">
+    <div>Videos</div>
+    <i class="fa fa-chevron-down"></i>
+</div>
+<div class="collapse espaciado" id="collapsevideo">
+    <div class="card espaciado">
+        <div class="card-header">
+            Campos de la clase video:
+        </div>
+        <div class="card-body">
+            id <strong> integer not null</strong> <small> //Generado automáticamente </small>
+            <br>
+            nombre <strong> string not null</strong>
+           <br>
+        </div>
+    </div>
+
+
+    <br>
+    <div class="item " type="button" data-toggle="collapse" data-target="#videosGet" aria-expanded="false"
+        aria-controls="videosGet">
+        <div>/videos</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="get">GET</div><i class="fa fa-chevron-down align-middle"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="videosGet">
+        <p>Ejemplo de solicitar todos los videos
+        </p>
+        <small>Es una petición GET que devuelve todos los videos</small>
+        <button class="btn btn-primary float-right "
+            onclick="get('{{ url_for('videos') }}','campo_videos_get_cod','campo_videos_get')"
+            id="videos_get">Ejecutar</button>
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_videos_get_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_videos_get"></pre>
+        </div>
+    </div>
+
+
+    <br>
+    <div class="item" type="button" data-toggle="collapse" data-target="#videoGet" aria-expanded="false"
+        aria-controls="videoGet">
+        <div>/video/id</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="get">GET</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="videoGet">
+        <p>Ejemplo de pedir un video
+        </p>
+        <small>Es una petición GET que devuelve un video</small>
+
+        <div class="row">
+            id:
+            <input type="number" min="0" value="0" id="id_video_get">
+            <button class="btn btn-primary float-right " id="video_get"
+                onclick="get('{{ url_for('video_get', id= 0) }}','campo_video_get_cod','campo_video_get','id_video_get')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_video_get_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_video_get"></pre>
+        </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#videoPost" aria-expanded="false"
+        aria-controls="videoPost">
+        <div>/video</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="post">POST</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="videoPost">
+        <p>Guardar video
+        </p>
+        <small>Es una petición POST que devuelve un video</small>
+        <div>
+            <textarea id="post_video" style="width: 100%;resize: none;" rows="4">
+
+  </textarea>
+
+            <button class="btn btn-primary float-right " id="video_post"
+                onclick="post('{{url_for('video_post')}}','post_video','campo_video_post_cod','campo_video_post')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_video_post_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_video_post"></pre>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#videoPut" aria-expanded="false"
+        aria-controls="videoPut">
+        <div>/video_editar</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="put">PUT</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="videoPut">
+        <p>Editar video
+        </p>
+        <small>Es una petición POST que devuelve un video</small>
+        <div>
+            <textarea id="put_video" style="width: 100%;resize: none;" rows="4">
+
+  </textarea>
+
+            <button class="btn btn-primary float-right " id="video_put"
+                onclick="post('{{url_for('video_put')}}','put_video','campo_video_put_cod','campo_video_put')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_video_put_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_video_put"></pre>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#videoDel" aria-expanded="false"
+        aria-controls="videoDel">
+        <div>/video_borrar/id</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="del">DELETE</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="videoDel">
+        <p>Elimina un video lógicamente
+        </p>
+        <small>Es una petición GET </small>
+
+        <div class="row">
+            id:
+            <input type="number" min="0" value="0" id="id_video_del">
+            <button class="btn btn-primary float-right " id="video_del"
+                onclick="get('{{ url_for('video_delete', id= 0) }}','campo_video_del_cod','campo_video_del','id_video_del')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_video_del_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_video_del"></pre>
+        </div>
+    </div>
+    <br>
+
+</div>
+<br>
+<script>
+        const vi = '{"id": 1,"nombre": "caminar"}'
+        document.getElementById("post_video").value = JSON.stringify(JSON.parse(vi), undefined, 2)
+        document.getElementById("put_video").value = JSON.stringify(JSON.parse(vi), undefined, 2)
+</script>

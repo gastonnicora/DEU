@@ -1,0 +1,277 @@
+<div class="item" type="button" data-toggle="collapse" data-target="#collapseUsuario" aria-expanded="false"
+    aria-controls="collapseUsuario">
+    <div>Usuarios</div>
+    <i class="fa fa-chevron-down"></i>
+  </div>
+  <div class="collapse espaciado" id="collapseUsuario">
+    <div class="card espaciado">
+      <div class="card-header">
+        Campos de la clase usuario:
+      </div>
+      <div class="card-body">
+        id <strong> integer not null</strong> <small> //Generado automáticamente </small>
+        <br>
+        nombre <strong> string not null</strong>
+        <br>
+        apellido <strong> string not null </strong>
+        <br>
+        email <strong>string not null </strong>
+        <br>
+        contra <strong> string not null</strong> <small> //Contraseña</small>
+        <br>
+        tipo <strong> integer not null</strong> <small> //Tipo: 0 entrenador, 1 alumno</small>
+        <br>
+        posicion <strong>integer </strong> <small>//posición en la que juega se es jugador: 0 defensor, 1 medio campo, 2
+          ataque</small>
+        <br>
+        borrado <strong> integer not null </strong> <small>//borrado logico, por default= 0, 1 es que esta
+          borrado</small>
+
+      </div>
+    </div>
+
+
+    <br>
+    <div class="item " type="button" data-toggle="collapse" data-target="#UsuariosGet" aria-expanded="false"
+      aria-controls="UsuariosGet">
+      <div>/usuarios</div>
+      <div class="row " style="display: flex;
+      align-items: center">
+        <div class="get">GET</div><i class="fa fa-chevron-down align-middle"></i>
+      </div>
+    </div>
+    <div class="collapse espaciado" id="UsuariosGet">
+      <p>Ejemplo de solicitar todos los usuarios
+      </p>
+      <small>Es una petición GET que devuelve todos los usuarios</small>
+      <button class="btn btn-primary float-right "
+        onclick="get('{{ url_for('usuarios') }}','campo_usuarios_get_cod','campo_usuarios_get')"
+        id="usuarios_get">Ejecutar</button>
+      <hr>
+      <h5>Salida:</h5>
+      <br>
+      <div class="row">Codigo: <div id="campo_usuarios_get_cod" style="margin-left: .5%;"></div>
+      </div>
+      <div class="row">Mensaje:
+        <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+          readonly="readonly" id="campo_usuarios_get"></pre>
+      </div>
+    </div>
+
+
+    <br>
+    <div class="item" type="button" data-toggle="collapse" data-target="#UsuarioGet" aria-expanded="false"
+      aria-controls="UsuarioGet">
+      <div>/usuario/id</div>
+      <div class="row " style="display: flex;
+      align-items: center">
+        <div class="get">GET</div>
+        <i class="fa fa-chevron-down"></i>
+      </div>
+    </div>
+    <div class="collapse espaciado" id="UsuarioGet">
+      <p>Ejemplo de pedir solo un usuario
+      </p>
+      <small>Es una petición GET que devuelve un usuario</small>
+
+      <div class="row">
+        id:
+        <input type="number" min="0" value="0" id="id_usuario">
+        <button class="btn btn-primary float-right " id="usuario_get"
+          onclick="get('{{ url_for('usuario_get', id= 0) }}','campo_usuario_get_cod','campo_usuario_get','id_usuario')">Ejecutar</button>
+      </div>
+
+      <hr>
+      <h5>Salida:</h5>
+      <br>
+      <div class="row">Codigo: <div id="campo_usuario_get_cod" style="margin-left: .5%;"></div>
+      </div>
+      <div class="row">Mensaje:
+        <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+          readonly="readonly" id="campo_usuario_get"></pre>
+      </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#UsuarioPost" aria-expanded="false"
+      aria-controls="UsuarioPost">
+      <div>/usuario</div>
+      <div class="row " style="display: flex;
+      align-items: center">
+        <div class="post">POST</div>
+        <i class="fa fa-chevron-down"></i>
+      </div>
+    </div>
+    <div class="collapse espaciado" id="UsuarioPost">
+      <p>Guardar usuario
+      </p>
+      <small>Es una petición POST que devuelve un usuario</small>
+      <div>
+        <textarea id="post_u" style="width: 100%;resize: none;" rows="10">
+
+        </textarea>
+
+        <button class="btn btn-primary float-right " id="usuario_post"
+          onclick="post('{{url_for('usuario_post')}}','post_u','campo_usuario_post_cod','campo_usuario_post')">Ejecutar</button>
+      </div>
+
+      <hr>
+      <h5>Salida:</h5>
+      <br>
+      <div class="row">Codigo: <div id="campo_usuario_post_cod" style="margin-left: .5%;"></div>
+      </div>
+      <div class="row">Mensaje:
+        <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+          readonly="readonly" id="campo_usuario_post"></pre>
+
+      </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#UsuarioPut" aria-expanded="false"
+      aria-controls="UsuarioPut">
+      <div>/usuario_editar</div>
+      <div class="row " style="display: flex;
+      align-items: center">
+        <div class="put">PUT</div>
+        <i class="fa fa-chevron-down"></i>
+      </div>
+    </div>
+    <div class="collapse espaciado" id="UsuarioPut">
+      <p>Editar usuario
+      </p>
+      <small>Es una petición POST que devuelve un usuario</small>
+      <div>
+        <textarea id="put_u" style="width: 100%;resize: none;" rows="10">
+
+        </textarea>
+
+        <button class="btn btn-primary float-right " id="usuario_put"
+          onclick="post('{{url_for('usuario_put')}}','put_u','campo_usuario_put_cod','campo_usuario_put')">Ejecutar</button>
+      </div>
+
+      <hr>
+      <h5>Salida:</h5>
+      <br>
+      <div class="row">Codigo: <div id="campo_usuario_put_cod" style="margin-left: .5%;"></div>
+      </div>
+      <div class="row">Mensaje:
+        <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+          readonly="readonly" id="campo_usuario_put"></pre>
+
+      </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#UsuarioDel" aria-expanded="false"
+      aria-controls="UsuarioDel">
+      <div>/usuario_borrar/id</div>
+      <div class="row " style="display: flex;
+    align-items: center">
+        <div class="del">DELETE</div>
+        <i class="fa fa-chevron-down"></i>
+      </div>
+    </div>
+    <div class="collapse espaciado" id="UsuarioDel">
+      <p>Elimina un usuario lógicamente
+      </p>
+      <small>Es una petición GET </small>
+
+      <div class="row">
+        id:
+        <input type="number" min="0" value="0" id="id_us">
+        <button class="btn btn-primary float-right " id="usuario_del"
+          onclick="get('{{ url_for('usuario_delete', id= 0) }}','campo_usuario_del_cod','campo_usuario_del','id_us')">Ejecutar</button>
+      </div>
+
+      <hr>
+      <h5>Salida:</h5>
+      <br>
+      <div class="row">Codigo: <div id="campo_usuario_del_cod" style="margin-left: .5%;"></div>
+      </div>
+      <div class="row">Mensaje:
+        <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+          readonly="readonly" id="campo_usuario_del"></pre>
+      </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#UsuarioAl" aria-expanded="false"
+      aria-controls="UsuarioAl">
+      <div>/usuario/alumnos/id</div>
+      <div class="row " style="display: flex;
+  align-items: center">
+        <div class="get">GET</div>
+        <i class="fa fa-chevron-down"></i>
+      </div>
+    </div>
+    <div class="collapse espaciado" id="UsuarioAl">
+      <p>Obtiene todos los alumnos de a cuerdo al id del entrenador
+      </p>
+      <small>Es una petición GET </small>
+
+      <div class="row">
+        id:
+        <input type="number" min="0" value="0" id="id_u">
+        <button class="btn btn-primary float-right " id="usuario_al"
+          onclick="get('{{ url_for('usuario_get_alumnos', id= 0) }}','campo_usuario_al_cod','campo_usuario_al','id_u')">Ejecutar</button>
+      </div>
+
+      <hr>
+      <h5>Salida:</h5>
+      <br>
+      <div class="row">Codigo: <div id="campo_usuario_al_cod" style="margin-left: .5%;"></div>
+      </div>
+      <div class="row">Mensaje:
+        <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+          readonly="readonly" id="campo_usuario_al"></pre>
+      </div>
+    </div>
+    <br>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#login" aria-expanded="false"
+      aria-controls="login">
+      <div>/login</div>
+      <div class="row " style="display: flex;
+      align-items: center">
+        <div class="post">POST</div>
+        <i class="fa fa-chevron-down"></i>
+      </div>
+    </div>
+    <div class="collapse espaciado" id="login">
+      <p>Inicio de sesión
+      </p>
+      <small>Es una petición POST que devuelve un usuario</small>
+      <div>
+        <textarea id="post_l" style="width: 100%;resize: none;" rows="4">
+
+        </textarea>
+
+        <button class="btn btn-primary float-right "
+          onclick="post('{{url_for('login')}}','post_l','campo_usuario_login_cod','campo_usuario_login')">Ejecutar</button>
+      </div>
+
+      <hr>
+      <h5>Salida:</h5>
+      <br>
+      <div class="row">Codigo: <div id="campo_usuario_login_cod" style="margin-left: .5%;"></div>
+      </div>
+      <div class="row">Mensaje:
+        <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+          readonly="readonly" id="campo_usuario_login"></pre>
+
+      </div>
+    </div>
+    <br>
+  </div>
+  <br>
+  <script>
+  window.onload = () => {
+    const usuario = '{"apellido": "a","contra": "a","email": "pedro@gmail.com","id": 1,"nombre": "a","posicion": 1,"tipo": 1}';
+    const login = '{"email": "pedro@gmail.com","contra": "a"}';
+  
+    document.getElementById("post_u").value = JSON.stringify(JSON.parse(usuario), undefined, 2)
+    document.getElementById("put_u").value = JSON.stringify(JSON.parse(usuario), undefined, 2)
+    document.getElementById("post_l").value = JSON.stringify(JSON.parse(login), undefined, 2)
+  }
+</script>

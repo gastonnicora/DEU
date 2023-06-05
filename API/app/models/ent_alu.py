@@ -1,6 +1,6 @@
 from app.models.modelos import db, Ent_alu as e
 from app.models.usuario import Usuario
-
+from app.models.modelos_planos import Ent_alu as E
 class Ent_alu(object):
     
     @classmethod
@@ -11,7 +11,9 @@ class Ent_alu(object):
         )
         db.session.add(ent_alu)
         db.session.commit()
+        ent= E(ent_alu)
         db.session.close()
+        return ent
     
     @classmethod
     def all(cls):
@@ -28,37 +30,54 @@ class Ent_alu(object):
     @classmethod
     def update(cls,data):
         ent_alu= cls.get(data.get("id"))
-        ent_alu.ent= data.get("ent"),
+        if ent_alu is None:
+            return None
+        ent_alu.ent= data.get("ent")
         ent_alu.alu= data.get("alu")
+        db.session.merge(ent_alu)
         db.session.commit()
+        ent=E(ent_alu)
         db.session.close()
+        return ent
     
     @classmethod
     def update_alu(cls,data):
         ent_alu= cls.get(data.get("id"))
+        if ent_alu is None:
+            return None
         ent_alu.coment_jug= data.get("coment_jug")
+        db.session.merge(ent_alu)
         db.session.commit()
+        ent=E(ent_alu)
         db.session.close()
+        return ent
     
     @classmethod
     def update_entrenador(cls,data):
         ent_alu= cls.get(data.get("id"))
+        if ent_alu is None:
+            return None
         ent_alu.asistencia= data.get("asistencia")
         ent_alu.nota= data.get("nota")
         ent_alu.coment_ent= data.get("coment_ent")
+        db.session.merge(ent_alu)
         db.session.commit()
+        ent=E(ent_alu)
         db.session.close()
+        return ent
       
     @classmethod
     def delete(cls,id):
         ent_alu = cls.get(id)
+        if ent_alu is None:
+            return 400
         db.session.delete(ent_alu)
         db.session.commit()
         db.session.close()
+        return 200
         
     @classmethod
     def get_alumnos(cls,entrenamiento):
-        
         user=e.query.filter_by(ent= entrenamiento).all()
         list=[]
         for elem in user:

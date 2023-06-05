@@ -1,18 +1,19 @@
 from app.models.modelos import db, Entrenador_alumno as e
+from  app.models.modelos_planos import Entrenador_alumno as E
 from app.models.usuario import Usuario
-from sqlalchemy.sql.expression import label
-
 class Entrenador_alumno(object):
     
     @classmethod
     def create(cls,data):
         entrenador_alumno= e(
-                us= data.get("entrenador"),
-                tema= data.get("alumno")
+                entrenador= data.get("entrenador"),
+                alumno= data.get("alumno")
         )
         db.session.add(entrenador_alumno)
         db.session.commit()
+        ent= E(entrenador_alumno)
         db.session.close()
+        return ent
     
     @classmethod
     def all(cls):
@@ -29,18 +30,26 @@ class Entrenador_alumno(object):
     @classmethod
     def update(cls,data):
         entrenador_alumno= cls.get(data.get("id"))
-        entrenador_alumno.entrenador= data.get("entrenador"),
+        if entrenador_alumno is None:
+            return None
+        entrenador_alumno.entrenador= data.get("entrenador")
         entrenador_alumno.alumno= data.get("alumno")
+        db.session.merge(entrenador_alumno)
         db.session.commit()
+        ent= E(entrenador_alumno)
         db.session.close()
+        return ent
     
  
     @classmethod
     def delete(cls,id):
         entrenador_alumno = cls.get(id)
+        if entrenador_alumno is None:
+            return 400
         db.session.delete(entrenador_alumno)
         db.session.commit()
         db.session.close()
+        return 200
         
     @classmethod
     def get_alum_by_entrenador(cls,entrenador):
@@ -48,5 +57,5 @@ class Entrenador_alumno(object):
         list=[]
         for elem in alu:
             list.append(elem.id)
-        alumnos= Usuario.get_in_list(list)
+        alumnos=Usuario.get_in_list(list)
         return alumnos

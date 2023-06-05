@@ -124,8 +124,68 @@ z-index: 1;
 }
 :root {
 
-  --background: #aaa;
+  --background: #fff;
   --text_nav: #fff; 
   --nav: #2d2d2d;
   --text: #000;
 }
+.item {
+    display: flex; /*Convertimos al menú en flexbox*/
+    justify-content: space-between; /*Con esto le indicamos que margine todos los items que se encuentra adentro hacia la derecha e izquierda*/
+    align-items: center; /*con esto alineamos de manera vertical*/
+    margin: 0% 1%;
+    padding: .5%;
+    background-color: #d2d2d2;
+  }
+
+  .espaciado {
+    margin: 0% 1%;
+    padding: .6%;
+    background-color: #eeea;
+  }
+  .comentario{
+    color: #aaa;
+  }
+
+  .get{
+    background-color:#fff0;
+    color: #2dd;
+    padding: .5rem;
+    margin:0rem .5rem;
+    border-color: #2dd;
+    border-style: solid;
+    border-radius: 5%;
+    font-weight: 700;
+  }
+  .post{
+    background-color:#fff0;
+    color: #2d2;
+    padding: .5rem;
+    margin:0rem .5rem;
+    border-color: #2d2;
+    border-style: solid;
+    border-radius: 5%;
+    font-weight: 700;
+  }
+
+  .put{
+    background-color:#fff0;
+    color: #d2d;
+    padding: .5rem;
+    margin:0rem .5rem;
+    border-color: #d2d;
+    border-style: solid;
+    border-radius: 5%;
+    font-weight: 700;
+  }
+
+  .del{
+    background-color:#fff0;
+    color: #d22;
+    padding: .5rem;
+    margin:0rem .5rem;
+    border-color: #d22;
+    border-style: solid;
+    border-radius: 5%;
+    font-weight: 700;
+  }
