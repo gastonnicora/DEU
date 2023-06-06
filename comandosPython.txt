@@ -2,8 +2,6 @@
 #instalar virtualenv
 pip install virtualenv
 
-#crear librerías
-C:\Users\USUARIO\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\Scripts\virtualenv vend
 
 # activar virtualenv
  .\venv\Scripts\activate 
@@ -16,5 +14,9 @@ python run.py
 
 cd .\API\  
 
-requerimientos 
+guardar requerimientos
  pip freeze > requirements.txt
+
+ instalar requerimientos
+
+ pip install -r requirements.txt

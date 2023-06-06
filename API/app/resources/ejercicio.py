@@ -35,6 +35,3 @@ def delete(id):
         sms= {"mensaje":"Ejercicio eliminado correctamente"}
     return jsonify(sms),cod
 
-def search(nombre, entrenador):
-    
-
