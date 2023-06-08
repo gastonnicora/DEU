@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700');
+@import url('https://fonts.googleapis.com/css?family=Catamaran:400,800');
+
+
+#app {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    width:auto;
+    background-color: var(--background);
+    color: var(--text);
+    font-family: 'Montserrat', Helvetica, sans-serif !;
+
+}
+
+#nav {
+    padding: 30px;
+    background-color: var(--nav) !important;
+    color: var(--text_nav) !important;
+
+}
+
+#nav a {
+    text-transform: uppercase;
+    color: var(--text_nav);
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+a {
+    text-transform: uppercase;
+    color: var(--text);
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+#nav a.router-link-exact-active {
+    opacity: 0.5;
+}
+
+.my-btn,
+.link {
+    text-transform: uppercase;
+    background-color: var(--nav);
+    padding: 10px 15px;
+    border-radius: 0;
+    color: var(--text_nav) !important;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    line-height: 1.5;
+    text-decoration: none;
+    margin-top: 5px;
+    letter-spacing: 1px;
+    border-radius: 3px;
+}
+
+#mapid,
+#map {
+    height: 400px;
+}
+
+.err {
+    margin: auto;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    width: 100%;
+    padding: 0.5em;
+    color: #000;
+    border: 1px solid #f089;
+    border-radius: 5px;
+    background-color: #f55;
+    display: inline-block;
+}
+.container {
+    width: 75%;
+    margin: 0 auto;
+    padding: 20px 40px;
+    margin-top: 20px;
+    min-height: 400px;
+}
+body {
+    background-color: var(--background) !important;
+}
+.table{
+    color:var(--text) !important
+}
