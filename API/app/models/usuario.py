@@ -6,7 +6,7 @@ class Usuario(object):
     @classmethod
     def create(cls,data):
         usu= cls.email(data.get("email"))
-        if usuario is not None:
+        if usu is not None:
             return 400
         user= u(
                 nombre= data.get("nombre"), 

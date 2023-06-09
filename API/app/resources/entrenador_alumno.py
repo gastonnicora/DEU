@@ -4,7 +4,7 @@ from app.helpers.Serializacion import Serializacion
 import json
 
 def create():
-    ent=Entrenador_alumno.create(json.loads(request.get_json()))
+    ent=Entrenador_alumno.create(request.get_json())
     if ent is None:
         return jsonify({"error":"no se pudo guardar la relación entrenador alumno"}),400
     return jsonify(ent.toJSON()),200
@@ -20,7 +20,7 @@ def get(id):
     return jsonify(Serializacion.dump(user))
 
 def update():
-    ent= Entrenador_alumno.update(json.loads(request.get_json()))
+    ent= Entrenador_alumno.update(request.get_json())
     if ent is None:
         return jsonify({"error":"no se pudo editar la relación entrenador alumno"}),400
     return jsonify(ent.toJSON()),200

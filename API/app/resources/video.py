@@ -4,7 +4,7 @@ from app.helpers.Serializacion import Serializacion
 import json
 
 def create():
-    video=Video.create(json.loads(request.get_json()))
+    video=Video.create(request.get_json())
     if video is None:
         return jsonify({"error":"no se pudo guardar el video"}),400
     return jsonify(video.toJSON()),200
@@ -18,7 +18,7 @@ def get(id):
     return jsonify(video)
 
 def update():
-    video=Video.update(json.loads(request.get_json()))
+    video=Video.update(request.get_json())
     if video is None:
         return jsonify({"error":"no se pudo editar el video"}),400
     return jsonify(video.toJSON()),200

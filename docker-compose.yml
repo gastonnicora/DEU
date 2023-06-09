@@ -19,7 +19,7 @@ services:
     links:
       - db
     ports:
-      - "8080:4000"
+      - "4000:4000"
   phpmyadmin:
     image: phpmyadmin
     restart: always

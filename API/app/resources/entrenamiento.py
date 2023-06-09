@@ -5,7 +5,7 @@ from app.helpers.Serializacion_Entrenamiento import Serializacion_Entrenamiento
 import json
 
 def create():
-    ent=Entrenamiento.create(json.loads(request.get_json()))
+    ent=Entrenamiento.create(request.get_json())
     if ent is None:
          return jsonify({"error":"no se pudo guardar el entrenamiento"}),400
     return jsonify(ent.toJSON()),200
@@ -21,7 +21,7 @@ def get(id):
     return jsonify(Serializacion_Entrenamiento.dump(entrenamiento)),200
 
 def update():
-    ent= Entrenamiento.update(json.loads(request.get_json()))
+    ent= Entrenamiento.update(request.get_json())
     if ent is None:
          return jsonify({"error":"no se pudo editar el entrenamiento"}),400
     return jsonify(ent.toJSON()),200

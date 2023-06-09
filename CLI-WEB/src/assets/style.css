@@ -9,79 +9,68 @@
     width:auto;
     background-color: var(--background);
     color: var(--text);
-    font-family: 'Montserrat', Helvetica, sans-serif !;
+    font-family: 'Montserrat', Helvetica, sans-serif !important;
+    
 
 }
 
-#nav {
-    padding: 30px;
-    background-color: var(--nav) !important;
-    color: var(--text_nav) !important;
 
-}
 
-#nav a {
-    text-transform: uppercase;
-    color: var(--text_nav);
-    letter-spacing: 1px;
-    font-weight: bold;
-}
-
-a {
-    text-transform: uppercase;
-    color: var(--text);
-    letter-spacing: 1px;
-    font-weight: bold;
-}
-
-#nav a.router-link-exact-active {
-    opacity: 0.5;
-}
-
-.my-btn,
-.link {
-    text-transform: uppercase;
-    background-color: var(--nav);
-    padding: 10px 15px;
-    border-radius: 0;
-    color: var(--text_nav) !important;
-    display: inline-block;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    line-height: 1.5;
-    text-decoration: none;
-    margin-top: 5px;
-    letter-spacing: 1px;
-    border-radius: 3px;
-}
-
-#mapid,
-#map {
-    height: 400px;
-}
-
-.err {
-    margin: auto;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    width: 100%;
-    padding: 0.5em;
-    color: #000;
-    border: 1px solid #f089;
-    border-radius: 5px;
-    background-color: #f55;
-    display: inline-block;
-}
-.container {
-    width: 75%;
-    margin: 0 auto;
-    padding: 20px 40px;
-    margin-top: 20px;
-    min-height: 400px;
-}
 body {
+    
     background-color: var(--background) !important;
 }
-.table{
-    color:var(--text) !important
+.navbar .dropdown-menu {
+    position: absolute;
+    right: 0;
+    left: auto;
+    background-color: var(--nav) !important;
+    color: var(--text_nav)!important;
+  }
+
+button, .btn{
+    background-color: var(--nav) !important;
+    color: var(--text_nav)!important;
+}
+#body{
+    margin-top:60px;
+    font-size: 1em;
+}
+.nav{
+    background-color: var(--nav) !important;
+    color: var(--text_nav)!important;
+    padding-left:  1rem;
+    padding-right: 1rem;
+}
+.footer{
+    background-color: var(--nav) !important;
+    color: var(--text_nav)!important;
+    padding: .1rem 1rem;
+}
+.navbar>ul>li>a{
+    color: var(--text_nav)!important;
+}
+.container{
+    max-width: 100% !important;
+}
+.error {
+    color: #f55;
+}
+
+:root {
+
+    --background: #fff;
+    --text_nav: #fff; 
+    --nav: #2d2d2d;
+    --text: #000;
+  }
+
+  @media (min-width: 768px) {
+    .contenedor {
+        display: flex;
+        width: 100vw;
+        height: 88vh;
+        justify-content: center;
+        align-items: center;
+      }
 }

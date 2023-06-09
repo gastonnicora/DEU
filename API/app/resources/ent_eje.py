@@ -4,7 +4,7 @@ from app.helpers.Serializacion import Serializacion
 import json
 
 def create():
-    e= Ent_eje.create(json.loads(request.get_json()))
+    e= Ent_eje.create(request.get_json())
     if e is None:
         return jsonify({"error":"no se pudo guardar la relación entrenamiento ejercicio"}),400
     return jsonify(e.toJSON()),200
@@ -20,7 +20,7 @@ def get(id):
     return jsonify(Serializacion.dump(user)) 
 
 def update():
-    e= Ent_eje.update(json.loads(request.get_json()))
+    e= Ent_eje.update(request.get_json())
     if e is None:
         return jsonify({"error":"no se pudo guardar la relación entrenamiento ejercicio"}),400
     return jsonify(e.toJSON()),200

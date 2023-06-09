@@ -5,7 +5,7 @@ from app.models.entrenador_alumno import Entrenador_alumno
 import json
 
 def create(): 
-    user=Usuario.create(json.loads(request.get_json()))
+    user=Usuario.create(request.get_json())
     if user is None:
         return jsonify({"error":"no se pudo guardar el usuario"}),400
     elif user == 400:
@@ -25,7 +25,7 @@ def get(id):
         return jsonify({"error":"El usuario seleccionado no existe"}),400
 
 def update():
-    user=Usuario.update(json.loads(request.get_json()))
+    user=Usuario.update(request.get_json())
     if user is None:
         return jsonify({"error":"no se pudo editar el usuario"}),400
     return jsonify(user.toJSON()),200
@@ -48,7 +48,7 @@ def alumnos():
     return jsonify(alumnos),200
 
 def login(): 
-    user= Serializacion.dump(Usuario.login(json.loads(request.get_json())))
+    user= Usuario.login(request.get_json())
     if user is None:
          return jsonify({"error":"usuario o contraseña incorrecto"}),400
-    return jsonify(user),200
+    return jsonify(Serializacion.dump(user)),200

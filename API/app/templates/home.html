@@ -59,7 +59,9 @@
 <script>
   function post(url, campo, cod, sms) {
     const u1 = document.getElementById(campo)
-    var data = JSON.stringify(u1.value)
+    var data = JSON.stringify(JSON.parse(u1.value))
+    
+    console.log(typeof data)
     fetch(url, {
       method: "POST",
       headers: {
@@ -73,13 +75,12 @@
         return response.json();
       })
       .then(json => {
-        console.log(JSON.stringify(json, undefined, 2))
         var campo_usuarios_get = document.getElementById(sms)
-        campo_usuarios_get.textContent = JSON.stringify(json, undefined, 2)
+        campo_usuarios_get.textContent = JSON.stringify(json)
       })
       .catch(error => {
         var campo_usuarios_get = document.getElementById(sms)
-        campo_usuarios_get.textContent = JSON.stringify(error, undefined, 2)
+        campo_usuarios_get.textContent = JSON.stringify(error)
       })
 
 

@@ -2,7 +2,6 @@ from flask import Flask,jsonify, request, render_template
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from os import path, environ
-from flask_swagger_ui import get_swaggerui_blueprint
 from  app.resources import usuario, ejercicio, video,entrenamiento, ent_eje, ent_alu,config, entrenador_alumno,config as c
 import socket
 
@@ -15,7 +14,7 @@ def create_app(environment="development"):
     # Configuración inicial de la app
     app = Flask(__name__) 
     app.config['CORS_HEADERS'] = 'Content-Type'
-    cors = CORS(app, resources={r"/*": {"origins": "*"}})
+    cors = CORS(app)
 
     env = environ.get("FLASK_ENV", environment)
     app.config.from_object(config[env])

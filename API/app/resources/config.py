@@ -4,7 +4,7 @@ from app.helpers.Serializacion import Serializacion
 import json
 
 def create():
-    c=Config.create(json.loads(request.get_json()))
+    c=Config.create(request.get_json())
     if c is None:
         return jsonify({"error":"no se pudo guardar la configuración"}),400
     return jsonify(c.toJSON()),200
@@ -20,7 +20,7 @@ def get(id):
     return jsonify( Serializacion.dump(user))
 
 def update():
-    c= Config.update(json.loads(request.get_json()))
+    c= Config.update(request.get_json())
     if c is None:
         return jsonify({"error":"no se pudo editar la configuración"}),400
     return jsonify(c.toJSON()),200
