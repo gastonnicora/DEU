@@ -38,6 +38,8 @@ export default {
                 .then(response => {
                     var campo_usuarios_get_cod = document.getElementById("cod")
                     campo_usuarios_get_cod.innerText = response.status
+                    localStorage.setItem('user',response.data.response)
+                    this.$store.state.session = response.body
                     return response.json();
                 })
                 .then(json => {
@@ -46,7 +48,7 @@ export default {
                     }
                 })
                 .catch(error => {
-                   console.log(erro)
+                   console.log(error)
                 })
                 
         }

@@ -11,11 +11,11 @@
     <router-link class="navbar-brand" to="/">Inicio</router-link>
     <ul  class="navbar-nav  ml-auto" style="right: 0;">
       <li class="nav-item dropdown">
-        <a v-if="this.$store.state.session!=null" class="nav-link dropdown-toggle " style="padding:0rem .5rem" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a  class="nav-link dropdown-toggle " style="padding:0rem .5rem" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <font-awesome-icon  :icon="['far', 'user']" />
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <router-link to="#" class="dropdown-item"> <font-awesome-icon :icon="['fas', 'user-pen']" /> Editar Perfil</router-link>
+          <router-link to="/edit-profile" class="dropdown-item"> <font-awesome-icon :icon="['fas', 'user-pen']" /> Editar Perfil</router-link>
           <div class="dropdown-divider"></div>
           <router-link to="#" class="dropdown-item"> <font-awesome-icon :icon="['fas', 'key']" /> Cambiar Contraseña</router-link>
           <div class="dropdown-divider"></div>

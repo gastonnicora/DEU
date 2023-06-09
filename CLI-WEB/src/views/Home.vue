@@ -4,10 +4,10 @@
             <div class="col order-md-2 contenedor">
                 <div class="row justify-content-md-center d-flex d-flex  align-items-md-center ">
                 <div class="col-md order-md-3  ">
-                    <Login></Login>
+                    <Login v-if="this.$store.state.session==null"></Login>
                 </div>
                 <div class="col-md order-md-2  ">
-                    <Info v-if="this.$store.state.session==null"></Info>
+                    <Info ></Info>
                 </div>
                 </div>
             </div>
