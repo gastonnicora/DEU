@@ -1,38 +1,46 @@
 <template>
     <h1>Editar Perfil</h1>
-    <form @submit.prevent="save" id="form">
+        <form id="form">
         <p>Nombre:</p>
-        <input :value="nombre"/>
+        <input v-model="user.nombre"/>
         <p>Apellido:</p>
-        <input :value="apellido"/>
-        <p>Email:</p>
-        <input :value="email"/>
-        <input class="boton btn " type="submit" value="Guardar">
+        <input v-model="user.apellido"/>
+        <p>Correo electrónico:</p>
+        <input v-model="user.email"/>
+        <input @click="save" class="boton btn " type="submit" value="Guardar">
+
     </form>
 
 </template>
 
 <script>
+import axios from "axios";
 export default {
     name:'Edit',
-    props:{
-        nombre:String,
-        apellido:String,
-        email:String,
+    data(){
+        return{
+            user:this.$store.state.session
+        };
+
     },
     methods:{
         
+        emitValue(){
+            this.$emit('update:user',user)
+        },       
         save(){
-            fetch(this.$store.state.connection + 'usuario_editar', {
+            axios
+          .put(this.$store.state.connection + 'usuario_editar', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+
                 },
-                body: JSON.stringify({ nombre: this.nombre,apellido:this.apellido,email: this.email })
+                body: JSON.stringify({ nombre: this.user.nombre,apellido: this.user.apellido,email:  this.user.email, contra: this.user.contra,id: this.user.id,posicion: this.user.posicion, tipo: this.user.tipo })
             })
                 .then(response => {
-                    localStorage.setItem('user',response.data)
                     this.$store.state.session = response.body
                     return response.json();
                 })
