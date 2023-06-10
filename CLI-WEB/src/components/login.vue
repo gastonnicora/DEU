@@ -9,9 +9,8 @@
         <input type="password" id="pass" required>
         <div class="error" v-if="error"> {{ this.error }}</div>
         <br>
-        <input class="btn " type="submit" value="INICIAR SESIÓN">
+        <input class="boton btn " type="submit" value="INICIAR SESIÓN">
 
-        <div id="cod"> </div>
     </form>
     <loading v-model:active="isLoading" :can-cancel="false"  :is-full-page="true" />
 </template>
@@ -46,8 +45,6 @@ export default {
                 body: JSON.stringify({ email: email, contra: pass })
             })
                 .then(response => {
-                    var campo_usuarios_get_cod = document.getElementById("cod")
-                    campo_usuarios_get_cod.innerText = response.status
                     return response.json();
                 })
                 .then(json => {
@@ -66,7 +63,7 @@ export default {
 
         },
         color(modo) {
-            if (modo == 0 || modo == null || modo == undefined) {
+            if (modo == 1 || modo == null || modo == undefined) {
                 document.documentElement.style.setProperty('--background', "#000");
                 document.documentElement.style.setProperty('--text_nav', "#fff");
                 document.documentElement.style.setProperty('--nav', "#333");

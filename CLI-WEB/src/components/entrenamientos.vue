@@ -1,7 +1,7 @@
 <template>
   <ul>
     <div v-for="(ent, index) in entrenamientos" :key="index">
-      <Ent :entrenamiento="ent" @click="this.$store.state.entrenamiento = ent; console.log(ent)"></Ent>
+      <Ent :entrenamiento="ent" @click="this.$store.state.entrenamiento = ent"></Ent>
       <br>
     </div>
   </ul>
@@ -25,7 +25,8 @@ export default {
   },
   mounted() {
     this.isLoading = true
-    fetch(this.$store.state.connection + "entrenamiento_by_entrenador/" + this.$store.state.session.id)
+    let tipo=["entrenador","alumnno"]
+    fetch(this.$store.state.connection + "entrenamiento_by_"+tipo[this.$store.state.session.tipo]+"/" + this.$store.state.session.id)
       .then(response => {
         return response.json();
       })

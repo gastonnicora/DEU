@@ -1,5 +1,6 @@
 from app.models.modelos import db, Ent_alu as e
 from app.models.usuario import Usuario
+from app.models.entrenamiento import Entrenamiento
 from app.models.modelos_planos import Ent_alu as E
 class Ent_alu(object):
     
@@ -83,4 +84,14 @@ class Ent_alu(object):
         for elem in user:
             list.append(elem.id)
         users= Usuario.get_in_list(list)
+        return users
+    
+    @classmethod
+    def get_entrenamiento_by_alumno(cls,alu):
+        user=e.query.filter_by(alu= alu).all()
+        list=[]
+        for elem in user:
+            print(elem.id)
+            list.append(elem.ent)
+        users= Entrenamiento.get_in_list(list)
         return users

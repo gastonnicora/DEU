@@ -2,7 +2,7 @@ from flask import jsonify,  request, abort
 from app.models.entrenamiento import Entrenamiento
 from app.helpers.Serializacion import Serializacion
 from app.helpers.Serializacion_Entrenamiento import Serializacion_Entrenamiento
-import json
+from app.models.ent_alu import Ent_alu
 
 def create():
     ent=Entrenamiento.create(request.get_json())
@@ -39,6 +39,12 @@ def get_by_entrenador(id):
     entrenamiento= Entrenamiento.get_by_entrenador(id)
     if entrenamiento is None:
         return jsonify({"error":"El entrenador no existe"}),400
+    return jsonify(Serializacion_Entrenamiento.dump_varios(entrenamiento)),200
+
+def get_entrenamientos_by_alumno(id): 
+    entrenamiento= Ent_alu.get_entrenamiento_by_alumno(id)
+    if entrenamiento is None:
+        return jsonify({"error":"El alumno no existe"}),400
     return jsonify(Serializacion_Entrenamiento.dump_varios(entrenamiento)),200
 
 

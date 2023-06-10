@@ -18,7 +18,7 @@
         </div>
     </div>
     <!--aca empieza el modal-->
-    <div class="modal fade " v-bind:id="modal " tabindex="-1" role="dialog">
+    <div class="modal  " v-bind:id="modal " tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-header">

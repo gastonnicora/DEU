@@ -62,3 +62,8 @@ class Entrenamiento(object):
         entrenamiento= e.query.filter_by(entrenador=id,borrado=0).all()
         db.session.close()
         return entrenamiento
+    
+    @classmethod
+    def get_in_list(cls,list):
+        usuarios = db.session.query(e).filter(e.id.in_(list),e.borrado==0).all()
+        return usuarios 

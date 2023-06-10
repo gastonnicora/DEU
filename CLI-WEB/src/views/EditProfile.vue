@@ -7,7 +7,7 @@
         <input :value="apellido"/>
         <p>Email:</p>
         <input :value="email"/>
-        <input class="btn " type="submit" value="Guardar">
+        <input class="boton btn " type="submit" value="Guardar">
     </form>
 
 </template>

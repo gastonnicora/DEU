@@ -22,8 +22,9 @@
             borrado <strong> integer not null </strong> <small>//borrado logico, por default= 0, 1 es que esta
                 borrado</small>
             <br>
-            tipo <strong> integer not null </strong> <small>//tipo de entrenamiento: 0=fuerza,1= velocidad,2=resistencia,3= estrategia, default 0</small>
-                <br>
+            tipo <strong> integer not null </strong> <small>//tipo de entrenamiento: 0=fuerza,1=
+                velocidad,2=resistencia,3= estrategia, default 0</small>
+            <br>
         </div>
     </div>
 
@@ -90,38 +91,72 @@ align-items: center">
     </div>
     <br>
 
-    <div class="item" type="button" data-toggle="collapse" data-target="#entrenamientoGet_by_entrenador" aria-expanded="false"
-    aria-controls="entrenamientoGet_by_entrenador">
-    <div>/entrenamiento_by_entrenador/id</div>
-    <div class="row " style="display: flex;
+    <div class="item" type="button" data-toggle="collapse" data-target="#entrenamientoGet_by_entrenador"
+        aria-expanded="false" aria-controls="entrenamientoGet_by_entrenador">
+        <div>/entrenamiento_by_entrenador/id</div>
+        <div class="row " style="display: flex;
 align-items: center">
-        <div class="get">GET</div>
-        <i class="fa fa-chevron-down"></i>
+            <div class="get">GET</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
     </div>
-</div>
-<div class="collapse espaciado" id="entrenamientoGet_by_entrenador">
-    <p>Ejemplo de pedir un entrenamiento
-    </p>
-    <small>Es una petición GET que devuelve un entrenamiento</small>
+    <div class="collapse espaciado" id="entrenamientoGet_by_entrenador">
+        <p>Ejemplo de pedir un entrenamiento
+        </p>
+        <small>Es una petición GET que devuelve un entrenamiento</small>
 
-    <div class="row">
-        id:
-        <input type="number" min="0" value="0" id="id_entrenamiento_get_by_entrenador">
-        <button class="btn btn-primary float-right " id="entrenamiento_get_by_entrenador"
-            onclick="get('{{ url_for('entrenamiento_get_by_entrenador', id= 0) }}','campo_entrenamiento_get_by_entrenador_cod','campo_entrenamiento_get_by_entrenador','id_entrenamiento_get_by_entrenador')">Ejecutar</button>
+        <div class="row">
+            id:
+            <input type="number" min="0" value="0" id="id_entrenamiento_get_by_entrenador">
+            <button class="btn btn-primary float-right " id="entrenamiento_get_by_entrenador"
+                onclick="get('{{ url_for('entrenamiento_get_by_entrenador', id= 0) }}','campo_entrenamiento_get_by_entrenador_cod','campo_entrenamiento_get_by_entrenador','id_entrenamiento_get_by_entrenador')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_entrenamiento_get_by_entrenador_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_entrenamiento_get_by_entrenador"></pre>
+        </div>
     </div>
-
-    <hr>
-    <h5>Salida:</h5>
     <br>
-    <div class="row">Codigo: <div id="campo_entrenamiento_get_by_entrenador_cod" style="margin-left: .5%;"></div>
+
+    <div class="item" type="button" data-toggle="collapse" data-target="#entrenamientoGet_by_alumno"
+        aria-expanded="false" aria-controls="entrenamientoGet_by_alumno">
+        <div>/entrenamiento_by_alumno/id</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="get">GET</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
     </div>
-    <div class="row">Mensaje:
-        <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
-            readonly="readonly" id="campo_entrenamiento_get_by_entrenador"></pre>
+    <div class="collapse espaciado" id="entrenamientoGet_by_alumno">
+        <p>Ejemplo de pedir un entrenamiento
+        </p>
+        <small>Es una petición GET que devuelve un entrenamiento</small>
+
+        <div class="row">
+            id:
+            <input type="number" min="0" value="0" id="id_entrenamiento_get_by_alumno">
+            <button class="btn btn-primary float-right " id="entrenamiento_get_by_alumno"
+                onclick="get('{{ url_for('entrenamiento_get_by_alumno', id= 0) }}','campo_entrenamiento_get_by_alumno_cod','campo_entrenamiento_get_by_alumno','id_entrenamiento_get_by_alumno')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_entrenamiento_get_by_alumno_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_entrenamiento_get_by_alumno"></pre>
+        </div>
     </div>
-</div>
-<br>
+    <br>
+
     <div class="item" type="button" data-toggle="collapse" data-target="#entrenamientoPost" aria-expanded="false"
         aria-controls="entrenamientoPost">
         <div>/entrenamiento</div>
@@ -228,8 +263,8 @@ align-items: center">
 </div>
 <br>
 <script>
-        var ent = '{"descripcion": "asdas","entrenador": 2,"fecha": "01-05-2023 18:11:14","id": 1,"nombre": "asd","tipo":0}'
-        document.getElementById("post_entrenamiento").value = JSON.stringify(JSON.parse(ent), undefined, 2)
-        document.getElementById("put_entrenamiento").value = JSON.stringify(JSON.parse(ent), undefined, 2)
-    
+    var ent = '{"descripcion": "asdas","entrenador": 2,"fecha": "01-05-2023 18:11:14","id": 1,"nombre": "asd","tipo":0}'
+    document.getElementById("post_entrenamiento").value = JSON.stringify(JSON.parse(ent), undefined, 2)
+    document.getElementById("put_entrenamiento").value = JSON.stringify(JSON.parse(ent), undefined, 2)
+
 </script>
