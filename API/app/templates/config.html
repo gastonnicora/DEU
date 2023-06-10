@@ -13,7 +13,7 @@
             <br>
             us <strong> integer not null </strong> <small>//id del usaurio</small>
             <br>
-            tema <strong> integer not null </strong> <small>//tema: oscuro=0, claro= 1</small>
+            tema <strong> integer not null </strong> <small>//tema: oscuro=0, claro= 1 default 1</small>
             <br>
             <small>el tamaño de la fuente no se guarda por que es local al dispositivo </small>
         </div>
@@ -49,6 +49,38 @@ align-items: center">
 
 
     <br>
+    <div class="item" type="button" data-toggle="collapse" data-target="#configGetByUser" aria-expanded="false"
+        aria-controls="configGetByUser">
+        <div>/configByuser/id</div>
+        <div class="row " style="display: flex;
+align-items: center">
+            <div class="get">GET</div>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+    </div>
+    <div class="collapse espaciado" id="configGetByUser">
+        <p>Ejemplo de pedir un config por el id del usuario
+        </p>
+        <small>Es una petición GET que devuelve un config</small>
+
+        <div class="row">
+            id:
+            <input type="number" min="0" value="0" id="id_config_getByUser">
+            <button class="btn btn-primary float-right " id="config_getByUser"
+                onclick="get('{{ url_for('config_getByUser', id= 0) }}','campo_config_getByUser_cod','campo_config_getByUser','id_config_getByUser')">Ejecutar</button>
+        </div>
+
+        <hr>
+        <h5>Salida:</h5>
+        <br>
+        <div class="row">Codigo: <div id="campo_config_getByUser_cod" style="margin-left: .5%;"></div>
+        </div>
+        <div class="row">Mensaje:
+            <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+                readonly="readonly" id="campo_config_getByUser"></pre>
+        </div>
+    </div>
+    <br>
     <div class="item" type="button" data-toggle="collapse" data-target="#configGet" aria-expanded="false"
         aria-controls="configGet">
         <div>/config/id</div>
@@ -81,7 +113,6 @@ align-items: center">
         </div>
     </div>
     <br>
-
     <div class="item" type="button" data-toggle="collapse" data-target="#configPost" aria-expanded="false"
         aria-controls="configPost">
         <div>/config</div>
@@ -162,7 +193,7 @@ align-items: center">
         </div>
     </div>
     <div class="collapse espaciado" id="configDel">
-        <p>Elimina un config 
+        <p>Elimina un config
         </p>
         <small>Es una petición GET </small>
 
@@ -188,8 +219,8 @@ align-items: center">
 </div>
 <br>
 <script>
-        var ent = '{"id":1,"us":1,"tema":1}'
-        document.getElementById("post_config").value = JSON.stringify(JSON.parse(ent), undefined, 2)
-        document.getElementById("put_config").value = JSON.stringify(JSON.parse(ent), undefined, 2)
-    
+    var ent = '{"id":1,"us":1,"tema":1}'
+    document.getElementById("post_config").value = JSON.stringify(JSON.parse(ent), undefined, 2)
+    document.getElementById("put_config").value = JSON.stringify(JSON.parse(ent), undefined, 2)
+
 </script>

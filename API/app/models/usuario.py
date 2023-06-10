@@ -1,5 +1,6 @@
 from app.models.modelos import db, Usuario as u
 from app.models.modelos_planos import Usuario as U
+from app.models.config import Config
 
 class Usuario(object):
     
@@ -20,6 +21,7 @@ class Usuario(object):
         db.session.add(user)
         db.session.commit()
         usuario= U(user)
+        Config.create({"us":usuario.id})
         db.session.close()
         return usuario
     

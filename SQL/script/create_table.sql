@@ -48,6 +48,7 @@ CREATE TABLE IF NOT EXISTS `entrenamiento` (
   `fecha` VARCHAR(255) not null,
   `borrado` int not null default 0,
   `entrenador` int unsigned not null,
+  "tipo" int not null DEFAULT 0,
   PRIMARY KEY (id),
   FOREIGN key(entrenador)
     REFERENCES usuario(id)
@@ -92,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `ent_alu`(
 CREATE TABLE IF NOT EXISTS `config`(
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT unique,
     `us` INT UNSIGNED NOT NULL,
-    `tema`int not null default 0,
+    `tema`int not null default 1,
     PRIMARY KEY(id), 
     FOREIGN KEY(us) 
     	REFERENCES usuario(id) 

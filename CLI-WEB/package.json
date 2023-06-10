@@ -19,6 +19,7 @@
     "package.json": "^0.0.0",
     "vue": "^3.3.2",
     "vue-axios": "^3.5.2",
+    "vue-loading-overlay": "6.0",
     "vue-router": "^4.2.2",
     "vuex": "^4.1.0"
   },

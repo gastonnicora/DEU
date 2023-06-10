@@ -35,4 +35,10 @@ def delete(id):
         sms= {"mensaje":"entrenamiento eliminado correctamente"}
     return jsonify(sms),cod
 
+def get_by_entrenador(id): 
+    entrenamiento= Entrenamiento.get_by_entrenador(id)
+    if entrenamiento is None:
+        return jsonify({"error":"El entrenador no existe"}),400
+    return jsonify(Serializacion_Entrenamiento.dump_varios(entrenamiento)),200
+
 

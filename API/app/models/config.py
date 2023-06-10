@@ -49,3 +49,9 @@ class Config(object):
         db.session.commit()
         db.session.close()
         return 200
+    
+    @classmethod
+    def getByUser(cls,id):
+        config= e.query.filter_by(us=id).first()
+        db.session.close()
+        return config

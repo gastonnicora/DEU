@@ -15,6 +15,9 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 library.add(fab)
 library.add(fas)
 library.add(far)
+//pantalla de carga
+import {LoadingPlugin} from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css';
 
 import router from './router'
 
@@ -25,4 +28,5 @@ app.use(router)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(VueAxios, axios) 
 app.use(store)
+app.use(LoadingPlugin);
 app.mount('#app')

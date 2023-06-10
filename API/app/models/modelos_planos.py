@@ -49,6 +49,7 @@ class Entrenamiento():
         cls.fecha=data.fecha
         cls.entrenador= data.entrenador
         cls.borrado = data.borrado
+        cls.tipo=data.tipo
     def toJSON(self):
         return json.loads(json.dumps(self, default=lambda o: o.__dict__, 
             sort_keys=True, indent=4))

@@ -52,7 +52,7 @@ class Ent_eje(object):
         return 200
         
     @classmethod
-    def get_ejercicios(cls,entrenamiento):
+    def get_ejercicios_by_entrenamiento(cls,entrenamiento):
         eje=e.query.filter_by(ent= entrenamiento).all()
         list=[]
         for elem in eje:

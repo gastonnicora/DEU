@@ -3,7 +3,8 @@ import { createStore } from 'vuex'
 export default createStore({
     state: {
         connection: "",
-        session: { "apellido": null, "contra": null, "email":null, "id": null, "nombre": null, "posicion": null, "tipo": null}
+        session: null,
+        entrenamiento:null
     },
     mutations: {
         SET_CONNECTION(state) {
@@ -20,5 +21,5 @@ export default createStore({
     actions: {
     },
     modules: {
-    }
+    },
 })

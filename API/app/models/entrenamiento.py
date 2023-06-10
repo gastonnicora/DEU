@@ -9,7 +9,8 @@ class Entrenamiento(object):
                 nombre= data.get("nombre"),
                 descripcion= data.get("descripcion"),
                 fecha= data.get("fecha"),
-                entrenador= data.get("entrenador")
+                entrenador= data.get("entrenador"),
+                tipo= data.get("tipo")
         )
         db.session.add(entrenamiento)
         db.session.commit()
@@ -38,6 +39,7 @@ class Entrenamiento(object):
         entrenamiento.descripcion= data.get("descripcion")
         entrenamiento.fecha= data.get("fecha")
         entrenamiento.entrenador= data.get("entrenador") 
+        entrenamiento.tipo= data.get("tipo")
         db.session.merge(entrenamiento)
         db.session.commit()
         ent= E(entrenamiento)
@@ -55,3 +57,8 @@ class Entrenamiento(object):
         db.session.close()
         return 200
     
+    @classmethod
+    def get_by_entrenador(cls,id):
+        entrenamiento= e.query.filter_by(entrenador=id,borrado=0).all()
+        db.session.close()
+        return entrenamiento

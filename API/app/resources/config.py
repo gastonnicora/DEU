@@ -34,3 +34,13 @@ def delete(id):
         sms= {"mensaje":"configuración eliminada correctamente"}
     return jsonify(sms),cod
 
+def getByUser(id): 
+    usuario= Config.getByUser(id)
+    user=None
+    if(usuario != None):
+        user= Serializacion.dump(usuario)
+        
+    else:
+        user= Serializacion.dump(Config.create({"us":id}))
+    return jsonify(user),200
+

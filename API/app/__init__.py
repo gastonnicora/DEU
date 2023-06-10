@@ -52,6 +52,7 @@ def create_app(environment="development"):
     app.add_url_rule("/entrenamiento","entrenamiento_post",entrenamiento.create,methods=["POST"])
     app.add_url_rule("/entrenamiento_editar","entrenamiento_put",entrenamiento.update,methods=["POST"])
     app.add_url_rule("/entrenamiento_borrar/<int:id>", "entrenamiento_delete", entrenamiento.delete)
+    app.add_url_rule("/entrenamiento_by_entrenador/<int:id>", "entrenamiento_get_by_entrenador", entrenamiento.get_by_entrenador)
     
     app.add_url_rule("/ent_ejes", "ent_ejes", ent_eje.index)
     app.add_url_rule("/ent_eje/<int:id>", "ent_eje_get", ent_eje.get)
@@ -70,6 +71,7 @@ def create_app(environment="development"):
     
     app.add_url_rule("/configs", "configs", c.index)
     app.add_url_rule("/config/<int:id>", "config_get", c.get)
+    app.add_url_rule("/configByUser/<int:id>", "config_getByUser", c.getByUser)
     app.add_url_rule("/config","config_post",c.create,methods=["POST"])
     app.add_url_rule("/config_editar","config_put",c.update,methods=["POST"])
     app.add_url_rule("/config_borrar/<int:id>", "config_delete", c.delete)

@@ -128,6 +128,11 @@ class Entrenamiento(db.Model):
         nullable= True,
         default=0
     )
+    tipo = db.Column(
+        db.Integer,
+        nullable= True,
+        default=0
+    )
     fecha= db.Column(
         db.String(255),
         nullable=True
@@ -210,7 +215,7 @@ class Config(db.Model):
     tema= db.Column(
         db.Integer,
         nullable=True,
-        default=0
+        default=1
     )
     
 class Entrenador_alumno(db.Model):
