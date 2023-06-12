@@ -1,6 +1,6 @@
 <template>
     <h1>Editar Perfil</h1>
-        <form id="form">
+        <form id="form"  @submit.prevent="save">
         <p>Nombre:</p>
         <input v-model="user.nombre"/>
         <p>Apellido:</p>
@@ -29,9 +29,8 @@ export default {
             this.$emit('update:user',user)
         },       
         save(){
-            axios
-          .put(this.$store.state.connection + 'usuario_editar', {
-                method: 'PUT',
+            fetch(this.$store.state.connection + 'usuario_editar', {
+                method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',

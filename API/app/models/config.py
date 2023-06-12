@@ -29,6 +29,7 @@ class Config(object):
     
     @classmethod
     def update(cls,data):
+        print(data)
         config= cls.get(data.get("id"))
         if config is None:
             return None

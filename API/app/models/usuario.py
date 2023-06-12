@@ -39,6 +39,7 @@ class Usuario(object):
     
     @classmethod
     def update(cls,data):
+        print(data.get("id"))
         user= cls.get(data.get("id"))
         if user is None:
             return None
