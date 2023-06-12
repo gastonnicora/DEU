@@ -63,7 +63,7 @@ export default {
 
         },
         color(modo) {
-            if (modo == 1 || modo == null || modo == undefined) {
+            if (modo == 0 || modo == null || modo == undefined) {
                 document.documentElement.style.setProperty('--background', "#000");
                 document.documentElement.style.setProperty('--text_nav', "#fff");
                 document.documentElement.style.setProperty('--nav', "#333");

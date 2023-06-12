@@ -128,7 +128,7 @@ export default {
   methods: {
     guardar(){
       this.modo=0
-      if(tema.checked) this.modo=1 
+      if(!tema.checked) this.modo=1 
       this.color(this.modo)
       localStorage.setItem("modo", this.modo)
       this.fuente = tam.value
@@ -159,13 +159,13 @@ export default {
     },
     aplicar(){
       let modo=0
-      if(tema.checked) modo=1 
+      if(!tema.checked) modo=1 
       this.color(modo)
       let fuente = tam.value
       body.style.fontSize = fuente+"em"
     },
     modal(){
-      if(this.modo==1) tema.checked=true
+      if(this.modo==0) tema.checked=true
       tam.value= this.fuente
     },
     cerrar(){
@@ -198,7 +198,7 @@ export default {
       this.isLoading = false
     },
     color(modo) {
-      if (modo == 1 || modo == null || modo == undefined) {
+      if (modo == 0 || modo == null || modo == undefined) {
         document.documentElement.style.setProperty('--background', "#000");
         document.documentElement.style.setProperty('--text_nav', "#fff");
         document.documentElement.style.setProperty('--nav', "#333");
