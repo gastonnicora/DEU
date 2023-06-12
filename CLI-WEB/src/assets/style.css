@@ -91,7 +91,7 @@ body {
     border-color: #aaa;
     border-width: thin;
 }
-.ent:hover{
+.ent:hover, a:hover{
      cursor: pointer;
 }
 .imagen{

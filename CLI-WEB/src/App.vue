@@ -71,7 +71,7 @@
               <div class=" justify-content-center d-flex d-flex  align-items-md-center">
               <font-awesome-icon style="margin:0 1rem " :icon="['fas', 'sun']" /> 
               <label class="switch ">
-                <input type="checkbox" id="tema" name="tema" >
+                <input type="checkbox" id="tema" name="tema" @change="aplicar()">
                 <span class="slider round"></span>
               </label><font-awesome-icon style="margin:0 1rem " :icon="['fas', 'moon']" />
             </div>
@@ -81,7 +81,7 @@
               <label for="tam">Tamaño de fuente</label>
               <br>
               <div class="range" style="--step:.25; --min:0.5; --max:2">
-                <input type="range" id="tam"  name="tam" value="1" min=".5" max="2" step="0.25"  list="value">
+                <input type="range" id="tam"  name="tam" value="1" min=".5" max="2" step="0.25"  list="value"  @change="aplicar()">
                 
               </div>
 
@@ -95,9 +95,8 @@
           
         </div>
         <div class="modal-footer justify-content-center">
-          <button class="btn btn-danger"  @click="cerrar()" >Cancelar</button>
-          <button class="boton btn" @click="guardar()">Guardar</button>
-          <button class="boton btn"  @click="aplicar()" >Aplicar</button>
+          <button class="btn btn-danger" data-dismiss="modal"  @click="cerrar()" >Cancelar</button>
+          <button class="boton btn" data-dismiss="modal" @click="guardar()">Guardar</button>
         </div>
       </div>
     </div>
