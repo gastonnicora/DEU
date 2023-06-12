@@ -39,18 +39,21 @@ export default {
                 body: JSON.stringify({ nombre: this.user.nombre,apellido: this.user.apellido,email:  this.user.email, contra: this.user.contra,id: this.user.id,posicion: this.user.posicion, tipo: this.user.tipo })
             })
                 .then(response => {
-                    this.$store.state.session = response.body
+                    
                     return response.json();
                 })
                 .then(json => {
                     if(json.error){
                         this.error= json.error
+                    }else{
+                        this.$store.state.session = json
                     }
                 })
                 .catch(error => {
                    console.log(error)
                 })
         }
+        
     }
 
 
