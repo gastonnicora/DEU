@@ -127,6 +127,7 @@ export default {
 
   methods: {
     guardar(){
+      this.modo=0
       if(tema.checked) this.modo=1 
       this.color(this.modo)
       localStorage.setItem("modo", this.modo)

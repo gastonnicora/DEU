@@ -31,11 +31,10 @@ export default {
         save(){
             axios
           .put(this.$store.state.connection + 'usuario_editar', {
-                method: 'POST',
+                method: 'PUT',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
 
                 },
                 body: JSON.stringify({ nombre: this.user.nombre,apellido: this.user.apellido,email:  this.user.email, contra: this.user.contra,id: this.user.id,posicion: this.user.posicion, tipo: this.user.tipo })
