@@ -1,10 +1,19 @@
-<template>
+<template >
+  
+  <div class="container">
+    <div>
+    <p>Entrenamientos:</p>
+    <hr>
   <ul>
-    <div v-for="(ent, index) in entrenamientos" :key="index">
+    <div  v-for="(ent, index) in entrenamientos" :key="index">
+      <div>
       <Ent :entrenamiento="ent" @click="this.$store.state.entrenamiento = ent"></Ent>
+      </div>
       <br>
     </div>
   </ul>
+    </div>
+    </div>
   <loading v-model:active="isLoading" :can-cancel="false" :is-full-page="true" />
 </template>
 <script>
@@ -16,7 +25,7 @@ export default {
   data() {
     return {
       isLoading: false,
-      entrenamientos: []
+      entrenamientos: null
     }
   },
   components: {
@@ -34,7 +43,6 @@ export default {
         if (json.error == null) {
           this.entrenamientos = json.Entrenamientos
           this.$store.state.entrenamiento = json.Entrenamientos[0]
-          console.log(this.$store.state.entrenamiento)
         } else {
           console.log(json.error)
         }

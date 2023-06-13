@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
     name:'Edit',
     data(){
@@ -22,6 +21,12 @@ export default {
             user:this.$store.state.session
         };
 
+    },
+    created() {
+        if(this.$store.state.session==null){
+            
+            router.push({ path: 'Home' })
+        }
     },
     methods:{
         

@@ -2,8 +2,8 @@
     <div class="container ent  ">
         <div class="row">
             <div class="col-10">
-                    <p>Fecha: {{ entrenamiento.fecha }}</p>
-                    <p>Tipo: {{ tipo }}</p>
+                    <p>Nombre y apellido: {{ alumno.nombre }} {{ alumno.apellido }}</p>
+                    <p>Posición: {{ pos }}</p>
             </div>
             <div class="col-1 d-flex d-flex  align-items-center ml-auto">
                 <font-awesome-icon :icon="['fas', 'chevron-right']" />
@@ -14,18 +14,18 @@
 </template>
 <script>
 export default {
-    name: 'Ent',
+    name: 'Alumno',
     data() {
         return {
-            tipo:null
+            pos:null
         }
     },
     props: [
-        "entrenamiento"
+        "alumno"
     ],
     mounted(){
-        let ent=["Fuerza","Velocidad","Resistencia","Estrategia"]
-        this.tipo=ent[this.entrenamiento.tipo]
+        let pos=["Defensa","Medio campo","Ataque"]
+        this.pos=pos[this.alumno.posicion]
     }
 }
 </script>

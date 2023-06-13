@@ -1,5 +1,5 @@
 <template >
-    <div class="container" v-if="this.$store.state.entrenamiento!=null">
+    <div class="container " v-if="this.$store.state.entrenamiento!=null">
         <div>
             Entrenamiento el dia:
             <br>

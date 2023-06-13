@@ -1,5 +1,5 @@
 <template>
-    <nav class="nav navbar fixed-top ">
+    <nav class="nav navbar sticky-top ">
 
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -46,7 +46,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        <div class=" justify-content-center ">
+                        <div class=" justify-content-center " v-if="user!=null">
                             <form @submit.prevent="save">
                                 <p>Nombre:</p>
                                 <p><input required v-model="user.nombre" /></p>
@@ -224,6 +224,7 @@ export default {
         cerrarSesion() {
             localStorage.removeItem('sesion')
             this.$store.state.session = null
+            router.push({ path: 'Home' })
         },
 
         color(modo) {

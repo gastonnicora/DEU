@@ -1,28 +1,13 @@
 <template>
   <Navbar v-if="fun_ini"></Navbar>
-  <div id="body" name="body"><router-view /></div>
+  <div class="contenedor" v-if="this.$store.state.session != null && this.$store.state.session.tipo==0">
+    <Links   ></Links>
+    <div id="body"  name="body" class="body"><router-view /></div>
+  </div>
+    <div id="body" v-if="this.$store.state.session == null || this.$store.state.session.tipo!=0" name="body"><router-view /></div>
 
-  <nav class="footer navbar fixed-bottom ">
-    <ul class="navbar-nav ">
-      <li class="nav-item active">
-        <router-link class="nav-item" to="/">Ayuda</router-link>
-      </li>
-    </ul>
-
-    <ul class="navbar-nav ">
-      <li class="nav-item active">
-        <router-link class="nav-item" to="/">Redes</router-link>
-      </li>
-    </ul>
-    <ul class="navbar-nav ">
-      <li class="nav-item active">
-        <router-link class="nav-item" to="/">Contacto</router-link>
-      </li>
-    </ul>
-
-  </nav>
   <loading v-model:active="isLoading" :can-cancel="false" :is-full-page="true" />
-  
+  <Footer></Footer>
 </template>
 
 <style>
@@ -32,6 +17,9 @@
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css';
 import Navbar from '@/components/nav/navbar.vue'
+import Footer from '@/components/nav/footer.vue'
+import Links from '@/components/nav/links.vue'
+import { ref, computed } from "vue";
 export default {
   async created() {
     this.$store.commit('SET_CONNECTION');
@@ -42,16 +30,18 @@ export default {
       modo: 1,
       fuente: 2,
       id_config: 1,
-      fun_ini:false
+      fun_ini: false,
     }
   },
   components: {
     Loading,
-    Navbar
+    Navbar,
+    Footer,
+    Links
   },
 
   methods: {
-    
+
     cerrarSesion() {
       localStorage.removeItem('sesion')
       this.$store.state.session = null
@@ -72,10 +62,13 @@ export default {
       }
       if (this.$store.state.session != null) {
         this.getConfig()
+        if (this.$store.state.session.tipo == 0) {
+          this.entrenador=true
+        }
       } else {
         this.color(modo)
       }
-      this.fun_ini=true
+      this.fun_ini = true
       this.isLoading = false
     },
     color(modo) {
@@ -114,7 +107,8 @@ export default {
   mounted() {
     this.inicio()
 
-  }
+  },
+  
 
 }
 </script>

@@ -8,7 +8,7 @@
             </div>
             <div class="col-8 ">
                 <p> {{ eje.nombre }}</p>
-                <p> {{ eje.descripcion }}</p>
+                <p> {{ descripcion }}</p>
             </div>
             <div class="col-1 d-flex d-flex  align-items-center ml-auto">
                 <font-awesome-icon :icon="['fas', 'chevron-right']" />
@@ -30,12 +30,12 @@
                 <div class="modal-body">
                     <div class="container">
                         <div class="row justify-content-center">
-                            <div class="col-md-7  order-md-2  d-flex d-flex align-items-center justify-content-center">
+                            <div class="col-md-7    d-flex d-flex align-items-center justify-content-center">
                                 <img class="imagen"
                                     src="https://fondosdepantallagratis.com/wp-content/uploads/2020/07/fondos-de-pantalla-oscuros-creativas.jpg"
                                     alt="imagen de prueba">
                             </div>
-                            <div class="col-md-5  order-md-1  ">
+                            <div class="col-md-5   ">
                                 <p> {{ eje.descripcion }}</p>
                             </div>
                             
@@ -60,7 +60,16 @@ export default {
     ],
     data(){
         return{
-        modal:"miModal"+this.eje.id
+        modal:"miModal"+this.eje.id,
+        descripcion:this.desc()
+        }
+    },
+    methods:{
+        desc(){
+           if(this.eje.descripcion.length>100){
+            return this.eje.descripcion.slice(0,99)+"..."
+           }
+           return this.eje.descripcion
         }
     }
 }

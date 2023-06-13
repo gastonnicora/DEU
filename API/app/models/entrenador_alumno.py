@@ -56,6 +56,6 @@ class Entrenador_alumno(object):
         alu=e.query.filter_by(entrenador= entrenador).all()
         list=[]
         for elem in alu:
-            list.append(elem.id)
+            list.append(elem.alumno)
         alumnos=Usuario.get_in_list(list)
         return alumnos

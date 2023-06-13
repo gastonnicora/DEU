@@ -6,7 +6,8 @@ export default createStore({
         session: null,
         entrenamiento:null,
         id_config:1,
-        modo:1
+        modo:1,
+        alumno:null
     },
     mutations: {
         SET_CONNECTION(state) {
