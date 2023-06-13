@@ -6,7 +6,7 @@
         <input type="text" id="email" required>
         <br>
         <label for="pass">Contraseña: </label>
-        <input type="password" id="pass" required>
+        <input type="password" required id="pass" >
         <div class="error" v-if="error"> {{ this.error }}</div>
         <br>
         <input class="boton btn " type="submit" value="INICIAR SESIÓN">

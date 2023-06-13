@@ -30,6 +30,10 @@ def update():
         return jsonify({"error":"no se pudo editar el usuario"}),400
     return jsonify(user.toJSON()),200
 
+def update_pass():
+    user=Usuario.update_pass(request.get_json())
+    return jsonify(user),200
+
 def delete(id):
     cod= Usuario.delete(id)
     sms=""

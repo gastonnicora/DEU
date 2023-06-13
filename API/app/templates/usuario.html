@@ -163,6 +163,42 @@
     </div>
     <br>
 
+    <div class="item" type="button" data-toggle="collapse" data-target="#UsuarioPut_pass" aria-expanded="false"
+      aria-controls="UsuarioPut_pass">
+      <div>/usuario_editar_pass</div>
+      <div class="row " style="display: flex;
+      align-items: center">
+        <div class="put">PUT</div>
+        <i class="fa fa-chevron-down"></i>
+      </div>
+    </div>
+    <div class="collapse espaciado" id="UsuarioPut_pass">
+      <p>Cambiar contraseña
+      </p>
+      <small>Es una petición POST que devuelve un mensaje</small>
+      <div>
+        <textarea id="put_p" style="width: 100%;resize: none;" rows="10">
+
+        </textarea>
+
+        <button class="btn btn-primary float-right " id="usuario_put_pass"
+          onclick="post('{{url_for('usuario_put_pass')}}','put_p','campo_usuario_put_pass_cod','campo_usuario_put_pass')">Ejecutar</button>
+      </div>
+
+      <hr>
+      <h5>Salida:</h5>
+      <br>
+      <div class="row">Codigo: <div id="campo_usuario_put_pass_cod" style="margin-left: .5%;"></div>
+      </div>
+      <div class="row">Mensaje:
+        <pre style="width: 100%;height: 10rem;scroll-margin-right:unset; resize: none;margin-left: .5%;"
+          readonly="readonly" id="campo_usuario_put_pass"></pre>
+
+      </div>
+    </div>
+    <br>
+
+
     <div class="item" type="button" data-toggle="collapse" data-target="#UsuarioDel" aria-expanded="false"
       aria-controls="UsuarioDel">
       <div>/usuario_borrar/id</div>
@@ -269,9 +305,11 @@
   window.onload = () => {
     const usuario = '{"apellido": "a","contra": "a","email": "pedro@gmail.com","id": 1,"nombre": "a","posicion": 1,"tipo": 1}';
     const login = '{"email": "pedro@gmail.com","contra": "a"}';
+    const pass= '{"id":1,"contra":"antigua contraseña","new_contra":"nueva contraseña","rp_contra":"repita la contraseña"}'
   
     document.getElementById("post_u").value = JSON.stringify(JSON.parse(usuario), undefined, 2)
     document.getElementById("put_u").value = JSON.stringify(JSON.parse(usuario), undefined, 2)
     document.getElementById("post_l").value = JSON.stringify(JSON.parse(login), undefined, 2)
+    document.getElementById("put_p").value = JSON.stringify(JSON.parse(pass), undefined, 2)
   }
 </script>

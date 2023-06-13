@@ -89,3 +89,22 @@ class Usuario(object):
         usuarios= u.query.filter_by(borrado= 0,tipo=1)
         db.session.close()
         return usuarios
+    
+    @classmethod
+    def update_pass(cls,data):
+        user= cls.get(data.get("id"))
+        sms=""
+        if user is None:
+            return {"error":"No se pudo editar la contraseña por que el id no existe"}
+        if user.contra==data.get("contra"):
+            if data.get("new_contra")==data.get("rp_contra"):
+                user.contra = data.get("new_contra") 
+                db.session.merge(user)
+                db.session.commit() 
+                db.session.close()
+                sms="La contraseña se actualizo con exito"
+            else:
+                sms={"error":"Los campos Nueva contraseña y Repita la contraseña no coinciden"}
+        else:
+            sms={"error":"Error al ingresar la contraseña antigua"}
+        return sms

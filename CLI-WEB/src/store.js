@@ -4,7 +4,9 @@ export default createStore({
     state: {
         connection: "",
         session: null,
-        entrenamiento:null
+        entrenamiento:null,
+        id_config:1,
+        modo:1
     },
     mutations: {
         SET_CONNECTION(state) {
