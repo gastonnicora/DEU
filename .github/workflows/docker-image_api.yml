@@ -38,19 +38,18 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASS }}
 
-    # Step 6: Construcción y publicación de la imagen
+     # Step 6: Construcción y publicación de la imagen
     - name: Build and push
       id: docker_build
       uses: docker/build-push-action@v3
       with:
         push: true
         context: .
-        file: ./SQL/Dockerfile
+        file: ./API/Dockerfile
         tags: |
-          gastonnicora/deu_db:${{ env.SOURCE_NAME }}
+          gastonnicora/deu_api:${{ env.SOURCE_NAME }}
       env:
         SOURCE_NAME: ${{ steps.prepare_source.outputs.SOURCE_NAME }}
-    
 
     # Step 7: Muestra el digest de la imagen
     - name: Image digest
