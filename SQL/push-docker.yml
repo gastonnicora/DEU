@@ -40,3 +40,4 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: gastonnicora/deu_db:latest
+          
