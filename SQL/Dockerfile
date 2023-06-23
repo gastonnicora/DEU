@@ -1,4 +1,4 @@
 FROM mariadb
-
-COPY /script/ /docker-entrypoint-initdb.d/
+RUN pwd
+COPY ./script/ /docker-entrypoint-initdb.d/
 
