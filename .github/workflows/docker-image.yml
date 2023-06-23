@@ -45,7 +45,7 @@ jobs:
       with:
         push: true
         context: .
-        file: ../../SQL/Dockerfile
+        file: https://github.com/gastonnicora/DUE/blob/main/SQL/Dockerfile
         tags: |
           gastonnicora/deu_db:${{ env.SOURCE_NAME }}
       env:
