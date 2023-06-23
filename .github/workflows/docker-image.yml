@@ -44,7 +44,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        context: ../../SQL/
+        context: ../../SQL
         file: ./Dockerfile
         tags: |
           gastonnicora/deu_db:${{ env.SOURCE_NAME }}
