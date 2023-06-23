@@ -1,4 +1,6 @@
 FROM mariadb
+WORKDIR /app
 
-COPY ./script/ /docker-entrypoint-initdb.d/
+COPY . /app 
+COPY /app/script/ /docker-entrypoint-initdb.d/
 
