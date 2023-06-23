@@ -1,3 +1,3 @@
 FROM mariadb
-COPY script/ /docker-entrypoint-initdb.d/
+COPY ./SQL/script/ /docker-entrypoint-initdb.d/
 
