@@ -50,6 +50,18 @@ jobs:
           gastonnicora/deu_db:${{ env.SOURCE_NAME }}
       env:
         SOURCE_NAME: ${{ steps.prepare_source.outputs.SOURCE_NAME }}
+     # Step 6: Construcción y publicación de la imagen
+    - name: Build and push
+      id: docker_build
+      uses: docker/build-push-action@v3
+      with:
+        push: true
+        context: .
+        file: ./API/Dockerfile
+        tags: |
+          gastonnicora/deu_api:${{ env.SOURCE_NAME }}
+      env:
+        SOURCE_NAME: ${{ steps.prepare_source.outputs.SOURCE_NAME }}
 
     # Step 7: Muestra el digest de la imagen
     - name: Image digest
