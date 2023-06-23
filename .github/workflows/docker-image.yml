@@ -41,7 +41,7 @@ jobs:
     # Step 6: Construcción y publicación de la imagen
     - name: Build and push
       id: docker_build
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v3
       with:
         push: true
         context: .
