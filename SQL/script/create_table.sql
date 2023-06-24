@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `entrenamiento` (
   `fecha` VARCHAR(255) not null,
   `borrado` int not null default 0,
   `entrenador` int unsigned not null,
-  "tipo" int not null DEFAULT 0,
+  `tipo` int not null DEFAULT 0,
   PRIMARY KEY (id),
   FOREIGN key(entrenador)
     REFERENCES usuario(id)
