@@ -1,7 +1,7 @@
 FROM node:9.11.1-alpine
 
 # instalar un simple servidor http para servir nuestro contenido estático
-RUN npm install -g http-server
+RUN npm install  http-server
 
 # hacer la carpeta 'app' el directorio de trabajo actual
 WORKDIR /app
