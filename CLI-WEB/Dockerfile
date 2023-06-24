@@ -7,7 +7,7 @@ RUN npm install -g http-server
 WORKDIR /app
 
 # copiar los archivos y carpetas del proyecto al directorio de trabajo actual (es decir, la carpeta 'app')
-COPY . ./app
+COPY ./CLI-WEB/ ./app
 
 RUN cd ./app
 RUN ls -al
