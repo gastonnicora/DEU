@@ -19,7 +19,6 @@ import 'vue-loading-overlay/dist/css/index.css';
 import Navbar from '@/components/nav/navbar.vue'
 import Footer from '@/components/nav/footer.vue'
 import Links from '@/components/nav/links.vue'
-import { ref, computed } from "vue";
 export default {
   async created() {
     this.$store.commit('SET_CONNECTION');
