@@ -7,7 +7,7 @@ RUN npm install  http-server
 WORKDIR /app
 
 # copiar 'package.json' y 'package-lock.json' (si están disponibles)
-COPY package*.json ./app
+COPY package.json ./app
 
 # instalar dependencias del proyecto
 RUN npm install
