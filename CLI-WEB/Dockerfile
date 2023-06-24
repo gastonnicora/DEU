@@ -1,6 +1,7 @@
 # etapa de compilación
 FROM node:9.11.1-alpine as build-stage
 WORKDIR /app
+RUN ls -al
 COPY package*.json ./
 RUN npm install
 COPY . .
