@@ -1,7 +1,6 @@
 FROM node:9.11.1-alpine
 
-# instalar un simple servidor http para servir nuestro contenido estático
-RUN npm install  http-server
+
 
 # hacer la carpeta 'app' el directorio de trabajo actual
 WORKDIR /app
@@ -10,10 +9,12 @@ WORKDIR /app
 COPY package*.json ./
 
 # instalar dependencias del proyecto
-RUN npm install ./CLI-WEB/package*.json
+RUN npm install 
 
 # copiar los archivos y carpetas del proyecto al directorio de trabajo actual (es decir, la carpeta 'app')
 COPY . .
+# instalar un simple servidor http para servir nuestro contenido estático
+RUN npm install  http-server
 
 # construir aplicación para producción minificada
 RUN npm run build
