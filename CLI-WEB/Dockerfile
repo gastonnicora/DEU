@@ -14,7 +14,7 @@ RUN ls -al
 RUN npm install
 
 # copiar los archivos y carpetas del proyecto al directorio de trabajo actual (es decir, la carpeta 'app')
-COPY . .
+COPY ./CLI-WEB/ .
 
 RUN ls -al
 # construir aplicación para producción minificada
