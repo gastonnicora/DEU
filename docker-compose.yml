@@ -20,6 +20,15 @@ services:
       - db
     ports:
       - "4000:4000"
+  cli-web:
+    image: gastonnicora/deu_web
+    restart: always
+    depends_on:
+      - api
+    links:
+      - api
+    ports:
+      - "80:8080"
   phpmyadmin:
     image: phpmyadmin
     restart: always
