@@ -10,7 +10,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # instalar dependencias del proyecto
-RUN npm install
+RUN npm install ./CLI-WEB/package*.json
 
 # copiar los archivos y carpetas del proyecto al directorio de trabajo actual (es decir, la carpeta 'app')
 COPY . .
