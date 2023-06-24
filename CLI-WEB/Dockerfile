@@ -9,6 +9,7 @@ WORKDIR /app
 # copiar 'package.json' y 'package-lock.json' (si están disponibles)
 COPY package*.json ./
 
+RUN ls -al
 # instalar dependencias del proyecto
 RUN npm install
 
