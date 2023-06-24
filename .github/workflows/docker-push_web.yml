@@ -29,7 +29,7 @@ jobs:
           context: .
           file: ./CLI-WEB/Dockerfile
           tags: |
-            gastonnicora/deu_web:latest
+            gastonnicora/deu_web:latest 
 
 
    
