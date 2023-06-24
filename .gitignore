@@ -10,7 +10,6 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
@@ -50,6 +49,7 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+.vscode
 
 # Translations
 *.mo
