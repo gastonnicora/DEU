@@ -9,6 +9,7 @@ WORKDIR /app
 # copiar los archivos y carpetas del proyecto al directorio de trabajo actual (es decir, la carpeta 'app')
 COPY . ./app
 
+RUN cd ./app
 RUN ls -al
 # instalar dependencias del proyecto
 RUN npm install
