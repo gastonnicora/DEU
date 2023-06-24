@@ -9,7 +9,7 @@ WORKDIR /app
 COPY . ./app
 
 # instalar dependencias del proyecto
-RUN npm install ./CLI-WEB/
+RUN npm install 
 
 # instalar un simple servidor http para servir nuestro contenido estático
 RUN npm install  http-server
