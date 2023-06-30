@@ -6,5 +6,5 @@ WORKDIR /app
 COPY ./API/ . 
 
 RUN pip3 --no-cache-dir install -r requirements.txt
-RUN set environment="production"
+RUN set FLASK_ENV=production
 CMD ["python3","run.py"]
