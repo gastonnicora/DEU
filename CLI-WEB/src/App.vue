@@ -6,7 +6,7 @@
    <router-view /></div>
   </div>
     <div id="body" v-if="this.$store.state.session == null || this.$store.state.session.tipo!=0" name="body"><router-view /></div>
-
+{{ this.$store.state.connection }}
   <loading v-model:active="isLoading" :can-cancel="false" :is-full-page="true" />
   <Footer></Footer>
 </template>
@@ -51,12 +51,7 @@ export default {
       let fuente = localStorage.getItem("fuente")
       if (fuente) this.fuente = fuente
       body.style.fontSize = this.fuente + "rem"
-      if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-        this.$api = "http://localhost:4000/"
-      }
-      else {
-        this.$api = "api/"
-      }
+      
       if (this.$store.state.session != null) {
         this.getConfig()
         if (this.$store.state.session.tipo == 0) {
