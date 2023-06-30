@@ -16,7 +16,7 @@ export default createStore({
                 conn = "http://localhost:4000/"
             }
             else {
-                conn = process.env.api+"/"
+                conn = "api/"
             }
             state.connection = conn
         },
