@@ -26,42 +26,42 @@
       version: '3.3'
 
       services:
-      db:
-         image: gastonnicora/deu_db
-         ports:
-            - "3306:3306"
-         restart: always
-         environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_USER: tpdeu
-            MYSQL_PASSWORD: tpdeu
-            MYSQL_DATABASE: tpdeu  
-      api:
-         image: gastonnicora/deu_api
-         restart: always
-         depends_on:
-            - db
-         links:
-            - db
-         ports:
-            - "4000:4000"
-      cli-web:
-         image: gastonnicora/deu_web
-         restart: always
-         depends_on:
-            - api
-         links:
-            - api
-         ports:
-            - "80:8080"
-      phpmyadmin:
-         image: phpmyadmin
-         restart: always
-         environment:
-            PMA_HOST: db
-            PMA_PORT: 3306
-         ports:
-            - 90:80
+         db:
+            image: gastonnicora/deu_db
+            ports:
+               - "3306:3306"
+            restart: always
+            environment:
+               MYSQL_ROOT_PASSWORD: root
+               MYSQL_USER: tpdeu
+               MYSQL_PASSWORD: tpdeu
+               MYSQL_DATABASE: tpdeu  
+         api:
+            image: gastonnicora/deu_api
+            restart: always
+            depends_on:
+               - db
+            links:
+               - db
+            ports:
+               - "4000:4000"
+         cli-web:
+            image: gastonnicora/deu_web
+            restart: always
+            depends_on:
+               - api
+            links:
+               - api
+            ports:
+               - "80:8080"
+         phpmyadmin:
+            image: phpmyadmin
+            restart: always
+            environment:
+               PMA_HOST: db
+               PMA_PORT: 3306
+            ports:
+               - 90:80
 
 
     ```
