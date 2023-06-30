@@ -23,6 +23,8 @@ services:
   cli-web:
     image: gastonnicora/deu_web
     restart: always
+    environment:
+      - api:api
     depends_on:
       - api
     links:
