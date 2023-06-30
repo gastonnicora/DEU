@@ -10,7 +10,7 @@ from app import db_config
 from app.models.modelos import db
 
 
-def create_app(environment="development"):
+def create_app(environment="production"):
     # Configuración inicial de la app
     app = Flask(__name__) 
     app.config['CORS_HEADERS'] = 'Content-Type'
