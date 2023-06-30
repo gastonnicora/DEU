@@ -7,24 +7,24 @@
                 <ul class="ul-link">
 
                     <li class="d-flex justify-content-start">
-                        <router-link to="/crear_entrenamiento" @click="new_url('/crear_entrenamiento')"
-                            v-if="url != '/crear_entrenamiento'">Crear entrenamiento</router-link>
-                        <div v-if="url == '/crear_entrenamiento'">Crear entrenamiento</div>
+                        <router-link to="/crear_entrenamiento" 
+                            v-if="this.$route.path != '/crear_entrenamiento'">Crear entrenamiento</router-link>
+                        <div v-if="this.$route.path == '/crear_entrenamiento'">Crear entrenamiento</div>
                     </li>
                     <li class="d-flex justify-content-start">
                         <div>
-                        <router-link to="/" v-if="url != '/'" @click="new_url('/')">Próximos entrenamientos</router-link>
-                        <div v-if="url == '/'">Próximos entrenamientos</div>
+                        <router-link to="/" v-if="this.$route.path != '/'">Próximos entrenamientos</router-link>
+                        <div v-if="this.$route.path == '/'">Próximos entrenamientos</div>
                         <ul class="ul-link ">
                             <li class="d-flex justify-content-start">
-                                <div v-if="url == '/editar_entrenamiento/*'">Edición de entrenamiento</div>
+                                <div v-if="this.$route.path == '/editar_entrenamiento/*'">Edición de entrenamiento</div>
                             </li>
                         </ul>
                     </div>
                     </li>
                     <li class="d-flex justify-content-start">
-                        <router-link to="/historial_entrenamientos" v-if="url != '/historial_entrenamientos'" @click="new_url('/historial_entrenamientos')">Historial de entrenamiento</router-link>
-                        <div v-if="url == '/historial_entrenamientos'">Historial de entrenamientos</div>
+                        <router-link to="/historial_entrenamientos" v-if="this.$route.path != '/historial_entrenamientos'" >Historial de entrenamiento</router-link>
+                        <div v-if="this.$route.path == '/historial_entrenamientos'">Historial de entrenamientos</div>
                     </li>
 
                 </ul>
@@ -33,15 +33,32 @@
         </ul>
         <ul class="ul-nombre ">
             <li>
+                <div class="d-flex justify-content-start">Ejercicios:</div>
+                <ul class="ul-link">
+                    <li class="d-flex justify-content-start">
+                        <router-link to="/crear_ejercicio" v-if="this.$route.path != '/crear_ejercicio'" >Crear ejercicio</router-link>
+                        <div v-if="this.$route.path == '/crear_ejercicio'">Crear ejercicio</div>
+                    </li>
+                    <li class="d-flex justify-content-start">
+                        <router-link to="/listado_ejercicios" v-if="this.$route.path != '/listado_ejercicios'" >Listado de ejercicios</router-link>
+                        <div v-if="this.$route.path == '/listado_ejercicios'">Listado de ejercicios</div>
+                    </li>
+                </ul>
+
+            </li>
+
+        </ul>
+        <ul class="ul-nombre ">
+            <li>
                 <div class="d-flex justify-content-start">Alumnos:</div>
                 <ul class="ul-link ">
                     <li class="d-flex justify-content-start">
-                        <router-link to="/agregar_alumno" v-if="url != '/agregar_alumno'" @click="new_url('/agregar_alumno')">Agregar alumno</router-link>
-                        <div v-if="url == '/agregar_alumno'">Agregar alumno</div>
+                        <router-link to="/agregar_alumno" v-if="this.$route.path != '/agregar_alumno'" >Agregar alumno</router-link>
+                        <div v-if="this.$route.path == '/agregar_alumno'">Agregar alumno</div>
                     </li>
                     <li class="d-flex justify-content-start">
-                        <router-link to="/listado_alumnos" v-if="url != '/listado_alumnos'" @click="new_url('/listado_alumnos')">Listado de alumnos</router-link>
-                        <div v-if="url == '/listado_alumnos'">Listado de alumnos</div>
+                        <router-link to="/listado_alumnos" v-if="this.$route.path != '/listado_alumnos'">Listado de alumnos</router-link>
+                        <div v-if="this.$route.path == '/listado_alumnos'">Listado de alumnos</div>
                     </li>
                 </ul>
 
@@ -52,12 +69,12 @@
                 <div class="d-flex justify-content-start">Notificaciones:</div>
                 <ul class="ul-link">
                     <li class="d-flex justify-content-start">
-                        <router-link to="/crear_notificacion" v-if="url != '/crear_notificacion'" @click="new_url('/crear_notificacion')">Crear notificación</router-link>
-                        <div v-if="url == '/crear_notificacion'">Crear notificación</div>
+                        <router-link to="/crear_notificacion" v-if="this.$route.path != '/crear_notificacion'" >Crear notificación</router-link>
+                        <div v-if="this.$route.path == '/crear_notificacion'">Crear notificación</div>
                     </li>
                     <li class="d-flex justify-content-start">
-                        <router-link to="/listado_notificaciones" v-if="url != '/listado_notificaciones'" @click="new_url('/listado_notificaciones')">Listado de notificaciones</router-link>
-                        <div v-if="url == '/listado_notificaciones'">Listado de notificaciones</div>
+                        <router-link to="/listado_notificaciones" v-if="this.$route.path != '/listado_notificaciones'" >Listado de notificaciones</router-link>
+                        <div v-if="this.$route.path == '/listado_notificaciones'">Listado de notificaciones</div>
                     </li>
                 </ul>
 
@@ -71,14 +88,10 @@ export default {
     name: 'Links',
     data() {
         return {
-            url: window.location.pathname,
             collapsed:false
         }
     },
     methods: {
-        new_url(url) {
-            this.url = url
-        },
         collapse(){
             if(this.collapsed){
             links.classList.remove("hidden")

@@ -1,12 +1,31 @@
 from app.models.modelos import db, Video as v
 from app.models.modelos_planos import Video as V
+from app.helpers.funciones_video import *
+import os
+import uuid
+
+
 
 class Video(object):
     
     @classmethod
     def create(cls,data):
+        # check if the post request has the file part
+        if 'video' not in data.files:
+            return "No se cargo un video para guardar"
+        file = data.files['video']
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
+        if file.filename == '':
+            return "No se cargo un video para guardar"
+        
+        filename = str(uuid.uuid4())+".mp4"
+        if file and allowed_file(file.filename):
+            file.save(os.path.normpath(UPLOAD_FOLDER+"/"+filename))
+        else:
+            return "El video debe ser en formato MP4"
         video= v(
-                nombre= data.get("nombre"), 
+                nombre= filename, 
           
         )
         db.session.add(video)
@@ -48,3 +67,4 @@ class Video(object):
         db.session.commit()
         db.session.close()
         return 200
+    

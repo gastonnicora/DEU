@@ -13,6 +13,8 @@
 
     </form>
     <loading v-model:active="isLoading" :can-cancel="false"  :is-full-page="true" />
+    <br>
+    <button @click="login(false)" class="boton btn"><font-awesome-icon :icon="['fas', 'user-plus']" /> Registrarse</button>
 </template>
 
 <script>
@@ -26,6 +28,9 @@ export default {
             error: false
         }
     },
+    props: [
+        "login"
+    ],
     components: {
         Loading
     },

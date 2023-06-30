@@ -3,11 +3,13 @@ from app.models.entrenamiento import Entrenamiento
 from app.helpers.Serializacion import Serializacion
 from app.helpers.Serializacion_Entrenamiento import Serializacion_Entrenamiento
 from app.models.ent_alu import Ent_alu
-
+from app.models.ent_eje import Ent_eje
 def create():
     ent=Entrenamiento.create(request.get_json())
     if ent is None:
          return jsonify({"error":"no se pudo guardar el entrenamiento"}),400
+    [Ent_alu.create({"alu":alu,"ent":ent.id}) for alu in request.get_json().get("alu")]
+    [Ent_eje.create({"eje":eje,"ent":ent.id}) for eje in request.get_json().get("eje")]
     return jsonify(ent.toJSON()),200
 
 def index():

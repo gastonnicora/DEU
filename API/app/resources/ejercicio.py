@@ -20,6 +20,12 @@ def get(id):
         return jsonify({"error":"El ejercicio no existe"}),400
     return jsonify(Serializacion_Ejercicio.dump(ejercicio)),200
 
+def get_by_entrenador(id): 
+    ejercicio= Ejercicio.getbyEntrenador(id)
+    if ejercicio is None:
+        return jsonify({"error":"El entrenador no existe"}),400
+    return jsonify(Serializacion_Ejercicio.dump_varios(ejercicio)),200
+
 def update():
     eje=Ejercicio.update(request.get_json())
     if eje is None:

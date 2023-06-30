@@ -37,6 +37,7 @@ def create_app(environment="development"):
     
     app.add_url_rule("/ejercicios", "ejercicios", ejercicio.index)
     app.add_url_rule("/ejercicio/<int:id>", "ejercicio_get", ejercicio.get)
+    app.add_url_rule("/ejercicio_by_entrenador/<int:id>", "ejercicio_get_by_entrenador", ejercicio.get_by_entrenador)
     app.add_url_rule("/ejercicio","ejercicio_post",ejercicio.create,methods=["POST"])
     app.add_url_rule("/ejercicio_editar","ejercicio_put",ejercicio.update,methods=["POST"])
     app.add_url_rule("/ejercicio_borrar/<int:id>", "ejercicio_delete", ejercicio.delete)

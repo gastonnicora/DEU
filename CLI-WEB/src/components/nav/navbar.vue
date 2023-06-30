@@ -28,8 +28,8 @@
                     <a to="#" class="dropdown-item" data-toggle="modal" data-target="#config" @click="() => { modal() }">
                         <font-awesome-icon :icon="['fas', 'gear']" /> Configuración</a>
                     <div class="dropdown-divider"></div>
-                    <router-link to="#" class="dropdown-item" @click="cerrarSesion()"><font-awesome-icon
-                            :icon="['fas', 'door-closed']" /> Cerrar Sesión</router-link>
+                    <a to="#" class="dropdown-item" @click="cerrarSesion()"><font-awesome-icon
+                            :icon="['fas', 'door-closed']" /> Cerrar Sesión</a>
                 </div>
             </li>
         </ul>
@@ -46,13 +46,13 @@
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        <div class=" justify-content-center " v-if="user!=null">
+                        <div class=" justify-content-center " v-if="user != null">
                             <form @submit.prevent="save">
                                 <p>Nombre:</p>
                                 <p><input required v-model="user.nombre" /></p>
                                 <p>Apellido:</p>
                                 <p><input required v-model="user.apellido" /></p>
-                                <p>Correo electrónico:</p>
+                                <p>Email:</p>
                                 <p><input required v-model="user.email" /></p>
 
                                 <p><input class="boton btn " type="submit" value="Guardar"></p>
@@ -86,7 +86,8 @@
                                 <label class="switch ">
                                     <input type="checkbox" id="tema" name="tema" @change="aplicar()">
                                     <span class="slider round"></span>
-                                </label><font-awesome-icon style="margin:0 1rem " :icon="['fas', 'moon']" />
+                                </label>
+                                <font-awesome-icon style="margin:0 1rem " :icon="['fas', 'moon']" />
                             </div>
                         </div>
                         <br>
@@ -122,8 +123,7 @@
         <div class="modal-dialog modal-dialog-centered modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title"><font-awesome-icon
-                            :icon="['fas', 'key']" /> Cambiar
+                    <h5 class="modal-title"><font-awesome-icon :icon="['fas', 'key']" /> Cambiar
                         Contraseña </h5>
                     <button type="button" class="close boton" @click="cerrar()" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -165,7 +165,7 @@ export default {
         return {
             isLoading: false,
             modo: this.$store.state.modo,
-            fuente: 2,
+            fuente: 1,
             id_config: this.$store.state.id_config,
             user: this.$store.state.session
         }
@@ -220,11 +220,16 @@ export default {
         cerrar() {
             this.color(this.modo)
             body.style.fontSize = this.fuente + "em"
+            this.modal()
         },
         cerrarSesion() {
+            
             localStorage.removeItem('sesion')
+            localStorage.removeItem('fuente')
+            localStorage.removeItem('modo')
             this.$store.state.session = null
-            router.push({ path: 'Home' })
+            this.$router.replace("home");
+            location.replace("/")
         },
 
         color(modo) {

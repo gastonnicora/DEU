@@ -4,7 +4,7 @@ from app.models.modelos_planos import Ejercicio as E
 class Ejercicio(object):
     
     @classmethod
-    def create(cls,data):
+    def create(cls,data): 
         eje= e(
                 nombre= data.get("nombre"), 
                 descripcion= data.get("descripcion"),
@@ -20,6 +20,7 @@ class Ejercicio(object):
         db.session.add(eje)
         db.session.commit()
         ejercicio= E(eje)
+        
         db.session.close()
         return ejercicio
     
@@ -71,3 +72,9 @@ class Ejercicio(object):
     def get_in_list(cls,list):
         ejercicios = db.session.query(e).filter(e.id.in_(list),e.borrado==0).all() 
         return ejercicios
+    
+    @classmethod
+    def getbyEntrenador(cls,id):
+        eje=e.query.filter_by(borrado=0,entrenador=id).all()  
+        db.session.close()
+        return eje

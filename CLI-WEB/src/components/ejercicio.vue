@@ -2,9 +2,8 @@
     <div class="container ent" data-toggle="modal" v-bind:data-target="'#'+ modal ">
         <div class="row">
             <div class="col-2 p-1 d-flex d-flex align-items-center justify-content-center">
-                <img class="imagen"
-                    src="https://fondosdepantallagratis.com/wp-content/uploads/2020/07/fondos-de-pantalla-oscuros-creativas.jpg"
-                    alt="imagen de prueba">
+                <video class="imagen" :src="this.$store.state.connection + 'static/videos/' + eje.video.nombre" width="420" height="240"></video>
+    
             </div>
             <div class="col-8 ">
                 <p> {{ eje.nombre }}</p>
@@ -31,9 +30,8 @@
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-md-7    d-flex d-flex align-items-center justify-content-center">
-                                <img class="imagen"
-                                    src="https://fondosdepantallagratis.com/wp-content/uploads/2020/07/fondos-de-pantalla-oscuros-creativas.jpg"
-                                    alt="imagen de prueba">
+                                <video controls :src="this.$store.state.connection + 'static/videos/' + eje.video.nombre" class="imagen" width="420" height="240"></video>
+    
                             </div>
                             <div class="col-md-5   ">
                                 <p> {{ eje.descripcion }}</p>

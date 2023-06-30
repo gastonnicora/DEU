@@ -1,4 +1,7 @@
 {
     "python.analysis.typeCheckingMode": "off",
-    "window.zoomLevel": 0
+    "window.zoomLevel": 0,
+    "cSpell.words": [
+        "regenarativo"
+    ]
 }

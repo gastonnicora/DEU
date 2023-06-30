@@ -77,6 +77,10 @@ body {
     border-width: thin;
     
 }
+.boton:hover{
+  
+  cursor: pointer;
+}
 
 .container, .row{
     max-width: 100% ;
@@ -88,6 +92,15 @@ body {
 }
 .hidden{
   display: none;
+}
+.contenedor{
+  height: 87.8%;
+}
+@media (max-width:801px)  {
+  #body{
+    height: 95.7%;
+    max-height: 95.7%;
+}
 }
 @media (min-width:801px)  {
   .links{
@@ -119,6 +132,10 @@ body {
   }
   .hijo{
     overflow-y:auto;
+  }
+  .u{
+    height:100%;
+    width: 100%;
   }
   
   
@@ -182,9 +199,7 @@ ul {
   height: 34px;
   margin-bottom: 0%;
 }
-.links{
 
-}
 
 /* Hide default HTML checkbox */
 .switch input {
@@ -222,10 +237,10 @@ input:checked + .slider {
   background-color: #000;
 }
 
-input:focus + .slider {
+
+input + .slider {
   box-shadow: 0 0 1px #ccc;
 }
-
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
@@ -259,3 +274,4 @@ datalist {
     width: 200px;
     margin: 0;
   }
+  

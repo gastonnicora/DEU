@@ -4,9 +4,11 @@ from app.helpers.Serializacion import Serializacion
 import json
 
 def create():
-    video=Video.create(request.get_json())
+    video=Video.create(request)
     if video is None:
         return jsonify({"error":"no se pudo guardar el video"}),400
+    if type(video) == str:
+        return jsonify({"error":video}),400
     return jsonify(video.toJSON()),200
 
 def index():
@@ -18,7 +20,7 @@ def get(id):
     return jsonify(video)
 
 def update():
-    video=Video.update(request.get_json())
+    video=Video.update(request.files)
     if video is None:
         return jsonify({"error":"no se pudo editar el video"}),400
     return jsonify(video.toJSON()),200

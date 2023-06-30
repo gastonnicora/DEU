@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
    `email` Varchar(255) not null ,
     `contra` Varchar(255) not null,
     `tipo` int not null,
-    `posicion` int, 
+    `posicion` int default 0, 
     `borrado` int not null default 0,  
   PRIMARY KEY (id)
 )  ENGINE = InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;

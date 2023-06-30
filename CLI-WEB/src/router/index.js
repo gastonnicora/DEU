@@ -8,6 +8,8 @@ import AgregarAlumno from '../views/AgregarAlumno.vue'
 import ListadoAlumnos from '../views/ListadoAlumnos.vue'
 import CrearNotificacion from '../views/CrearNotificacion.vue'
 import ListadoNotificaciones from '../views/ListadoNotificaciones.vue'
+import ListadoEjercicios from '../views/ListadoEjercicios.vue'
+import CrearEjercicio from '../views/CrearEjercicio.vue'
 
 
 const routes = [
@@ -60,6 +62,16 @@ const routes = [
     path: '/listado_notificaciones',
     name: 'ListadoNotificaciones',
     component: ListadoNotificaciones
+  },
+  {
+    path: '/crear_ejercicio',
+    name: 'CrearEjercicio',
+    component: CrearEjercicio
+  },
+  {
+    path: '/listado_ejercicios',
+    name: 'ListadoEjercicios',
+    component: ListadoEjercicios
   },
 ]
 

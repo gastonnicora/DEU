@@ -91,7 +91,6 @@ class Ent_alu(object):
         user=e.query.filter_by(alu= alu).all()
         list=[]
         for elem in user:
-            print(elem.id)
             list.append(elem.ent)
         users= Entrenamiento.get_in_list(list)
         return users

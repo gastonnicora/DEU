@@ -39,7 +39,6 @@ class Usuario(object):
     
     @classmethod
     def update(cls,data):
-        print(data.get("id"))
         user= cls.get(data.get("id"))
         if user is None:
             return None
@@ -86,7 +85,7 @@ class Usuario(object):
     
     @classmethod
     def alumnos(cls):
-        usuarios= u.query.filter_by(borrado= 0,tipo=1)
+        usuarios= u.query.filter_by(borrado= 0,tipo=1).all()
         db.session.close()
         return usuarios
     

@@ -2,7 +2,8 @@
   <Navbar v-if="fun_ini"></Navbar>
   <div class="contenedor" v-if="this.$store.state.session != null && this.$store.state.session.tipo==0">
     <Links   ></Links>
-    <div id="body"  name="body" class="body"><router-view /></div>
+    <div id="body"  name="body" class="body">
+   <router-view /></div>
   </div>
     <div id="body" v-if="this.$store.state.session == null || this.$store.state.session.tipo!=0" name="body"><router-view /></div>
 
@@ -27,7 +28,7 @@ export default {
     return {
       isLoading: false,
       modo: 1,
-      fuente: 2,
+      fuente: 1,
       id_config: 1,
       fun_ini: false,
     }
@@ -41,10 +42,7 @@ export default {
 
   methods: {
 
-    cerrarSesion() {
-      localStorage.removeItem('sesion')
-      this.$store.state.session = null
-    },
+    
     inicio() {
       this.isLoading = true
       this.$store.state.session = JSON.parse(localStorage.getItem('sesion'))

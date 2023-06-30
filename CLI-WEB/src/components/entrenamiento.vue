@@ -3,7 +3,7 @@
         <div>
             Entrenamiento el dia:
             <br>
-            {{ this.$store.state.entrenamiento.fecha }}
+            {{ fecha(this.$store.state.entrenamiento.fecha) }}
             <br>
             <br>
             Calentamiento:
@@ -40,10 +40,16 @@
 </template>
 <script>
 import Ejercicio from './ejercicio.vue'
+import moment from 'moment'
 export default {
     name: 'Entrenamiento',
     components:{
         Ejercicio
+    },
+    methods: {
+        fecha(f){
+            return moment(f).format("DD/MM/YYYY h:mm a")
+        }
     },
     mounted() {
         let ent = ["Fuerza", "Velocidad", "Resistencia", "Estrategia"]

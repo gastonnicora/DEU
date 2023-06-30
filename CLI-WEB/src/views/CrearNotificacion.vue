@@ -6,7 +6,7 @@ export default {
     created() {
         if(this.$store.state.session==null){
             
-            router.push({ path: 'Home' })
+           this.$router.replace("home");
         }
     },
     }

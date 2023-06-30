@@ -3,8 +3,9 @@
         <div class="row u justify-content-center  ">
             <div class="col-md order-md-2 hijo  justify-content-center d-flex align-items-center  ">
                 <div>
-                <Login v-if="this.$store.state.session == null"></Login>
-                <Entrenamiento v-if="this.$store.state.session != null && this.$store.state.entrenamiento != null">
+                <Login v-if="this.$store.state.session == null && login" :login="l"></Login>
+                <Registro v-if="this.$store.state.session == null && !login" :login="l"></Registro>
+                <Entrenamiento v-if="this.$store.state.session != null ">
                 </Entrenamiento>
             </div>
             </div>
@@ -21,6 +22,7 @@
 <script>
 import Info from '@/components/info.vue'
 import Login from '@/components/login.vue'
+import Registro from '@/components/registro.vue'
 import Entrenamientos from '@/components/entrenamientos.vue'
 import Entrenamiento from '@/components/entrenamiento.vue'
 export default {
@@ -29,7 +31,18 @@ export default {
         Info,
         Login,
         Entrenamientos,
-        Entrenamiento
+        Entrenamiento,
+        Registro
+    },
+    data() {
+        return {
+            login: true
+        }
+    },
+    methods: {
+        l(state){
+            this.login=state
+        }
     },
 
    
