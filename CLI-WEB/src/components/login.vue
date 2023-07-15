@@ -6,13 +6,13 @@
         <input type="text" id="email" required>
         <br>
         <label for="pass">Contraseña: </label>
-        <input type="password" required id="pass" >
+        <input type="password" required id="pass">
         <div class="error" v-if="error"> {{ this.error }}</div>
         <br>
         <input class="boton btn " type="submit" value="INICIAR SESIÓN">
 
     </form>
-    <loading v-model:active="isLoading" :can-cancel="false"  :is-full-page="true" />
+    <loading v-model:active="isLoading" :can-cancel="false" :is-full-page="true" />
     <br>
     <button @click="login(false)" class="boton btn"><font-awesome-icon :icon="['fas', 'user-plus']" /> Registrarse</button>
 </template>
@@ -20,6 +20,7 @@
 <script>
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css';
+import { state, socket } from "@/socket.js";
 export default {
     name: 'Login',
     data() {
@@ -59,12 +60,17 @@ export default {
                         localStorage.setItem('sesion', JSON.stringify(json))
                         this.$store.state.session = json
                         this.getConfig()
+                        let user = this.$store.state.session
+                        if (user !== null) {
+                            socket.emit('coneccion', user.id)
+                        }
+
                     }
                 })
                 .catch(error => {
                     console.log(error)
                 })
-                this.isLoading = false
+            this.isLoading = false
 
         },
         color(modo) {
@@ -81,7 +87,7 @@ export default {
             }
         },
         getConfig() {
-            
+
             fetch(this.$store.state.connection + "configByUser/" + this.$store.state.session.id)
                 .then(response => {
                     return response.json();

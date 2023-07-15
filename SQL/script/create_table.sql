@@ -18,9 +18,9 @@ CREATE TABLE IF NOT EXISTS `video`(
 )ENGINE = InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `ejercicio` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT unique,
-  `nombre` VARCHAR(255) not null,
-  `descripcion` VARCHAR(255),
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT unique,
+    `nombre` VARCHAR(255) not null,
+    `descripcion` VARCHAR(255),
    `tiempo` int ,
     `tipo_tiempo` Varchar(255) ,
     `repeticiones` int,
@@ -52,6 +52,35 @@ CREATE TABLE IF NOT EXISTS `entrenamiento` (
   PRIMARY KEY (id),
   FOREIGN key(entrenador)
     REFERENCES usuario(id)
+    on UPDATE CASCADE
+    on DELETE RESTRICT
+)ENGINE = InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `notificacion` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT unique,
+  `contenido` VARCHAR(255) not null,
+  `entrenador` int unsigned not null,
+  `fecha` timestamp default current_timestamp() on update current_timestamp(),
+    `borrado` int not null default 0, 
+  PRIMARY KEY (id),
+  FOREIGN key(entrenador)
+    REFERENCES usuario(id)
+    on UPDATE CASCADE
+    on DELETE RESTRICT
+)ENGINE = InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `notificacion_alumno` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT unique,
+  `notificacion` int unsigned not null,
+  `alumno` int unsigned not null,
+  `visto` int not null DEFAULT 0,
+  PRIMARY KEY (id),
+  FOREIGN key(alumno)
+    REFERENCES usuario(id)
+    on UPDATE CASCADE
+    on DELETE RESTRICT,
+  FOREIGN key(notificacion)
+    REFERENCES notificacion(id)
     on UPDATE CASCADE
     on DELETE RESTRICT
 )ENGINE = InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;

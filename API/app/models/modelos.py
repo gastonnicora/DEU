@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql.schema import ForeignKey
+from datetime import datetime
 
 
 
@@ -163,7 +164,56 @@ class Ent_eje(db.Model):
         nullable= True
     )
     
+class Notificacion(db.Model):
+    id= db.Column(
+        db.Integer,
+        primary_key=True,
+        unique=True,
+        autoincrement=True,
+        nullable= True
+    ) 
+    fecha= db.Column(db.DateTime(timezone=True),
+                              default=datetime.today(),
+                              onupdate=datetime.today())
+    entrenador= db.Column(
+        db.Integer,
+        ForeignKey(Usuario.id),
+        nullable= True
+        )
+    contenido= db.Column(
+        db.String(255),
+        nullable= True
+    )
+    borrado = db.Column(
+        db.Integer,
+        nullable= True,
+        default=0
+    )
     
+class Notificacion_alumno(db.Model):
+    id= db.Column(
+        db.Integer,
+        primary_key=True,
+        unique=True,
+        autoincrement=True,
+        nullable= True
+    )   
+    alumno= db.Column(
+        db.Integer,
+        ForeignKey(Usuario.id),
+        nullable= True
+        )
+    notificacion= db.Column(
+        db.Integer,
+        ForeignKey(Notificacion.id),
+        nullable= True
+    )
+    visto=db.Column(
+        db.Integer,
+        nullable=True,
+        default=0
+    )
+        
 class Ent_alu(db.Model):
     id= db.Column(
         db.Integer,

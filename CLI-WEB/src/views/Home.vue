@@ -1,7 +1,7 @@
 <template>
     <div class="contenedor_c ">
         <div class="row u justify-content-center  ">
-            <div class="col-md order-md-2 hijo  justify-content-center d-flex align-items-center  ">
+            <div class="col-md order-md-2 hijo  justify-content-center   ">
                 <div>
                 <Login v-if="this.$store.state.session == null && login" :login="l"></Login>
                 <Registro v-if="this.$store.state.session == null && !login" :login="l"></Registro>
@@ -9,7 +9,7 @@
                 </Entrenamiento>
             </div>
             </div>
-            <div class="col-md order-md-1  hijo   justify-content-center d-flex align-items-center ">
+            <div class="col-md order-md-1  hijo   justify-content-center  ">
                 <div>
                 <Info v-if="this.$store.state.session == null"></Info>
 

@@ -16,7 +16,7 @@
         <br>
         Alumno
         <label class="switch " id="tipo" name="tipo">
-            <input type="checkbox"  v-model="tipo" >
+            <input type="checkbox" v-model="tipo">
             <span class="slider round"></span>
         </label>
         Entrenador
@@ -36,6 +36,7 @@
 <script>
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css';
+import { state, socket } from "@/socket.js";
 export default {
     name: 'registro',
     data() {
@@ -43,7 +44,7 @@ export default {
             isLoading: false,
             error: false,
             user: { nombre: "", apellido: "", email: "", tipo: 0, contra: "" },
-            tipo:false
+            tipo: false
         }
     },
     props: [
@@ -57,8 +58,9 @@ export default {
 
         registrar() {
             this.isLoading = true
-            if(this.tipo){this.user.tipo=0
-            }else {this.user.tipo=1}
+            if (this.tipo) {
+                this.user.tipo = 0
+            } else { this.user.tipo = 1 }
             fetch(this.$store.state.connection + 'usuario', {
                 method: 'POST',
                 headers: {
@@ -77,6 +79,11 @@ export default {
                         localStorage.setItem('sesion', JSON.stringify(json))
                         this.$store.state.session = json
                         this.getConfig()
+                        let user = this.$store.state.session
+                        if (user !== null) {
+                            socket.emit('coneccion', user.id)
+                        }
+
                     }
                 })
                 .catch(error => {
@@ -85,6 +92,7 @@ export default {
             this.isLoading = false
 
         },
+
         color(modo) {
             if (modo == 0 || modo == null || modo == undefined) {
                 document.documentElement.style.setProperty('--background', "#000");

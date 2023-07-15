@@ -1,13 +1,13 @@
 from flask import Flask,jsonify, request, render_template
 from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
 from os import path, environ
-from  app.resources import usuario, ejercicio, video,entrenamiento, ent_eje, ent_alu,config, entrenador_alumno,config as c
-import socket
-
+from  app.resources import usuario, ejercicio, video,entrenamiento, ent_eje, ent_alu,config, entrenador_alumno,notificacion ,config as c
 from config import config
 from app import db_config
 from app.models.modelos import db
+
+
+from app.events import socketio
 
 
 def create_app(environment="development"):
@@ -18,7 +18,8 @@ def create_app(environment="development"):
 
     env = environ.get("FLASK_ENV", environment)
     app.config.from_object(config[env])
-
+    
+    socketio.init_app(app)
     app.config["SQLALCHEMY_DATABASE_URI"] = db_config.connection(app)
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -85,6 +86,15 @@ def create_app(environment="development"):
     app.add_url_rule("/entrenador_alumno","entrenador_alumno_post",entrenador_alumno.create,methods=["POST"])
     app.add_url_rule("/entrenador_alumno_editar","entrenador_alumno_put",entrenador_alumno.update,methods=["POST"])
     app.add_url_rule("/entrenador_alumno_borrar/<int:id>", "entrenador_alumno_delete", entrenador_alumno.delete)
+    
+    app.add_url_rule("/notificaciones", "notificaciones", notificacion.index)
+    app.add_url_rule("/notificacion/<int:id>", "notificacion_get", notificacion.get)
+    app.add_url_rule("/notificacion_entrenador/<int:id>", "notificacion_get_entrenador", notificacion.get_entrenador)
+    app.add_url_rule("/notificacion_alumno/<int:id>", "notificacion_get_alumno", notificacion.get_alumno)
+    app.add_url_rule("/notificacion","notificacion_post",notificacion.create,methods=["POST"])
+    app.add_url_rule("/notificacion_editar","notificacion_put",notificacion.update,methods=["POST"])
+    app.add_url_rule("/notificacion_leer","notificacion_leer",notificacion.leer,methods=["POST"])
+    app.add_url_rule("/notificacion_borrar/<int:id>", "notificacion_delete", notificacion.delete)
     
     @app.route("/")
     def home():

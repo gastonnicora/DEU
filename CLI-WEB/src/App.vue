@@ -1,12 +1,14 @@
 <template>
   <Navbar v-if="fun_ini"></Navbar>
-  <div class="contenedor" v-if="this.$store.state.session != null && this.$store.state.session.tipo==0">
-    <Links   ></Links>
-    <div id="body"  name="body" class="body">
-   <router-view /></div>
+  <div class="contenedor" v-if="this.$store.state.session != null ">
+    <Links></Links>
+    <div id="body" name="body" class="body">
+      <router-view />
+    </div>
   </div>
-    <div id="body" v-if="this.$store.state.session == null || this.$store.state.session.tipo!=0" name="body"><router-view /></div>
-{{ this.$store.state.connection }}
+  <div id="body" v-if="this.$store.state.session == null " name="body"><router-view />
+  </div>
+
   <loading v-model:active="isLoading" :can-cancel="false" :is-full-page="true" />
   <Footer></Footer>
 </template>
@@ -20,7 +22,14 @@ import 'vue-loading-overlay/dist/css/index.css';
 import Navbar from '@/components/nav/navbar.vue'
 import Footer from '@/components/nav/footer.vue'
 import Links from '@/components/nav/links.vue'
+
+import { state, socket } from "@/socket.js";
 export default {
+  computed: {
+    connected() {
+      return state.connected;
+    }
+  },
   async created() {
     this.$store.commit('SET_CONNECTION');
   },
@@ -42,20 +51,21 @@ export default {
 
   methods: {
 
-    
+
     inicio() {
       this.isLoading = true
       this.$store.state.session = JSON.parse(localStorage.getItem('sesion'))
+
       let modo = localStorage.getItem("modo")
       this.$store.state.modo = modo
       let fuente = localStorage.getItem("fuente")
       if (fuente) this.fuente = fuente
       body.style.fontSize = this.fuente + "rem"
-      
+
       if (this.$store.state.session != null) {
         this.getConfig()
         if (this.$store.state.session.tipo == 0) {
-          this.entrenador=true
+          this.entrenador = true
         }
       } else {
         this.color(modo)
@@ -98,9 +108,13 @@ export default {
   },
   mounted() {
     this.inicio()
+    let user = this.$store.state.session
+    if (user !== null) {
+      socket.emit('coneccion', user.id)
+    }
 
   },
-  
+
 
 }
 </script>

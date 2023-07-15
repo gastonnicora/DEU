@@ -5,6 +5,8 @@ export default createStore({
         connection: "",
         session: null,
         entrenamiento:null,
+        notificacion:null,
+        notificaciones:[],
         id_config:1,
         modo:1,
         alumno:null

@@ -10,7 +10,7 @@
             <ul>
                 <div v-for="(eje, index) in this.$store.state.entrenamiento.Ejercicios" :key="index">
                     <div v-if="eje.categoria==0">
-                        <Ejercicio :eje="eje"></Ejercicio>
+                        <Ejercicio  :eje="eje"></Ejercicio>
 
                     </div>
                 </div>
@@ -20,7 +20,7 @@
             <ul>
                 <div v-for="(eje, index) in this.$store.state.entrenamiento.Ejercicios" :key="index">
                     <div v-if="eje.categoria==1">
-                        <Ejercicio :eje="eje"></Ejercicio>
+                        <Ejercicio role="button" tabindex="0" :eje="eje"></Ejercicio>
 
                     </div>
                 </div>
@@ -30,7 +30,7 @@
             <ul>
                 <div v-for="(eje, index) in this.$store.state.entrenamiento.Ejercicios" :key="index">
                     <div v-if="eje.categoria==2">
-                        <Ejercicio :eje="eje"></Ejercicio>
+                        <Ejercicio role="button" tabindex="0" :eje="eje"></Ejercicio>
 
                     </div>
                 </div>

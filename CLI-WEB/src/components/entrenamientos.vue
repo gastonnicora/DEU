@@ -6,7 +6,7 @@
       <ul>
         <div v-for="(ent, index) in entrenamientos" :key="index">
           <div>
-            <Ent :entrenamiento="ent" @click="this.$store.state.entrenamiento = ent"></Ent>
+            <Ent role="button" tabindex="0" :entrenamiento="ent" @click="this.$store.state.entrenamiento = ent"></Ent>
           </div>
           <br>
         </div>
@@ -16,7 +16,6 @@
   <loading v-model:active="isLoading" :can-cancel="false" :is-full-page="true" />
 </template>
 <script>
-import moment from 'moment'
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css';
 import Ent from './ent.vue'
@@ -67,7 +66,7 @@ export default {
   },
   mounted() {
     this.isLoading = true
-    let tipo = ["entrenador", "alumnno"]
+    let tipo = ["entrenador", "alumno"]
     fetch(this.$store.state.connection + "entrenamiento_by_" + tipo[this.$store.state.session.tipo] + "/" + this.$store.state.session.id)
       .then(response => {
         return response.json();

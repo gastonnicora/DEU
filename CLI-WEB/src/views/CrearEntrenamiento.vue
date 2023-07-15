@@ -18,6 +18,7 @@
     <div class="container">
         <div class="row  justify-content-center  ">
             <div class="col-md   ">
+                <h6>Alumnos:</h6>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -38,7 +39,10 @@
                     </tbody>
                 </table>
             </div>
+
             <div class="col-md  ">
+                
+                <h6>Ejercicios:</h6>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -64,8 +68,7 @@
     </div>
     <div class="error" v-if="error"> {{ this.error }}</div>
     <button class="btn boton" @click="guardar()">Guardar</button>
-    {{ ent.eje }} <br>
-    {{ ent.alu }}
+    
 </template>
 
 <script>

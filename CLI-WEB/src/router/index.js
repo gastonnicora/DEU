@@ -10,6 +10,7 @@ import CrearNotificacion from '../views/CrearNotificacion.vue'
 import ListadoNotificaciones from '../views/ListadoNotificaciones.vue'
 import ListadoEjercicios from '../views/ListadoEjercicios.vue'
 import CrearEjercicio from '../views/CrearEjercicio.vue'
+import Notificaciones from '../views/Notificaciones.vue'
 
 
 const routes = [
@@ -62,6 +63,11 @@ const routes = [
     path: '/listado_notificaciones',
     name: 'ListadoNotificaciones',
     component: ListadoNotificaciones
+  },
+  {
+    path: '/notificaciones',
+    name: 'Notificaciones',
+    component: Notificaciones
   },
   {
     path: '/crear_ejercicio',

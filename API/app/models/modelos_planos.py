@@ -77,6 +77,28 @@ class Ent_alu():
     def toJSON(self):
         return json.loads(json.dumps(self, default=lambda o: o.__dict__, 
             sort_keys=True, indent=4))
+
+class Notificacion():
+    def __init__(cls,data):
+        cls.id=data.id
+        cls.enentrenador= data.entrenador
+        cls.contenido=data.contenido
+        cls.borrado= data.borrado
+        
+    def toJSON(self):
+        return json.loads(json.dumps(self, default=lambda o: o.__dict__, 
+            sort_keys=True, indent=4))
+        
+class Notificacion_alumno():
+    def __init__(cls,data):
+        cls.id=data.id
+        cls.alumno= data.alumno
+        cls.notificacion=data.notificacion
+        cls.visto= data.visto
+        
+    def toJSON(self):
+        return json.loads(json.dumps(self, default=lambda o: o.__dict__, 
+            sort_keys=True, indent=4))
         
 class Config():
     def __init__(cls,data):

@@ -3,32 +3,32 @@
 
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <div style="padding:0rem .5rem" @click="$router.go(-1)"><font-awesome-icon :icon="['fas', 'arrow-left']" />
+                <div style="padding:0rem .5rem" @click="$router.go(-1)" role="button" tabindex="0"><font-awesome-icon :icon="['fas', 'arrow-left']" />
                 </div>
             </li>
         </ul>
 
         <router-link class="navbar-brand" to="/">Inicio</router-link>
-        <ul class="navbar-nav  ml-auto" style="right: 0;">
+        <ul class="navbar-nav  ml-auto list-group  " style="right: 0;flex-direction: row; ">
             <li class="nav-item dropdown" v-if="this.$store.state.session != null">
-                <a class="nav-link dropdown-toggle " style="padding:0rem .5rem" href="#" id="navbarDropdown" role="button"
+                <a role="button" tabindex="0" class="nav-link dropdown-toggle " style="padding:0rem .5rem" href="#" id="navbarDropdown"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <font-awesome-icon :icon="['far', 'user']" />
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" data-toggle="modal" data-target="#editPerfil">
+                    <a role="button" tabindex="0" v-on:keyup.enter="modals('editPerfil')" class="dropdown-item" data-toggle="modal" data-target="#editPerfil">
                         <font-awesome-icon :icon="['fas', 'user-pen']" />
                         Editar
                         Perfil</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" data-toggle="modal" data-target="#cambiarPass"> <font-awesome-icon
+                    <a role="button" tabindex="0" v-on:keyup.enter="modals('cambiarPass')" class="dropdown-item" data-toggle="modal" data-target="#cambiarPass"> <font-awesome-icon
                             :icon="['fas', 'key']" /> Cambiar
                         Contraseña</a>
                     <div class="dropdown-divider"></div>
-                    <a to="#" class="dropdown-item" data-toggle="modal" data-target="#config" @click="() => { modal() }">
+                    <a to="#" role="button" tabindex="0" v-on:keyup.enter="modals('config'); modal()" class="dropdown-item" data-toggle="modal" data-target="#config" @click="() => { modal() }">
                         <font-awesome-icon :icon="['fas', 'gear']" /> Configuración</a>
                     <div class="dropdown-divider"></div>
-                    <a to="#" class="dropdown-item" @click="cerrarSesion()"><font-awesome-icon
+                    <a to="#"   role="button" tabindex="0" v-on:keyup.enter="cerrarSesion()" class="dropdown-item" @click="cerrarSesion()"><font-awesome-icon
                             :icon="['fas', 'door-closed']" /> Cerrar Sesión</a>
                 </div>
             </li>
@@ -152,13 +152,11 @@
             </div>
         </div>
     </div>
-
-
-
     <loading v-model:active="isLoading" :can-cancel="false" :is-full-page="true" />
 </template>
 <script>
 import Loading from 'vue-loading-overlay';
+import {  socket } from "@/socket.js";
 export default {
     name: 'Navbar',
     data() {
@@ -167,13 +165,21 @@ export default {
             modo: this.$store.state.modo,
             fuente: 1,
             id_config: this.$store.state.id_config,
-            user: this.$store.state.session
+            user: this.$store.state.session,
         }
     },
     components: {
         Loading
     },
+     
     methods: {
+        modals(m) {
+            var myModal = new bootstrap.Modal(document.getElementById(m), {
+                keyboard: false
+            })
+            myModal.show()
+            console.log("click")
+        },
         guardar() {
             this.isLoading = true
             this.modo = 0
@@ -223,12 +229,13 @@ export default {
             this.modal()
         },
         cerrarSesion() {
-            
+
             localStorage.removeItem('sesion')
             localStorage.removeItem('fuente')
             localStorage.removeItem('modo')
             this.$store.state.session = null
             this.$router.replace("home");
+            socket.disconnect()
             location.replace("/")
         },
 

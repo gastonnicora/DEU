@@ -23,4 +23,4 @@
 export default {
     name: 'Footer',
 }
-</script>
+</script> 

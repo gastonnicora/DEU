@@ -18,6 +18,7 @@
     "moment": "^2.29.4",
     "package-lock": "^1.0.5",
     "package.json": "^0.0.0",
+    "socket.io-client": "^4.7.1",
     "vue": "^3.3.2",
     "vue-axios": "^3.5.2",
     "vue-loading-overlay": "6.0",
