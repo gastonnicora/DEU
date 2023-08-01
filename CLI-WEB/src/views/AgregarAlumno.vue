@@ -3,7 +3,7 @@
     <br>
     {{ mensaje }}
     <br>
-    <table class="table table-striped">
+    <table class="table table-striped" aria-label="Agregar alumno">
         <thead>
             <tr>
                 <th scope="col">Nombre</th>
@@ -17,7 +17,7 @@
                 <td>{{ alu.nombre }}</td>
                 <td>{{ alu.apellido }}</td>
                 <td>{{ alu.email }}</td>
-                <td><button class="btn boton" @click="agregar(alu.id)">Agregar</button></td>
+                <td><button class="btn boton" @click="agregar(alu.id)" :aria-label="'Agregar '+alu.nombre+' '+alu.apellido+' email:'+alu.email">Agregar</button></td>
             </tr>
         </tbody>
     </table>

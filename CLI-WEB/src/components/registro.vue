@@ -12,7 +12,7 @@
         <input id="email" name="email" type="email" required v-model="user.email" />
         <br>
         <label for="pass">Contraseña: </label>
-        <input type="password" required id="pass" v-model="user.contra">
+        <input type="password" required id="pass" name="pass" v-model="user.contra">
         <br>
         Alumno
         <label class="switch " id="tipo" name="tipo">
@@ -22,8 +22,7 @@
         Entrenador
         <br>
         <div class="error" v-if="error"> {{ this.error }}</div>
-
-        <input class="boton btn " type="submit" value="Registrarse">
+        <button class="boton btn " type="submit">Registrarse</button>
 
 
     </form>
@@ -115,6 +114,8 @@ export default {
                 .then(json => {
                     if (json.error == null) {
                         localStorage.setItem("modo", json.tema)
+                        this.$store.state.modo = json.tema
+                        this.$store.state.id_config = json.id
                         this.color(json.tema)
                     } else {
                         console.log(json.error)

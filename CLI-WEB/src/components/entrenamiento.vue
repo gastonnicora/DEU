@@ -1,6 +1,10 @@
 <template >
-    <div class="container " v-if="this.$store.state.entrenamiento!=null">
+    <div class="container " v-if="this.$store.state.entrenamiento!=null"  tabindex="-1" :id="this.$store.state.entrenamiento.id" :name="this.$store.state.entrenamiento.id">
         <div>
+            {{ this.$store.state.entrenamiento.nombre }}
+            <br> 
+            {{ this.$store.state.entrenamiento.descripcion }}
+            <br>
             Entrenamiento el dia:
             <br>
             {{ fecha(this.$store.state.entrenamiento.fecha) }}
@@ -44,7 +48,7 @@ import moment from 'moment'
 export default {
     name: 'Entrenamiento',
     components:{
-        Ejercicio
+        Ejercicio,
     },
     methods: {
         fecha(f){

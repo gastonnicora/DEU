@@ -4,12 +4,13 @@
             <div class="col-md   ">
                 <div class="container">
                     <div>
-                        <p>Alumnos:</p>
+                        <p tabindex="0" role="presentation">Alumnos:</p>
                         <hr>
                         <ul>
+                            <div v-if="alumnos.length==0" tabindex="0" role="presentation">No hay alumnos</div>
                             <div v-for="(alu, index) in alumnos" :key="index">
                                 <div>
-                                    <Alumno :alumno="alu" @click="this.$store.state.alumno = alu"></Alumno>
+                                    <Alumno role="button" tabindex="0" :alumno="alu" @click="this.$store.state.alumno = alu"></Alumno>
                                 </div>
                                 <br>
                             </div>
@@ -29,7 +30,7 @@ export default {
     name: 'ListadoAlumnos',
     data() {
         return {
-            alumnos: null
+            alumnos: []
         }
     },
     created() {

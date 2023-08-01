@@ -44,7 +44,6 @@ export default {
             this.$store.state.notificacion = n;
           } else {
             console.log(json.error)
-            console.log(n)
           }
         })
         .catch(error => {
@@ -54,6 +53,9 @@ export default {
       if(this.$store.state.session.tipo==0){
         this.$store.state.notificacion = n;
       }
+
+      setTimeout(()=>{let vista= document.getElementById(n.id)
+      vista.focus()},200)
     }
   },
 

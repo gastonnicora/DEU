@@ -1,11 +1,11 @@
 <template>
-    <h4><font-awesome-icon :icon="['fas', 'user-plus']" /> Crear ejercicio</h4>
+    <h4 role="presentation" tabindex="0"><font-awesome-icon :icon="['fas', 'user-plus']" /> Crear ejercicio</h4>
     <br>
     <form @submit.prevent="registrar" id="form">
 
         <br>
         <label for="nombre">Nombre:</label>
-        <input id="nombre" name="nombre" required v-model="eje.nombre" />
+        <input id="nombre" name="nombre" required v-model="eje.nombre" aria-label="Nombre" />
         <br>
         <label for="cat">Categoría: </label>
         <select id="cat" name="cat" v-model="eje.categoria">
@@ -25,7 +25,7 @@
         <br>
         <div v-if="eje.tipo == 0">
             <label for="tiempo">Tiempo:</label>
-            <input id="tiempo" name="tiempo" required v-model="eje.tiempo" />
+            <input id="tiempo" name="tiempo" type="number" min="1" max="255" required v-model="eje.tiempo" />
             <br>
             <label for="uni">Unidad de tiempo:</label>
             <input id="uni" name="uni" required v-model="eje.tipo_tiempo" />
@@ -33,7 +33,7 @@
         </div>
         <div v-if="eje.tipo == 1">
             <label for="rep">Repeticiones:</label>
-            <input id="rep" name="rep" required v-model="eje.repeticiones" />
+            <input id="rep" name="rep" type="number" min="1" max="255"  required v-model="eje.repeticiones" />
             <br>
         </div>
 
@@ -42,8 +42,7 @@
         <input id="video" name="video" type="file"  @change='cambiar()'  />
         <div id="info"></div>
         <div class="error" v-if="error"> {{ this.error }}</div>
-
-        <input class="boton btn " type="submit" value="Guardar">
+        <button class="boton btn " type="submit" >Guardar</button>
 
 
     </form>
@@ -73,8 +72,8 @@ export default {
                 descripcion: "",
                 id: 1,
                 nombre: "",
-                repeticiones: 0,
-                tiempo: 0,
+                repeticiones: 1,
+                tiempo: 1,
                 tipo: 0,
                 tipo_tiempo: "",
                 video: 0,

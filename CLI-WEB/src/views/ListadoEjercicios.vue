@@ -1,7 +1,7 @@
 <template>
     <h4>Ejercicios</h4>
     <div v-for="(eje, index) in ejercicios" :key="index"  class="d-flex justify-content-center">
-        <div style="width: 60%;"><Ejercicio :eje="eje" ></Ejercicio></div>
+        <div style="width: 60%;"><Ejercicio :eje="eje" ></Ejercicio> <br></div>
     </div>
 </template>
 <script>

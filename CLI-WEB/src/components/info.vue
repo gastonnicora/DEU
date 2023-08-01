@@ -1,5 +1,19 @@
 <template>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident molestias quia placeat atque rem et cumque accusantium nulla fugiat id, veritatis totam beatae corrupti libero numquam ad eum esse neque.
+  Usuarios de ejemplo:
+  <ul>
+    <li>Entrenador:
+      <ul>
+        <li>entrenador@gmail.com  contraseña:123456 </li>
+      </ul>
+    </li>
+    <li>
+      Estudiantes:
+      <ul>
+        <li> estudiante1@gmail.com contraseña:123456  (único alumno del entrenador)</li>
+        <li> estudiante2@gmail.com contraseña:123456 </li>
+      </ul>
+    </li>
+  </ul>    
 </template>
 
 <script>

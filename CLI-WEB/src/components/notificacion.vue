@@ -1,5 +1,5 @@
 <template >
-    <div class="container " v-if="this.$store.state.notificacion!=null">
+    <div class="container " v-if="this.$store.state.notificacion!=null" tabindex="-1" :id=" this.$store.state.notificacion.id" :name=" this.$store.state.notificacion.id">
         <div>
             <br>
             <p v-if="this.$store.state.session.tipo==1">Notificacion de : {{  this.$store.state.notificacion.entrenador.nombre }} {{  this.$store.state.notificacion.entrenador.apellido }}</p>

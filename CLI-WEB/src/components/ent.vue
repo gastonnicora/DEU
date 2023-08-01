@@ -2,10 +2,11 @@
     <div class="container ent  ">
         <div class="row">
             <div class="col-10">
+                    <p>{{entrenamiento.nombre}}</p>
                     <p>Fecha: {{ fecha(entrenamiento.fecha) }}</p>
                     <p>Tipo: {{ tipo }}</p>
             </div>
-            <div class="col-1 d-flex d-flex  align-items-center ml-auto">
+            <div class="col-1 d-flex  align-items-center ml-auto">
                 <font-awesome-icon :icon="['fas', 'chevron-right']" />
             </div>
 

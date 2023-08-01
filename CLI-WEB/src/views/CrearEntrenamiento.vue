@@ -1,8 +1,8 @@
 <template>
     <h5>Crear entrenamiento</h5>
     <br>
-    <label for="nombre">Nombre:</label>
-    <input id="nombre" name="nombre" required v-model="ent.nombre" />
+    <label for="nombre">Nombre: </label>
+    <input id="nombre" name="nombre" required v-model="ent.nombre" aria-label="Nombre" />
     <br>
     <label for="cat">Categoría: </label>
     <select id="cat" name="cat" v-model="ent.tipo">
@@ -19,10 +19,10 @@
         <div class="row  justify-content-center  ">
             <div class="col-md   ">
                 <h6>Alumnos:</h6>
-                <table class="table table-striped">
+                <table class="table table-striped" aria-label="Alumnos:">
                     <thead>
                         <tr>
-                            <th scope="col"><input type="checkbox" id="todos" name="todos" v-model="todos"></th>
+                            <th scope="col"><input type="checkbox" id="todos" aria-label="Seleccionar todos los alumnos" name="todos" v-model="todos"></th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido</th>
                             <th scope="col">Posición</th>
@@ -31,7 +31,7 @@
                     <tbody>
                         <tr v-for="(alu, index) in listAlumnos" :key="index">
                             <th scope="row"><input type="checkbox" :id="alu.id" :value="alu.id" name="alumnos"
-                                    :checked="todos"></th>
+                                    :checked="todos" :aria-label="'Seleccionar '+ alu.nombre +' '+ alu.apellido"></th>
                             <td>{{ alu.nombre }}</td>
                             <td>{{ alu.apellido }}</td>
                             <td>{{ pos(alu.posicion) }}</td>
@@ -43,10 +43,10 @@
             <div class="col-md  ">
                 
                 <h6>Ejercicios:</h6>
-                <table class="table table-striped">
+                <table class="table table-striped" aria-label="Ejercicios">
                     <thead>
                         <tr>
-                            <th scope="col"><input type="checkbox" id="todos" name="todos" v-model="td"></th>
+                            <th scope="col"><input type="checkbox" id="todos" name="todos" aria-label="Seleccionar todos los ejercicios" v-model="td"></th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Categoría</th>
                             <th scope="col">Video</th>
@@ -54,12 +54,12 @@
                     </thead>
                     <tbody>
                         <tr v-for="(e, index) in eje" :key="index">
-                            <th scope="row"><input type="checkbox" :id="e.id" name="ejercicios" :value="e.id" :checked="td">
+                            <th scope="row"><input type="checkbox" :id="e.id" name="ejercicios" :aria-label="'Seleccionar '+e.nombre+' de la categoría '+cat[e.categoria]" :value="e.id" :checked="td">
                             </th>
                             <td>{{ e.nombre }}</td>
                             <td>{{ cat[e.categoria] }}</td>
                             <td><a :href="this.$store.state.connection + 'static/videos/' + e.video.nombre" target="_blank"
-                                    rel="noopener noreferrer">ver</a></td>
+                                    rel="noopener noreferrer">Ver {{ e.nombre }}</a></td>
                         </tr>
                     </tbody>
                 </table>

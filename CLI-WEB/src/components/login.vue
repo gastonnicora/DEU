@@ -3,13 +3,13 @@
     <br>
     <form @submit.prevent="iniciarSesion" id="form">
         <label for="email">Email: </label>
-        <input type="text" id="email" required>
+        <input type="text" id="email" name="email" required>
         <br>
         <label for="pass">Contraseña: </label>
-        <input type="password" required id="pass">
+        <input type="password" required id="pass" name="pass">
         <div class="error" v-if="error"> {{ this.error }}</div>
         <br>
-        <input class="boton btn " type="submit" value="INICIAR SESIÓN">
+        <button class="boton btn " type="submit">Iniciar Sesión</button>
 
     </form>
     <loading v-model:active="isLoading" :can-cancel="false" :is-full-page="true" />
@@ -94,7 +94,10 @@ export default {
                 })
                 .then(json => {
                     if (json.error == null) {
+
                         localStorage.setItem("modo", json.tema)
+                        this.$store.state.modo = json.tema
+                        this.$store.state.id_config = json.id
                         this.color(json.tema)
                     } else {
                         console.log(json.error)

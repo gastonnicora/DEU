@@ -1,13 +1,13 @@
 <template>
-     <h5>Crear notificación</h5>
+     <h5 role="presentation" tabindex="0">Crear notificación</h5>
     <br>
     <div class="container">
         <div class="row  justify-content-center  ">
             <div class="col-md   ">
-                <table class="table table-striped">
+                <table class="table table-striped" aria-label="Alumnos">
                     <thead>
                         <tr>
-                            <th scope="col"><input type="checkbox" id="todos" name="todos" v-model="todos"></th>
+                            <th scope="col"><input type="checkbox" id="todos" name="todos" v-model="todos" aria-label="Seleccionar todos los alumnos"></th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido</th>
                             <th scope="col">Posición</th>
@@ -16,7 +16,7 @@
                     <tbody>
                         <tr v-for="(alu, index) in listAlumnos" :key="index">
                             <th scope="row"><input type="checkbox" :id="alu.id" :value="alu.id" name="alumnos"
-                                    :checked="todos"></th>
+                                    :checked="todos" :aria-label="'Seleccionar '+ alu.nombre +' '+ alu.apellido"></th>
                             <td>{{ alu.nombre }}</td>
                             <td>{{ alu.apellido }}</td>
                             <td>{{ pos(alu.posicion) }}</td>

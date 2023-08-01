@@ -3,16 +3,16 @@
 
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <div style="padding:0rem .5rem" @click="$router.go(-1)" role="button" tabindex="0"><font-awesome-icon :icon="['fas', 'arrow-left']" />
+                <div style="padding:0rem .5rem" @click="$router.go(-1)" role="button" aria-label="volver" tabindex="0"><font-awesome-icon :icon="['fas', 'arrow-left']" />
                 </div>
             </li>
         </ul>
 
-        <router-link class="navbar-brand" to="/">Inicio</router-link>
+        <router-link class="navbar-brand" to="/" aria-label="ir a pagina principal">Inicio</router-link>
         <ul class="navbar-nav  ml-auto list-group  " style="right: 0;flex-direction: row; ">
             <li class="nav-item dropdown" v-if="this.$store.state.session != null">
                 <a role="button" tabindex="0" class="nav-link dropdown-toggle " style="padding:0rem .5rem" href="#" id="navbarDropdown"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="configuración de usuario">
                     <font-awesome-icon :icon="['far', 'user']" />
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -36,26 +36,25 @@
 
     </nav>
     <div class="modal  " id="editPerfil" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-md" role="presentation">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title"><font-awesome-icon :icon="['fas', 'user-pen']" /> Editar perfil </h5>
-                    <button type="button" class="close boton" @click="cerrar()" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close boton" @click="cerrar()" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        <div class=" justify-content-center " v-if="user != null">
+                        <div class=" justify-content-center " v-if="this.$store.state.session != null">
                             <form @submit.prevent="save">
-                                <p>Nombre:</p>
-                                <p><input required v-model="user.nombre" /></p>
-                                <p>Apellido:</p>
-                                <p><input required v-model="user.apellido" /></p>
-                                <p>Email:</p>
-                                <p><input required v-model="user.email" /></p>
-
-                                <p><input class="boton btn " type="submit" value="Guardar"></p>
+                           
+                                <p> <label for="nombre" >Nombre: </label> <input required v-model="this.$store.state.session.nombre" id="nombre" name="nombre" /></p>
+                                
+                                <p><label for="apellido">Apellido: </label> <input id="apellido" name="apellido" required v-model="this.$store.state.session.apellido" /></p>
+                             
+                                <p><label for="email">Email: </label><input required id="email" name="email" v-model="this.$store.state.session.email" /></p>
+                                <p><button class="boton btn " type="submit">Guardar</button></p>
 
                             </form>
                         </div>
@@ -68,11 +67,11 @@
         </div>
     </div>
     <div class="modal  " id="config" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-md" role="presentation">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title"> <font-awesome-icon :icon="['fas', 'gear']" /> Configuración </h5>
-                    <button type="button" class="close boton" @click="cerrar()" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close boton" @click="cerrar()" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -84,7 +83,7 @@
                             <div class=" justify-content-center d-flex d-flex  align-items-md-center">
                                 <font-awesome-icon style="margin:0 1rem " :icon="['fas', 'sun']" />
                                 <label class="switch ">
-                                    <input type="checkbox" id="tema" name="tema" @change="aplicar()">
+                                    <input type="checkbox" id="tema" name="tema" @change="aplicar()" aria-label="Tema oscuro">
                                     <span class="slider round"></span>
                                 </label>
                                 <font-awesome-icon style="margin:0 1rem " :icon="['fas', 'moon']" />
@@ -96,7 +95,7 @@
                             <br>
                             <div class="range" style="--step:.25; --min:0.5; --max:2">
                                 <input type="range" id="tam" name="tam" value="1" min=".5" max="2" step="0.25" list="value"
-                                    @change="aplicar()">
+                                    @change="aplicar()" >
 
                             </div>
 
@@ -120,12 +119,12 @@
     </div>
 
     <div class="modal  " id="cambiarPass" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-md" role="presentation">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title"><font-awesome-icon :icon="['fas', 'key']" /> Cambiar
                         Contraseña </h5>
-                    <button type="button" class="close boton" @click="cerrar()" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close boton" @click="cerrar()" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -133,14 +132,12 @@
                     <div class="container">
                         <div class=" justify-content-center ">
                             <form @submit.prevent="pass">
-                                <p>Contraseña:</p>
-                                <p><input type="password" required name="contra" id="contra" /></p>
-                                <p>Nueva contraseña:</p>
-                                <p><input type="password" required name="new_contra" id="new_contra" /></p>
-                                <p>Repita la contraseña:</p>
-                                <p><input type="password" required name="rp_contra" id="rp_contra" /></p>
-
-                                <p><input class="boton btn " type="submit" value="Guardar"></p>
+                                <p><label for="contra">Contraseña: </label><input type="password" required name="contra" id="contra" /></p>
+                                
+                                <p><label for="new_contra">Nueva contraseña: </label><input type="password" required name="new_contra" id="new_contra" /></p>
+                                
+                                <p><label for="rp_contra">Repita la contraseña: </label><input type="password" required name="rp_contra" id="rp_contra" /></p>
+                                <p><button class="boton btn " type="submit">Guardar</button></p>
 
                             </form>
                         </div>
@@ -178,7 +175,6 @@ export default {
                 keyboard: false
             })
             myModal.show()
-            console.log("click")
         },
         guardar() {
             this.isLoading = true
@@ -196,7 +192,7 @@ export default {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ id: this.id_config, us: this.$store.state.session.id, tema: this.modo })
+                body: JSON.stringify({ id: this.$store.state.id_config, us: this.$store.state.session.id, tema: this.modo })
             })
                 .then(response => {
                     return response.json();
