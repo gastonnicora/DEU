@@ -59,3 +59,12 @@ class Entrenador_alumno(object):
             list.append(elem.alumno)
         alumnos=Usuario.get_in_list(list)
         return alumnos
+    
+    @classmethod
+    def get_not_alum_by_entrenador(cls,entrenador):
+        alu=e.query.filter_by(entrenador= entrenador).all()
+        list=[]
+        for elem in alu:
+            list.append(elem.alumno)
+        alumnos=Usuario.not_in_list(list)
+        return alumnos

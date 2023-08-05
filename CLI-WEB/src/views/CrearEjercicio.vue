@@ -39,9 +39,10 @@
 
         <label for="file-upload" >Seleccionar video
         </label>
-        <input id="video" name="video" type="file"  @change='cambiar()'  />
-        <div id="info"></div>
+        <input id="video" name="video" type="file"   />
+        <br>
         <div class="error" v-if="error"> {{ this.error }}</div>
+        <br>
         <button class="boton btn " type="submit" >Guardar</button>
 
 
@@ -134,10 +135,6 @@ export default {
                 })
             this.isLoading = false
 
-        },
-        cambiar() {
-            var pdrs = document.getElementById('video').files[0].name;
-            document.getElementById('info').innerHTML = pdrs;
         }
 
     }

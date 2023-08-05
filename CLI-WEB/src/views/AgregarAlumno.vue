@@ -17,7 +17,8 @@
                 <td>{{ alu.nombre }}</td>
                 <td>{{ alu.apellido }}</td>
                 <td>{{ alu.email }}</td>
-                <td><button class="btn boton" @click="agregar(alu.id)" :aria-label="'Agregar '+alu.nombre+' '+alu.apellido+' email:'+alu.email">Agregar</button></td>
+                <td><button class="btn boton" @click="agregar(alu)"
+                        :aria-label="'Agregar ' + alu.nombre + ' ' + alu.apellido + ' email:' + alu.email">Agregar</button></td>
             </tr>
         </tbody>
     </table>
@@ -38,14 +39,15 @@ export default {
         }
     },
     methods: {
-        agregar(id) {
+        agregar(alu) {
+            this.mensaje = ""
             fetch(this.$store.state.connection + 'entrenador_alumno', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ alumno: id, entrenador: this.$store.state.session.id })
+                body: JSON.stringify({ alumno: alu.id, entrenador: this.$store.state.session.id })
             })
                 .then(response => {
                     return response.json();
@@ -55,6 +57,11 @@ export default {
                         this.mensaje = json.error
                     } else {
                         this.mensaje = "Alumno agregado"
+
+                        const index = this.listAlumnos.indexOf(alu);
+                        if (index > -1) { // only splice array when item is found
+                            this.listAlumnos.splice(index, 1); // 2nd parameter means remove one item only
+                        }
                     }
                 })
                 .catch(error => {
@@ -63,7 +70,7 @@ export default {
         }
     },
     mounted() {
-        fetch(this.$store.state.connection + 'usuario/alumnos', {
+        fetch(this.$store.state.connection + 'usuario/Alumnos/' + this.$store.state.session.id, {
             method: 'Get',
             headers: {
                 'Accept': 'application/json',

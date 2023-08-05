@@ -33,7 +33,7 @@ def create_app(environment="development"):
     app.add_url_rule("/usuario_editar_pass","usuario_put_pass",usuario.update_pass,methods=["POST"])
     app.add_url_rule("/usuario_borrar/<int:id>", "usuario_delete", usuario.delete)
     app.add_url_rule("/usuario/alumnos/<int:id>", "usuario_get_alumnos", usuario.get_alumnos)
-    app.add_url_rule("/usuario/alumnos", "usuario_alumnos", usuario.alumnos) #falta
+    app.add_url_rule("/usuario/Alumnos/<int:id>", "usuario_alumnos", usuario.alumnos) #falta
     app.add_url_rule("/login","login",usuario.login,methods=["POST"])
     
     app.add_url_rule("/ejercicios", "ejercicios", ejercicio.index)

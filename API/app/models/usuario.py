@@ -72,6 +72,11 @@ class Usuario(object):
         return usuarios 
     
     @classmethod
+    def not_in_list(cls,list):
+        usuarios = db.session.query(u).filter(u.id.notin_(list),u.borrado==0,u.tipo==1).all()
+        return usuarios 
+    
+    @classmethod
     def login(cls,data):
         usuario = u.query.filter_by(email= data.get("email"),contra=data.get("contra"),borrado=0).first()
         db.session.close()
@@ -85,7 +90,7 @@ class Usuario(object):
     
     @classmethod
     def alumnos(cls):
-        usuarios= u.query.filter_by(borrado= 0,tipo=1).all()
+        usuarios= u.query.filter_by(borrado= 0,tipo=1).all() 
         db.session.close()
         return usuarios
     

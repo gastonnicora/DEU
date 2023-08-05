@@ -47,8 +47,8 @@ def get_alumnos(id):
     alumnos = Serializacion.dump( Entrenador_alumno.get_alum_by_entrenador(id),nombre="Alumnos",many=True)
     return jsonify(alumnos),200
 
-def alumnos():
-    alumnos = Serializacion.dump( Usuario.alumnos(),nombre="Alumnos",many=True)
+def alumnos(id):
+    alumnos = Serializacion.dump( Entrenador_alumno.get_not_alum_by_entrenador(id),nombre="Alumnos",many=True)
     return jsonify(alumnos),200
 
 def login(): 
