@@ -56,6 +56,33 @@
   background-color: var(--nav) !important;
   color: var(--text_nav)!important;
 }
+.link-box {
+    width: 270px; /* Ancho fijo para todas las cajas */
+    height: 50px; /* Altura fija para todas las cajas */
+    display: inline-block; /* Hace que el enlace se comporte como un bloque en línea */
+    padding: 10px 20px; /* Espaciado interno para que parezca un botón */
+    border: 2px solid transparent; /* Borde que cambia al pasar el mouse */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: var(--nav) !important;
+    color: var(--text_nav)!important; /* Color del texto */
+    text-decoration: none; /* Quita el subrayado */
+    text-align: left;
+    transition: background-color 0.3s, border-color 0.3s; /* Transiciones suaves */
+}
+
+.link-box:hover {
+    background-color: #d1d1d1;
+    border-color: gray;
+    text-decoration: none;
+}
+
+.link-box-active {
+    background-color: #333; /* Color de fondo cuando el enlace es activo */
+    color: #fff; /* Color del texto cuando el enlace es activo */
+    border-color: gray; /* Color del borde cuando el enlace es activo */
+}
+
+
 #lista1 li {
   display:inline;
   padding-left:3px;
@@ -63,7 +90,7 @@
 }
 
 body {
-    
+
     background-color: var(--background) !important;
     height: 100%;
 }
@@ -80,10 +107,10 @@ body {
     border-radius: 10%;
     border-color: #888;
     border-width: thin;
-    
+
 }
 .boton:hover{
-  
+
   cursor: pointer;
 }
 
@@ -92,8 +119,8 @@ body {
     max-height:100%;
     padding: 0rem;
     margin: 0rem;
-    
-    
+
+
 }
 .hidden{
   display: none;
@@ -112,8 +139,8 @@ body {
     position: relative;
     top: 0;
     bottom: 0;
-    width:25%;
-    
+    width:20%;
+
     max-height:100%;
   }
   .body{
@@ -142,8 +169,8 @@ body {
     height:100%;
     width: 100%;
   }
-  
-  
+
+
 }
 .error {
     color: #f55;
@@ -164,7 +191,7 @@ body {
     max-height: 100%;
 }
 .modal-content{
-    
+
     background-color: var(--nav) !important;
     color: var(--text_nav)!important;
 }
@@ -210,7 +237,7 @@ ul {
 :root {
 
     --background: #fff;
-    --text_nav: #fff; 
+    --text_nav: #fff;
     --nav: #2d2d2d;
     --text: #000;
   }
@@ -294,11 +321,11 @@ datalist {
     writing-mode: vertical-lr;
     width: 200px;
   }
-  
+
   option {
     padding: 0;
   }
-  
+
   input[type="range"] {
     width: 200px;
     margin: 0;
@@ -318,7 +345,7 @@ datalist {
     justify-content:center
   }
   .signo{
-    
+
     display: flex;
     width: 3rem;
     height: 3rem;
@@ -343,21 +370,19 @@ datalist {
     top: 50%;
     background-color: #2d2d2d;
   }
-  
+
   @keyframes vueltas {
     0% {
       background-color: #ddd;
       transform: rotate(0deg);
-   
+
   }
 
   50% {
     background-color: #888;
   }
    100% {
-    background-color: #ddd;  
+    background-color: #ddd;
     transform: rotate(360deg);
    }
 }
-
-  

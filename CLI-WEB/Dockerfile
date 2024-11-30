@@ -1,15 +1,28 @@
 
-
+# Build stage
 FROM node:14.18-alpine as build-stage
 WORKDIR /app
-COPY ./CLI-WEB/package*.json ./
+COPY ./package*.json ./
 RUN npm install
-COPY ./CLI-WEB/ .
+COPY ./ .
 RUN npm run build
 
-# production stage
-FROM nginx:stable-alpine as production-stage
-COPY --from=build-stage /app/dist /usr/share/nginx/html
-COPY ./CLI-WEB/nginx.conf /etc/nginx/conf.d/default.conf
+# Production stage
+FROM node:14.18-alpine as production-stage
+WORKDIR /app
+
+# Copia los archivos construidos desde el build stage
+COPY --from=build-stage /app/dist /app/dist
+
+# Copia el resto de los archivos necesarios para el servidor Express
+COPY ./package*.json ./
+RUN npm install --only=production
+
+# Copia el archivo del servidor Express
+COPY ./server.js ./
+
+# Exponer el puerto que usará el servidor Express
 EXPOSE 8080
-CMD ["nginx", "-g", "daemon off;"]
+
+# Comando para ejecutar el servidor Express
+CMD ["node", "server.js"]

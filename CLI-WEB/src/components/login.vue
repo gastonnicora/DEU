@@ -20,6 +20,7 @@
 <script>
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css';
+import axios from 'axios';
 import { state, socket } from "@/socket.js";
 export default {
     name: 'Login',
@@ -42,16 +43,17 @@ export default {
             this.isLoading = true
             let email = document.getElementById("email").value
             let pass = document.getElementById("pass").value
-            fetch(this.$store.state.connection + 'login', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email: email, contra: pass })
+            axios.post(this.$store.state.connection + 'login', {
+              email: email,
+              contra: pass
+            }, {
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              }
             })
                 .then(response => {
-                    return response.json();
+                    return response.data
                 })
                 .then(json => {
                     if (json.error) {

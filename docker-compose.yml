@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   db:
-    image: gastonnicora/deu_db
+    image: lzarate2o/sql:latest
     ports:
       - "3306:3306"
     restart: always
@@ -12,7 +12,7 @@ services:
       MYSQL_PASSWORD: tpdeu
       MYSQL_DATABASE: tpdeu  
   api:
-    image: gastonnicora/deu_api
+    image: lzarate2o/api:latest
     restart: always
     depends_on:
       - db
@@ -21,7 +21,7 @@ services:
     ports:
       - "4000:4000"
   cli-web:
-    image: gastonnicora/deu_web
+    image: lzarate2o/web:latest
     restart: always
     environment:
       - api:api

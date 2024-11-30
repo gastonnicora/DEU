@@ -19,8 +19,8 @@ export default {
         notificaciones() {
             let n = this.unionArray(this.noti, state.notificaciones)
             this.cantSinLeer(n)
-            this.$store.state.notificaciones=n.sort(this.compare)
-            return n.sort(this.compare)
+           /* this.$store.state.notificaciones=n.sort(this.compare)
+            return n.sort(this.compare)*/
         },
 
     },
@@ -44,7 +44,7 @@ export default {
             if (fa > fb) {
                 return -1;
             }
-            if (fa > fb) {
+            if (fa < fb) {
                 return 1;
             }
             // a debe ser igual b

@@ -8,25 +8,16 @@
                 <ul class="ul-link">
 
                     <li class="d-flex justify-content-start" v-if="this.$store.state.session.tipo==0">
-                        <router-link to="/crear_entrenamiento" v-if="this.$route.path != '/crear_entrenamiento'">Crear
+                        <router-link to="/crear_entrenamiento" class="link-box" active-class="link-box-active">Crear
                             entrenamiento</router-link>
-                        <div v-if="this.$route.path == '/crear_entrenamiento'">Crear entrenamiento</div>
                     </li>
                     <li class="d-flex justify-content-start">
                         <div>
-                            <router-link to="/" v-if="this.$route.path != '/'">Próximos entrenamientos</router-link>
-                            <div v-if="this.$route.path == '/'">Próximos entrenamientos</div>
-                            <ul class="ul-link ">
-                                <li class="d-flex justify-content-start">
-                                    <div v-if="this.$route.path == '/editar_entrenamiento/*'">Edición de entrenamiento</div>
-                                </li>
-                            </ul>
+                            <router-link to="/" class="link-box" active-class="link-box-active">Próximos entrenamientos</router-link>
                         </div>
                     </li>
                     <li class="d-flex justify-content-start">
-                        <router-link to="/historial_entrenamientos"
-                            v-if="this.$route.path != '/historial_entrenamientos'">Historial de entrenamiento</router-link>
-                        <div v-if="this.$route.path == '/historial_entrenamientos'">Historial de entrenamientos</div>
+                        <router-link to="/historial_entrenamientos" class="link-box" active-class="link-box-active">Historial de entrenamiento</router-link>
                     </li>
 
                 </ul>
@@ -38,14 +29,12 @@
                 <div class="d-flex justify-content-start">Ejercicios:</div>
                 <ul class="ul-link">
                     <li class="d-flex justify-content-start">
-                        <router-link to="/crear_ejercicio" v-if="this.$route.path != '/crear_ejercicio'">Crear
+                        <router-link to="/crear_ejercicio" class="link-box" active-class="link-box-active">Crear
                             ejercicio</router-link>
-                        <div v-if="this.$route.path == '/crear_ejercicio'">Crear ejercicio</div>
                     </li>
                     <li class="d-flex justify-content-start">
-                        <router-link to="/listado_ejercicios" v-if="this.$route.path != '/listado_ejercicios'">Listado de
+                        <router-link to="/listado_ejercicios" class="link-box" active-class="link-box-active">Listado de
                             ejercicios</router-link>
-                        <div v-if="this.$route.path == '/listado_ejercicios'">Listado de ejercicios</div>
                     </li>
                 </ul>
 
@@ -57,14 +46,14 @@
                 <div class="d-flex justify-content-start">Alumnos:</div>
                 <ul class="ul-link ">
                     <li class="d-flex justify-content-start">
-                        <router-link to="/agregar_alumno" v-if="this.$route.path != '/agregar_alumno'">Agregar
+                        <router-link to="/agregar_alumno" class="link-box" active-class="link-box-active">Agregar
                             alumno</router-link>
-                        <div v-if="this.$route.path == '/agregar_alumno'">Agregar alumno</div>
+
                     </li>
                     <li class="d-flex justify-content-start">
-                        <router-link to="/listado_alumnos" v-if="this.$route.path != '/listado_alumnos'">Listado de
+                        <router-link to="/listado_alumnos" class="link-box" active-class="link-box-active">Listado de
                             alumnos</router-link>
-                        <div v-if="this.$route.path == '/listado_alumnos'">Listado de alumnos</div>
+
                     </li>
                 </ul>
 
@@ -75,14 +64,11 @@
                 <div class="d-flex justify-content-start">Notificaciones:</div>
                 <ul class="ul-link">
                     <li class="d-flex justify-content-start" v-if="this.$store.state.session.tipo==0">
-                        <router-link to="/crear_notificacion" v-if="this.$route.path != '/crear_notificacion'">Crear
+                        <router-link to="/crear_notificacion" class="link-box" active-class="link-box-active">Crear
                             notificación</router-link>
-                        <div v-if="this.$route.path == '/crear_notificacion'">Crear notificación</div>
                     </li>
                     <li class="d-flex justify-content-start" v-if="this.$store.state.session.tipo==0">
-                        <router-link to="/listado_notificaciones"
-                            v-if="this.$route.path != '/listado_notificaciones'">Listado de notificaciones</router-link>
-                        <div v-if="this.$route.path == '/listado_notificaciones'">Listado de notificaciones</div>
+                        <router-link to="/listado_notificaciones" class="link-box" active-class="link-box-active">Listado de notificaciones</router-link>
                     </li>
                     <li class="d-flex justify-content-start" v-if="this.$store.state.session.tipo==1">
                         <Btn_noti></Btn_noti>

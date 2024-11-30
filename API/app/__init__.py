@@ -13,8 +13,7 @@ from app.events import socketio
 def create_app(environment="development"):
     # Configuración inicial de la app
     app = Flask(__name__) 
-    app.config['CORS_HEADERS'] = 'Content-Type'
-    cors = CORS(app)
+    CORS(app)
 
     env = environ.get("FLASK_ENV", environment)
     app.config.from_object(config[env])
